@@ -1,0 +1,53 @@
+# NOVA Commerce — Design System Lock
+
+> **Locked:** 2026-08-28
+> **Phase:** 0 (Foundation)
+> **Status:** 🔒 LOCKED
+
+---
+
+## Lock Rules
+
+1. **All UI must reference `design.md`** — no inline colors, fonts, or spacing
+2. **No modifications without Hallmark audit** — run `hallmark audit` before changes
+3. **New screens must pick from macrostructure catalog** — no ad-hoc layouts
+4. **Slop test required** — 58/58 gates must pass before marking design tasks complete
+5. **Design.md is source of truth** — all apps must align with this document
+
+---
+
+## How to Use
+
+### For New Screens
+1. Read `design.md` for tokens and macrostructure picks
+2. Build using Hallmark principles
+3. Run slop test (58 gates)
+4. Update `design.md` with new design decisions
+
+### For Modifications
+1. Run `hallmark audit` on existing screens
+2. Compare against `design.md` tokens
+3. Fix any violations
+4. Update `design.md` if design evolves
+
+### For New Phases
+1. Reference `design.md` at phase start
+2. Apply existing tokens
+3. Pick new macrostructures if needed
+4. Update `design.md` with phase-specific decisions
+
+---
+
+## Violations
+
+| Date | Issue | Resolution |
+| :--- | :--- | :--- |
+| (none yet) | — | — |
+
+---
+
+## Lock History
+
+| Date | Action | By |
+| :--- | :--- | :--- |
+| 2026-08-28 | Initial lock | System |

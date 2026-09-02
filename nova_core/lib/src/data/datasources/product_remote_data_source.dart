@@ -1,0 +1,45 @@
+import 'package:dio/dio.dart';
+import '../../core/constants/api_constants.dart';
+import '../../api/models/api_response.dart';
+
+class ProductRemoteDataSource {
+  final Dio _dio;
+  ProductRemoteDataSource(this._dio);
+
+  Future<ApiResponse<Map<String, dynamic>>> getProducts({
+    int page = 1,
+    int limit = 20,
+    String? search,
+    String? categoryId,
+    String? brandId,
+    String? sortBy,
+  }) async {
+    final queryParams = {
+      'page': page,
+      'limit': limit,
+      if (search != null) 'search': search,
+      if (categoryId != null) 'category_id': categoryId,
+      if (brandId != null) 'brand_id': brandId,
+      if (sortBy != null) 'sort': sortBy,
+    };
+    final response = await _dio.get(ApiConstants.products, queryParameters: queryParams);
+    return ApiResponse(success: true, message: '', data: response.data as Map<String, dynamic>);
+  }
+
+  Future<ApiResponse<Map<String, dynamic>>> getProduct(String id) async {
+    final response = await _dio.get('${ApiConstants.products}/$id');
+    return ApiResponse(success: true, message: '', data: response.data as Map<String, dynamic>);
+  }
+
+  Future<ApiResponse<List<dynamic>>> getCategories() async {
+    final response = await _dio.get(ApiConstants.categories);
+    final data = response.data;
+    return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
+  }
+
+  Future<ApiResponse<List<dynamic>>> getBrands() async {
+    final response = await _dio.get(ApiConstants.brands);
+    final data = response.data;
+    return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
+  }
+}

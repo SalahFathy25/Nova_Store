@@ -1,0 +1,32 @@
+import { Store } from '../stores/store.entity.js';
+import { Category } from '../categories/category.entity.js';
+import { Brand } from '../brands/brand.entity.js';
+import { User } from '../users/user.entity.js';
+export declare class Product {
+    id: string;
+    tenant_id: string;
+    store: Store;
+    vendor_id: string;
+    vendor: User;
+    category_id: string;
+    category: Category;
+    brand_id: string;
+    brand: Brand;
+    title: string;
+    slug: string;
+    description: string;
+    short_description: string;
+    base_price: number;
+    compare_at_price: number;
+    cost_price: number;
+    sku: string;
+    barcode: string;
+    is_active: boolean;
+    is_featured: boolean;
+    is_digital: boolean;
+    weight: number;
+    tags: string[];
+    metadata: Record<string, any>;
+    created_at: Date;
+    updated_at: Date;
+}

@@ -1,0 +1,46 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    avoid_print: true
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    prefer_relative_imports: true
+    avoid_unnecessary_containers: true
+    sized_box_for_whitespace: true
+    use_key_in_widget_constructors: true
+    prefer_final_locals: true
+    prefer_final_fields: true
+    always_declare_return_types: true
+    annotate_overrides: true
+    avoid_dynamic_calls: true
+    cancel_subscriptions: true
+    close_sinks: true
+    constant_identifier_names: true
+    directives_ordering: true
+    file_names: true
+    library_names: true
+    non_constant_identifier_names: true
+    prefer_collection_literals: true
+    prefer_contains: true
+    prefer_expression_function_bodies: true
+    prefer_interpolation_to_compose_strings: true
+    unnecessary_const: true
+    unnecessary_new: true
+    unnecessary_parenthesis: true
+    unnecessary_this: true
+    use_super_parameters: true
+
+analyzer:
+  errors:
+    missing_return: error
+    dead_code: warning
+    unused_import: warning
+    unused_local_variable: warning
+    unused_field: warning
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gen.dart"

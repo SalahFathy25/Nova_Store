@@ -1,0 +1,1270 @@
+
+> backend@0.0.1 start:dev
+> nest start --watch
+
+[2J[3J[H[[90m4:47:57 PM[0m] Starting compilation in watch mode...
+
+[[90m4:48:08 PM[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +178ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:15 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +248ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketingModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCategoriesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mBrandsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttributesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProductsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCartsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mWishlistModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mOrdersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAddressesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCouponsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSyncing database schema...[39m
+(node:6576) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSchema synced successfully.[39m
+Seed data already exists. Skipping...
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1/auth}:[39m[38;5;3m +27ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/register, POST} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/send, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/verify, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/refresh-token, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/forgot-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/me, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCategoriesController {/api/v1/categories}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mBrandsController {/api/v1/brands}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttributesController {/api/v1/attributes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id/values, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/values/:valueId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProductsController {/api/v1/products}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/variants, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/images, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/images/:imageId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadController {/api/v1/upload}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/image, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/images, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCartsController {/api/v1/cart}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mWishlistController {/api/v1/wishlist}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist/:productId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mOrdersController {/api/v1/orders}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id/cancel, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAddressesController {/api/v1/addresses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id/default, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCouponsController {/api/v1/coupons}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/coupons/validate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMarketingController {/api/v1}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/home, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/banners, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/current, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/:id/products, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNotificationsController {/api/v1/notifications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/unread-count, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/:id/read, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/read-all, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppConfigController {/app-config}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/app-config, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +7ms[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mApplication running on: http://localhost:3000[39m
+[32m[Nest] 6576  - [39m09/01/2026, 4:48:16 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mAPI Documentation: http://localhost:3000/docs[39m
+[2J[3J[H[[90m4:49:34 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m4:49:35 PM[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +274ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +17ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:44 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +547ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketingModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCategoriesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mBrandsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttributesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProductsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCartsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mWishlistModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mOrdersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAddressesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCouponsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSyncing database schema...[39m
+(node:18836) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSchema synced successfully.[39m
+Seed data already exists. Skipping...
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1/auth}:[39m[38;5;3m +24ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/register, POST} route[39m[38;5;3m +6ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/send, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/verify, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/refresh-token, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/forgot-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/me, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCategoriesController {/api/v1/categories}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mBrandsController {/api/v1/brands}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttributesController {/api/v1/attributes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id/values, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/values/:valueId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProductsController {/api/v1/products}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/variants, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/images, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/images/:imageId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadController {/api/v1/upload}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/image, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/images, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCartsController {/api/v1/cart}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mWishlistController {/api/v1/wishlist}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist/:productId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mOrdersController {/api/v1/orders}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id/cancel, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAddressesController {/api/v1/addresses}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id/default, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCouponsController {/api/v1/coupons}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/coupons/validate, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMarketingController {/api/v1}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/home, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/banners, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/current, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/:id/products, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNotificationsController {/api/v1/notifications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/unread-count, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/:id/read, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/read-all, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppConfigController {/api/v1/app-config}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/app-config, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +7ms[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mApplication running on: http://localhost:3000[39m
+[32m[Nest] 18836  - [39m09/01/2026, 4:49:45 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mAPI Documentation: http://localhost:3000/docs[39m
+[2J[3J[H[[90m5:41:49 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:41:50 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:41:51 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:41:53 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:41:53 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:41:54 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:41:57 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:41:57 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:42:02 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:42:03 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:42:13 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:42:13 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:42:14 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:42:15 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:42:23 PM[0m] File change detected. Starting incremental compilation...
+
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:23 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +260ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27940  - [39m09/01/2026, 5:42:24 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadModule dependencies initialized[39m[38;5;3m +1ms[39m
+[[90m5:42:24 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:42:24 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:42:25 PM[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +179ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +265ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketingModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCategoriesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mBrandsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttributesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProductsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCartsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mWishlistModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mOrdersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAddressesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCouponsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:32 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSyncing database schema...[39m
+(node:12536) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSchema synced successfully.[39m
+Seed data already exists. Skipping...
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1/auth}:[39m[38;5;3m +24ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/register, POST} route[39m[38;5;3m +5ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/send, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/verify, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/refresh-token, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/forgot-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/me, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCategoriesController {/api/v1/categories}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mBrandsController {/api/v1/brands}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttributesController {/api/v1/attributes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id/values, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/values/:valueId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProductsController {/api/v1/products}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/variants, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/images, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/images/:imageId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadController {/api/v1/upload}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/image, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/images, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCartsController {/api/v1/cart}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mWishlistController {/api/v1/wishlist}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist/:productId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mOrdersController {/api/v1/orders}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id/cancel, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAddressesController {/api/v1/addresses}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id/default, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCouponsController {/api/v1/coupons}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/coupons/validate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMarketingController {/api/v1}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/home, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/banners, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/current, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/:id/products, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNotificationsController {/api/v1/notifications}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/unread-count, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/:id/read, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/read-all, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppConfigController {/api/v1/app-config}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/app-config, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4ms[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mApplication running on: http://localhost:3000[39m
+[32m[Nest] 12536  - [39m09/01/2026, 5:42:33 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mAPI Documentation: http://localhost:3000/docs[39m
+[2J[3J[H[[90m5:52:19 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:52:21 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:52:21 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m5:52:22 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:52:27 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[[90m5:52:28 PM[0m] Found 1 error. Watching for file changes.
+
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +206ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +246ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketingModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCategoriesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mBrandsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttributesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProductsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCartsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mWishlistModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mOrdersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAddressesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCouponsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSyncing database schema...[39m
+(node:28252) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSchema synced successfully.[39m
+Seed data already exists. Skipping...
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1/auth}:[39m[38;5;3m +25ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/register, POST} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/send, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/otp/verify, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/refresh-token, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/forgot-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/me, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCategoriesController {/api/v1/categories}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/categories/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mBrandsController {/api/v1/brands}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/brands/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttributesController {/api/v1/attributes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/:id/values, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attributes/values/:valueId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProductsController {/api/v1/products}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/variants, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/variants/:variantId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/:id/images, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/products/images/:imageId, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadController {/api/v1/upload}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/image, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/upload/images, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCartsController {/api/v1/cart}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart/items/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/cart, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mWishlistController {/api/v1/wishlist}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/wishlist/:productId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mOrdersController {/api/v1/orders}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/orders/:id/cancel, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAddressesController {/api/v1/addresses}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/addresses/:id/default, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCouponsController {/api/v1/coupons}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/coupons/validate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMarketingController {/api/v1}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/home, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/banners, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/current, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/flash-sales/:id/products, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNotificationsController {/api/v1/notifications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/unread-count, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/:id/read, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/read-all, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppConfigController {/api/v1/app-config}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/app-config, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +8ms[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mApplication running on: http://localhost:3000[39m
+[32m[Nest] 28252  - [39m09/01/2026, 5:52:31 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mAPI Documentation: http://localhost:3000/docs[39m
+[2J[3J[H[[90m5:52:32 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[[90m5:52:33 PM[0m] Found 1 error. Watching for file changes.
+
+[2J[3J[H[[90m5:52:37 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[[90m5:52:37 PM[0m] Found 2 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:52:41 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[[90m5:52:41 PM[0m] Found 2 errors. Watching for file changes.
+
+[2J[3J[H[[90m5:52:45 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[[90m5:52:45 PM[0m] Found 2 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:39:50 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[96msrc/database/seeds/seed.ts[0m:[93m276[0m:[93m19[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Product>[]): Product[]', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: boolean; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>[]'.
+      Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Product>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Product>): Product', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>'.
+      Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type 'DeepPartial<Product>'.
+        Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type '{ id?: string | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; vendor_id?: string | undefined; vendor?: DeepPartial<User> | undefined; ... 20 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'compare_at_price' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m276[0m       productRepo.create({ tenant_id: tenantId, is_active: true, ...productData }),
+[7m   [0m [91m                  ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m282[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m282[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m284[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'title' does not exist on type 'Product[]'.
+
+[7m284[0m           alt_text: `${saved.title} image ${i + 1}`,
+[7m   [0m [91m                             ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m293[0m:[93m28[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<ProductVariant>[]): ProductVariant[]', gave the following error.
+    Argument of type '{ is_active: boolean; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: boolean; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>[]'.
+      Object literal may only specify known properties, and 'is_active' does not exist in type 'DeepPartial<ProductVariant>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<ProductVariant>): ProductVariant', gave the following error.
+    Argument of type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: true; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>'.
+      Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type 'DeepPartial<ProductVariant>'.
+        Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type '{ id?: string | undefined; product_id?: string | undefined; product?: DeepPartial<Product> | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; ... 13 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'price_override' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m293[0m         productVariantRepo.create({
+[7m   [0m [91m                           ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m294[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m294[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m302[0m:[93m24[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Product[]' is not assignable to parameter of type 'Product'.
+  Type 'Product[]' is missing the following properties from type 'Product': id, tenant_id, store, vendor_id, and 22 more.
+
+[7m302[0m     savedProducts.push(saved);
+[7m   [0m [91m                       ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m335[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m335[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:39:52 PM[0m] Found 9 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:40:33 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[96msrc/database/seeds/seed.ts[0m:[93m276[0m:[93m19[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Product>[]): Product[]', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: boolean; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>[]'.
+      Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Product>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Product>): Product', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>'.
+      Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type 'DeepPartial<Product>'.
+        Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type '{ id?: string | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; vendor_id?: string | undefined; vendor?: DeepPartial<User> | undefined; ... 20 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'compare_at_price' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m276[0m       productRepo.create({ tenant_id: tenantId, is_active: true, ...productData }),
+[7m   [0m [91m                  ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m282[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m282[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m284[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'title' does not exist on type 'Product[]'.
+
+[7m284[0m           alt_text: `${saved.title} image ${i + 1}`,
+[7m   [0m [91m                             ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m293[0m:[93m28[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<ProductVariant>[]): ProductVariant[]', gave the following error.
+    Argument of type '{ is_active: boolean; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: boolean; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>[]'.
+      Object literal may only specify known properties, and 'is_active' does not exist in type 'DeepPartial<ProductVariant>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<ProductVariant>): ProductVariant', gave the following error.
+    Argument of type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: true; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>'.
+      Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type 'DeepPartial<ProductVariant>'.
+        Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type '{ id?: string | undefined; product_id?: string | undefined; product?: DeepPartial<Product> | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; ... 13 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'price_override' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m293[0m         productVariantRepo.create({
+[7m   [0m [91m                           ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m294[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m294[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m302[0m:[93m24[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Product[]' is not assignable to parameter of type 'Product'.
+  Type 'Product[]' is missing the following properties from type 'Product': id, tenant_id, store, vendor_id, and 22 more.
+
+[7m302[0m     savedProducts.push(saved);
+[7m   [0m [91m                       ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m335[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m335[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:40:34 PM[0m] Found 9 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:40:34 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[96msrc/database/seeds/seed.ts[0m:[93m276[0m:[93m19[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Product>[]): Product[]', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: boolean; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>[]'.
+      Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Product>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Product>): Product', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>'.
+      Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type 'DeepPartial<Product>'.
+        Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type '{ id?: string | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; vendor_id?: string | undefined; vendor?: DeepPartial<User> | undefined; ... 20 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'compare_at_price' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m276[0m       productRepo.create({ tenant_id: tenantId, is_active: true, ...productData }),
+[7m   [0m [91m                  ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m282[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m282[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m284[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'title' does not exist on type 'Product[]'.
+
+[7m284[0m           alt_text: `${saved.title} image ${i + 1}`,
+[7m   [0m [91m                             ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m293[0m:[93m28[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<ProductVariant>[]): ProductVariant[]', gave the following error.
+    Argument of type '{ is_active: boolean; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: boolean; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>[]'.
+      Object literal may only specify known properties, and 'is_active' does not exist in type 'DeepPartial<ProductVariant>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<ProductVariant>): ProductVariant', gave the following error.
+    Argument of type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: true; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>'.
+      Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type 'DeepPartial<ProductVariant>'.
+        Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type '{ id?: string | undefined; product_id?: string | undefined; product?: DeepPartial<Product> | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; ... 13 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'price_override' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m293[0m         productVariantRepo.create({
+[7m   [0m [91m                           ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m294[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m294[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m302[0m:[93m24[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Product[]' is not assignable to parameter of type 'Product'.
+  Type 'Product[]' is missing the following properties from type 'Product': id, tenant_id, store, vendor_id, and 22 more.
+
+[7m302[0m     savedProducts.push(saved);
+[7m   [0m [91m                       ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m335[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m335[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:40:35 PM[0m] Found 9 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:40:36 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[96msrc/database/seeds/seed.ts[0m:[93m276[0m:[93m19[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Product>[]): Product[]', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: boolean; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>[]'.
+      Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Product>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Product>): Product', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>'.
+      Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type 'DeepPartial<Product>'.
+        Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type '{ id?: string | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; vendor_id?: string | undefined; vendor?: DeepPartial<User> | undefined; ... 20 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'compare_at_price' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m276[0m       productRepo.create({ tenant_id: tenantId, is_active: true, ...productData }),
+[7m   [0m [91m                  ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m282[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m282[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m284[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'title' does not exist on type 'Product[]'.
+
+[7m284[0m           alt_text: `${saved.title} image ${i + 1}`,
+[7m   [0m [91m                             ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m293[0m:[93m28[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<ProductVariant>[]): ProductVariant[]', gave the following error.
+    Argument of type '{ is_active: boolean; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: boolean; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>[]'.
+      Object literal may only specify known properties, and 'is_active' does not exist in type 'DeepPartial<ProductVariant>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<ProductVariant>): ProductVariant', gave the following error.
+    Argument of type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: true; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>'.
+      Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type 'DeepPartial<ProductVariant>'.
+        Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type '{ id?: string | undefined; product_id?: string | undefined; product?: DeepPartial<Product> | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; ... 13 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'price_override' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m293[0m         productVariantRepo.create({
+[7m   [0m [91m                           ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m294[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m294[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m302[0m:[93m24[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Product[]' is not assignable to parameter of type 'Product'.
+  Type 'Product[]' is missing the following properties from type 'Product': id, tenant_id, store, vendor_id, and 22 more.
+
+[7m302[0m     savedProducts.push(saved);
+[7m   [0m [91m                       ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m335[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m335[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:40:37 PM[0m] Found 9 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:40:39 PM[0m] File change detected. Starting incremental compilation...
+
+[2J[3J[H[[90m12:40:48 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/auth/auth.module.ts[0m:[93m28[0m:[93m16[0m - [91merror[0m[90m TS2693: [0m'SmsService' only refers to a type, but is being used as a value here.
+
+[7m28[0m     { provide: SmsService, useClass: DevSmsService },
+[7m  [0m [91m               ~~~~~~~~~~[0m
+
+[96msrc/auth/auth.service.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS1272: [0mA type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+
+[7m38[0m     private readonly smsService: SmsService,
+[7m  [0m [91m                                 ~~~~~~~~~~[0m
+
+  [96msrc/auth/auth.service.ts[0m:[93m24[0m:[93m10[0m
+    [7m24[0m import { SmsService } from '../common/services/sms.service.js';
+    [7m  [0m [96m         ~~~~~~~~~~[0m
+    'SmsService' was imported here.
+
+[96msrc/database/seeds/seed.ts[0m:[93m276[0m:[93m19[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Product>[]): Product[]', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: boolean; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>[]'.
+      Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Product>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Product>): Product', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>'.
+      Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type 'DeepPartial<Product>'.
+        Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type '{ id?: string | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; vendor_id?: string | undefined; vendor?: DeepPartial<User> | undefined; ... 20 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'compare_at_price' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m276[0m       productRepo.create({ tenant_id: tenantId, is_active: true, ...productData }),
+[7m   [0m [91m                  ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m282[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m282[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m284[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'title' does not exist on type 'Product[]'.
+
+[7m284[0m           alt_text: `${saved.title} image ${i + 1}`,
+[7m   [0m [91m                             ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m293[0m:[93m28[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<ProductVariant>[]): ProductVariant[]', gave the following error.
+    Argument of type '{ is_active: boolean; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: boolean; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>[]'.
+      Object literal may only specify known properties, and 'is_active' does not exist in type 'DeepPartial<ProductVariant>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<ProductVariant>): ProductVariant', gave the following error.
+    Argument of type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: true; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>'.
+      Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type 'DeepPartial<ProductVariant>'.
+        Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type '{ id?: string | undefined; product_id?: string | undefined; product?: DeepPartial<Product> | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; ... 13 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'price_override' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m293[0m         productVariantRepo.create({
+[7m   [0m [91m                           ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m294[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m294[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m302[0m:[93m24[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Product[]' is not assignable to parameter of type 'Product'.
+  Type 'Product[]' is missing the following properties from type 'Product': id, tenant_id, store, vendor_id, and 22 more.
+
+[7m302[0m     savedProducts.push(saved);
+[7m   [0m [91m                       ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m335[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m335[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:40:57 PM[0m] Found 9 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:41:14 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/database/seeds/seed.ts[0m:[93m276[0m:[93m19[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Product>[]): Product[]', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: boolean; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>[]'.
+      Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Product>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Product>): Product', gave the following error.
+    Argument of type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: number; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<Product>'.
+      Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type 'DeepPartial<Product>'.
+        Type '{ title: string; slug: string; description: string; short_description: string; base_price: number; compare_at_price: null; sku: string; category_id: string; brand_id: string; is_featured: boolean; tenant_id: string; is_active: true; }' is not assignable to type '{ id?: string | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; vendor_id?: string | undefined; vendor?: DeepPartial<User> | undefined; ... 20 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'compare_at_price' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m276[0m       productRepo.create({ tenant_id: tenantId, is_active: true, ...productData }),
+[7m   [0m [91m                  ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m282[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m282[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m284[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'title' does not exist on type 'Product[]'.
+
+[7m284[0m           alt_text: `${saved.title} image ${i + 1}`,
+[7m   [0m [91m                             ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m293[0m:[93m28[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<ProductVariant>[]): ProductVariant[]', gave the following error.
+    Argument of type '{ is_active: boolean; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: boolean; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>[]'.
+      Object literal may only specify known properties, and 'is_active' does not exist in type 'DeepPartial<ProductVariant>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<ProductVariant>): ProductVariant', gave the following error.
+    Argument of type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; } | { is_active: true; ... 6 more ...; tenant_id: string; } | ... 5 more ... | { ...; }' is not assignable to parameter of type 'DeepPartial<ProductVariant>'.
+      Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type 'DeepPartial<ProductVariant>'.
+        Type '{ is_active: true; sku: string; title: string; attributes: { color: string; storage: string; }; stock_quantity: number; price_override: null; product_id: any; tenant_id: string; }' is not assignable to type '{ id?: string | undefined; product_id?: string | undefined; product?: DeepPartial<Product> | undefined; tenant_id?: string | undefined; store?: DeepPartial<Store> | undefined; ... 13 more ...; updated_at?: DeepPartial<...> | undefined; }'.
+          Types of property 'price_override' are incompatible.
+            Type 'null' is not assignable to type 'number | undefined'.
+
+[7m293[0m         productVariantRepo.create({
+[7m   [0m [91m                           ~~~~~~[0m
+
+
+[96msrc/database/seeds/seed.ts[0m:[93m294[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'Product[]'.
+
+[7m294[0m           product_id: saved.id,
+[7m   [0m [91m                            ~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m302[0m:[93m24[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Product[]' is not assignable to parameter of type 'Product'.
+  Type 'Product[]' is missing the following properties from type 'Product': id, tenant_id, store, vendor_id, and 22 more.
+
+[7m302[0m     savedProducts.push(saved);
+[7m   [0m [91m                       ~~~~~[0m
+
+[96msrc/database/seeds/seed.ts[0m:[93m335[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m335[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:41:15 PM[0m] Found 7 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:42:45 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/database/seeds/seed.ts[0m:[93m332[0m:[93m16[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 1 of 3, '(entityLikeArray: DeepPartial<Banner>[]): Banner[]', gave the following error.
+    Object literal may only specify known properties, and 'tenant_id' does not exist in type 'DeepPartial<Banner>[]'.
+  Overload 2 of 3, '(entityLike: DeepPartial<Banner>): Banner', gave the following error.
+    Type 'null' is not assignable to type 'string | undefined'.
+
+[7m332[0m     bannerRepo.create({
+[7m   [0m [91m               ~~~~~~[0m
+
+  [96msrc/modules/marketing/banner.entity.ts[0m:[93m39[0m:[93m3[0m
+    [7m39[0m   link_value: string;
+    [7m  [0m [96m  ~~~~~~~~~~[0m
+    The expected type comes from property 'link_value' which is declared here on type 'DeepPartial<Banner>'
+
+[[90m12:42:46 PM[0m] Found 1 error. Watching for file changes.
+
+[2J[3J[H[[90m12:42:57 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m12:42:58 PM[0m] Found 0 errors. Watching for file changes.
+
+S:\flutter\Projects\My Projects\e_commerce\backend\src\auth\auth.module.ts:28
+    { provide: SmsService, useClass: DevSmsService },
+               ^
+
+ReferenceError: SmsService is not defined
+    at <anonymous> (S:\flutter\Projects\My Projects\e_commerce\backend\src\auth\auth.module.ts:28:16)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.22.2
