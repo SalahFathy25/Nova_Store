@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: nova-store
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: node --dns-result-order=ipv4first dist/main
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_ENV
+        value: production
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: postgres
+      - key: DB_SSL
+        value: true
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 15m
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: SMS_PROVIDER
+        value: dev
+      - key: CORS_ORIGINS
+        value: '*'
+    healthCheckPath: /api/v1/app-config
