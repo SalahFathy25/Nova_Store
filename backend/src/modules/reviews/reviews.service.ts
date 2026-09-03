@@ -64,7 +64,7 @@ export class ReviewsService {
       where: {
         user_id: userId,
         product_id: dto.product_id,
-        order_id: dto.order_id || null,
+        order_id: dto.order_id || undefined,
       },
     });
 

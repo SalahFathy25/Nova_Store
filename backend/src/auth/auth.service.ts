@@ -55,7 +55,7 @@ export class AuthService {
       tenant_id: tenantId,
       full_name: dto.full_name,
       email: dto.email,
-      phone: dto.phone || null,
+      phone: dto.phone || undefined,
       password_hash: passwordHash,
       role: 'customer',
       is_verified: true,
