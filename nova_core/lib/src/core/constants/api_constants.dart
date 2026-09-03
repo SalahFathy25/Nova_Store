@@ -2,7 +2,12 @@ class ApiConstants {
   ApiConstants._();
 
   // Base URLs
-  static const String baseUrl = 'http://192.168.1.5:3000';
+  // For production: https://nova-store-production-03ac.up.railway.app
+  // For development: http://192.168.1.5:3000
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'https://nova-store-production-03ac.up.railway.app',
+  );
   static const String apiVersion = '/api/v1';
   static const String defaultTenantId = 'a0000000-0000-0000-0000-000000000001';
 

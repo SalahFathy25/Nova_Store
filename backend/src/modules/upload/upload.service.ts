@@ -15,10 +15,13 @@ export interface MulterFile {
 @Injectable()
 export class UploadService {
   private readonly uploadDir = join(process.cwd(), 'uploads');
+  private readonly isServerless = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME;
 
   constructor() {
-    if (!existsSync(this.uploadDir)) {
-      mkdirSync(this.uploadDir, { recursive: true });
+    if (!this.isServerless) {
+      if (!existsSync(this.uploadDir)) {
+        mkdirSync(this.uploadDir, { recursive: true });
+      }
     }
   }
 
@@ -28,6 +31,10 @@ export class UploadService {
   ): Promise<{ url: string; filename: string }> {
     if (!file) {
       throw new BadRequestException('No file provided');
+    }
+
+    if (this.isServerless) {
+      throw new BadRequestException('File upload not available in serverless environment. Use S3 or external storage.');
     }
 
     const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];

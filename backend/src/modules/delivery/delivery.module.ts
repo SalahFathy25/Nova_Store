@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DeliveryController } from './delivery.controller.js';
 import { DeliveryService } from './delivery.service.js';
@@ -12,6 +13,7 @@ import { DriverLocationHistory } from './driver-location-history.entity.js';
 import { User } from '../users/user.entity.js';
 import { SubOrder } from '../orders/sub-order.entity.js';
 import { ParentOrder } from '../orders/parent-order.entity.js';
+import { JwtStrategy } from '../../auth/strategies/jwt.strategy.js';
 
 @Module({
   imports: [
@@ -24,6 +26,7 @@ import { ParentOrder } from '../orders/parent-order.entity.js';
       SubOrder,
       ParentOrder,
     ]),
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
@@ -34,7 +37,7 @@ import { ParentOrder } from '../orders/parent-order.entity.js';
     }),
   ],
   controllers: [DeliveryController],
-  providers: [DeliveryService, DeliveryGateway],
+  providers: [DeliveryService, DeliveryGateway, JwtStrategy],
   exports: [DeliveryService],
 })
 export class DeliveryModule {}
