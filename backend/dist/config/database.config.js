@@ -12,6 +12,12 @@ export const getDatabaseConfig = () => ({
     entities: [join(__dirname, '..', 'modules', '**', '*.entity.{ts,js}')],
     synchronize: process.env.APP_ENV === 'development',
     logging: process.env.APP_ENV === 'development',
-    ssl: process.env.APP_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    ssl: process.env.DB_SSL === 'true' || process.env.APP_ENV === 'production'
+        ? { rejectUnauthorized: false }
+        : false,
+    extra: {
+        max: process.env.APP_ENV === 'production' ? 5 : 10,
+        connectionTimeoutMillis: 10000,
+    },
 });
 //# sourceMappingURL=database.config.js.map

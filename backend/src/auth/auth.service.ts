@@ -39,6 +39,8 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto, tenantId: string): Promise<AuthResponse> {
+    this.logger.log(`Register attempt for email: ${dto.email}, tenant: ${tenantId}`);
+
     const existingUser = await this.userRepo.findOne({
       where: { tenant_id: tenantId, email: dto.email },
     });
@@ -53,13 +55,16 @@ export class AuthService {
       tenant_id: tenantId,
       full_name: dto.full_name,
       email: dto.email,
-      phone: dto.phone,
+      phone: dto.phone || null,
       password_hash: passwordHash,
       role: 'customer',
       is_verified: true,
     });
 
+    this.logger.log('Saving user...');
     const savedUser = await this.userRepo.save(user);
+    this.logger.log(`User saved: ${savedUser.id}`);
+
     const tokens = await this.generateTokens(savedUser, tenantId);
     await this.createSession(savedUser.id, tokens.refresh_token);
 
