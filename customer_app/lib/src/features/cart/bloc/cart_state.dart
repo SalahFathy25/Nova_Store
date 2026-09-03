@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nova_core/nova_core.dart';
 
 abstract class CartState extends Equatable {
   const CartState();
@@ -12,13 +13,14 @@ class CartInitial extends CartState {}
 class CartLoading extends CartState {}
 
 class CartLoaded extends CartState {
-  final Map<String, dynamic> cart;
+  final Cart cart;
 
   const CartLoaded({required this.cart});
 
-  int get itemCount => (cart['items'] as List?)?.length ?? 0;
-  double get subtotal => (cart['subtotal'] as num?)?.toDouble() ?? 0;
-  double get total => (cart['total'] as num?)?.toDouble() ?? 0;
+  List<CartItem> get cartItems => cart.items;
+  int get itemCount => cart.itemCount;
+  double get subtotal => cart.subtotal;
+  double get total => cart.total;
 
   @override
   List<Object?> get props => [cart];

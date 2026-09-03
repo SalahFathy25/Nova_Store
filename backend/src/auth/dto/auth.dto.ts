@@ -101,3 +101,9 @@ export class AuthResponse {
   user: any;
   tokens: AuthTokens;
 }
+
+export class UpdateFcmTokenDto {
+  @ApiProperty({ example: 'fcm_token_123' })
+  @IsString()
+  fcm_token: string;
+}

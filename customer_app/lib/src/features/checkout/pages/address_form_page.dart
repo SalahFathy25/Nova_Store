@@ -14,6 +14,7 @@ class AddressFormPage extends StatefulWidget {
 
 class _AddressFormPageState extends State<AddressFormPage> {
   final _formKey = GlobalKey<FormState>();
+  final _searchController = TextEditingController();
   final _fullAddressController = TextEditingController();
   final _streetController = TextEditingController();
   final _buildingController = TextEditingController();
@@ -25,11 +26,14 @@ class _AddressFormPageState extends State<AddressFormPage> {
 
   String _selectedLabel = 'Home';
   bool _isLoading = false;
+  double? _latitude;
+  double? _longitude;
 
   final List<String> _labelOptions = ['Home', 'Work', 'Other'];
 
   @override
   void dispose() {
+    _searchController.dispose();
     _fullAddressController.dispose();
     _streetController.dispose();
     _buildingController.dispose();
@@ -71,6 +75,8 @@ class _AddressFormPageState extends State<AddressFormPage> {
           ? _stateController.text.trim()
           : null,
       'country': 'EG',
+      if (_latitude != null) 'latitude': _latitude,
+      if (_longitude != null) 'longitude': _longitude,
     };
 
     context.read<AddressBloc>().add(AddAddress(addressData: addressData));
@@ -107,6 +113,8 @@ class _AddressFormPageState extends State<AddressFormPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _buildLabelSection(),
+                  const SizedBox(height: NovaTheme.spacingMd),
+                  _buildSearchLocationField(),
                   const SizedBox(height: NovaTheme.spacingMd),
                   _buildFullAddressField(),
                   const SizedBox(height: NovaTheme.spacingMd),
@@ -211,6 +219,55 @@ class _AddressFormPageState extends State<AddressFormPage> {
       default:
         return Icons.location_on_outlined;
     }
+  }
+
+  Widget _buildSearchLocationField() {
+    return Container(
+      padding: const EdgeInsets.all(NovaTheme.spacingMd),
+      decoration: BoxDecoration(
+        color: NovaTheme.surfaceColor,
+        borderRadius: BorderRadius.circular(NovaTheme.radiusMd),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Search Location',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: NovaTheme.textPrimary,
+            ),
+          ),
+          const SizedBox(height: NovaTheme.spacingSm),
+          TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              hintText: 'Search for your address...',
+              prefixIcon: const Icon(Icons.search, size: 20),
+              suffixIcon: _latitude != null
+                  ? const Icon(Icons.check_circle, color: NovaTheme.successColor, size: 20)
+                  : null,
+              isDense: true,
+            ),
+            onChanged: (value) {
+              // TODO: Integrate with Google Places API when configured
+              // For now, this is a placeholder for future Google Maps integration
+            },
+          ),
+          if (_latitude != null && _longitude != null) ...[
+            const SizedBox(height: NovaTheme.spacingSm),
+            Text(
+              'Location selected: ${_latitude!.toStringAsFixed(4)}, ${_longitude!.toStringAsFixed(4)}',
+              style: const TextStyle(
+                fontSize: 12,
+                color: NovaTheme.successColor,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
   }
 
   Widget _buildFullAddressField() {

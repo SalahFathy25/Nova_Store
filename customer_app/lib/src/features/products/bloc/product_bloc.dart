@@ -6,7 +6,11 @@ import 'product_state.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepository _productRepository;
   int _currentPage = 1;
-  List<dynamic> _allProducts = [];
+  String? _lastSearch;
+  String? _lastCategoryId;
+  String? _lastBrandId;
+  String? _lastSortBy;
+  List<Product> _allProducts = [];
 
   ProductBloc({required ProductRepository productRepository})
       : _productRepository = productRepository,
@@ -22,6 +26,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductLoading());
     _currentPage = 1;
     _allProducts = [];
+    _lastSearch = event.search;
+    _lastCategoryId = event.categoryId;
+    _lastBrandId = event.brandId;
+    _lastSortBy = event.sortBy;
 
     final result = await _productRepository.getProducts(
       page: 1,
@@ -34,8 +42,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     result.fold(
       (failure) => emit(ProductError(message: failure.message)),
       (data) {
-        final products = data['data'] ?? [];
-        _allProducts = List.from(products);
+        final productsList = data['data'] ?? [];
+        _allProducts = (productsList as List)
+            .map((p) => Product.fromJson(p as Map<String, dynamic>))
+            .toList();
         emit(ProductsLoaded(
           products: _allProducts,
           total: data['total'] ?? 0,
@@ -52,17 +62,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       _currentPage++;
       final result = await _productRepository.getProducts(
         page: _currentPage,
-        search: event.search,
-        categoryId: event.categoryId,
-        brandId: event.brandId,
-        sortBy: event.sortBy,
+        search: _lastSearch,
+        categoryId: _lastCategoryId,
+        brandId: _lastBrandId,
+        sortBy: _lastSortBy,
       );
 
       result.fold(
         (failure) => emit(ProductError(message: failure.message)),
         (data) {
-          final products = data['data'] ?? [];
-          _allProducts.addAll(products);
+          final productsList = data['data'] ?? [];
+          final newProducts = (productsList as List)
+              .map((p) => Product.fromJson(p as Map<String, dynamic>))
+              .toList();
+          _allProducts.addAll(newProducts);
           emit(ProductsLoaded(
             products: List.from(_allProducts),
             total: data['total'] ?? 0,
@@ -80,25 +93,36 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     final result = await _productRepository.getProduct(event.productId);
     result.fold(
       (failure) => emit(ProductError(message: failure.message)),
-      (data) => emit(ProductDetailLoaded(product: data)),
+      (data) {
+        final product = Product.fromJson(data);
+        emit(ProductDetailLoaded(product: product));
+      },
     );
   }
 
   Future<void> _onLoadCategories(LoadCategories event, Emitter<ProductState> emit) async {
-    emit(ProductLoading());
     final result = await _productRepository.getCategories();
     result.fold(
       (failure) => emit(ProductError(message: failure.message)),
-      (data) => emit(CategoriesLoaded(categories: data)),
+      (data) {
+        final categories = (data as List)
+            .map((c) => Category.fromJson(c as Map<String, dynamic>))
+            .toList();
+        emit(CategoriesLoaded(categories: categories));
+      },
     );
   }
 
   Future<void> _onLoadBrands(LoadBrands event, Emitter<ProductState> emit) async {
-    emit(ProductLoading());
     final result = await _productRepository.getBrands();
     result.fold(
       (failure) => emit(ProductError(message: failure.message)),
-      (data) => emit(BrandsLoaded(brands: data)),
+      (data) {
+        final brands = (data as List)
+            .map((b) => Brand.fromJson(b as Map<String, dynamic>))
+            .toList();
+        emit(BrandsLoaded(brands: brands));
+      },
     );
   }
 }

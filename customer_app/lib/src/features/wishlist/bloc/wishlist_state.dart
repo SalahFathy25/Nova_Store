@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nova_core/nova_core.dart';
 
 abstract class WishlistState extends Equatable {
   const WishlistState();
@@ -12,11 +13,15 @@ class WishlistInitial extends WishlistState {}
 class WishlistLoading extends WishlistState {}
 
 class WishlistLoaded extends WishlistState {
-  final List<dynamic> items;
+  final List<WishlistItem> items;
 
   const WishlistLoaded({required this.items});
 
   int get itemCount => items.length;
+
+  List<String> get productIds => items.map((item) => item.productId).toList();
+
+  bool isProductWishlisted(String productId) => productIds.contains(productId);
 
   @override
   List<Object?> get props => [items];

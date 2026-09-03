@@ -241,7 +241,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                   height: 54,
                                   child: OutlinedButton(
                                     onPressed: () =>
-                                        Navigator.pushNamed(context, AppRouter.otp),
+                                        Navigator.pushNamed(context, AppRouter.phoneInput),
                                     style: OutlinedButton.styleFrom(
                                       foregroundColor: primaryColor,
                                       side: const BorderSide(

@@ -1,9 +1,0 @@
-[build]
-builder = "dockerfile"
-dockerfilePath = "Dockerfile"
-watchPatterns = ["backend/**"]
-
-[deploy]
-startCommand = "npm run start:prod"
-healthcheckPath = "/api/v1/app-config"
-healthcheckTimeout = 300

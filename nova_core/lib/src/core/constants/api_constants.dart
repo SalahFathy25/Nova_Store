@@ -47,6 +47,9 @@ class ApiConstants {
   // Coupon endpoints
   static const String coupons = '$apiVersion/coupons';
 
+  // Review endpoints
+  static const String reviews = '$apiVersion/reviews';
+
   // Notification endpoints
   static const String notifications = '$apiVersion/notifications';
 

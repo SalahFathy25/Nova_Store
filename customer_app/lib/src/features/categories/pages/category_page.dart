@@ -26,24 +26,7 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   void _loadProductsForCategory(Category category) {
-    _products = List.generate(
-      12,
-      (i) => Product(
-        id: 'p${category.id}_$i',
-        tenantId: 't1',
-        title: '${category.name} - منتج ${i + 1}',
-        slug: '${category.slug}-product-${i + 1}',
-        basePrice: (99 + i * 37).toDouble(),
-        compareAtPrice: i.isEven ? (149 + i * 37).toDouble() : null,
-        images: [
-          ProductImage(
-            id: 'img${category.id}_$i',
-            url: 'https://picsum.photos/seed/prod${category.id}$i/300/300',
-            isPrimary: true,
-          ),
-        ],
-      ),
-    );
+    context.read<ProductBloc>().add(LoadProducts(categoryId: category.id));
   }
 
   @override
@@ -66,23 +49,15 @@ class _CategoryPageState extends State<CategoryPage> {
               return _buildLoadingBody();
             }
             if (state is CategoriesLoaded) {
-              _parentCategories = state.categories.map((c) => Category(
-                id: c['id'] ?? '',
-                tenantId: c['tenant_id'] ?? '',
-                name: c['name'] ?? '',
-                slug: c['slug'] ?? '',
-                imageUrl: c['image_url'] ?? '',
-                children: (c['children'] as List? ?? []).map((child) => Category(
-                  id: child['id'] ?? '',
-                  tenantId: child['tenant_id'] ?? '',
-                  name: child['name'] ?? '',
-                  slug: child['slug'] ?? '',
-                  parentId: c['id'],
-                )).toList(),
-              )).toList();
+              _parentCategories = state.categories;
               if (_parentCategories.isNotEmpty && _selectedCategory == null) {
                 _selectedCategory = _parentCategories.first;
+                _loadProductsForCategory(_selectedCategory!);
               }
+              return _buildContentBody();
+            }
+            if (state is ProductsLoaded) {
+              _products = state.products;
               return _buildContentBody();
             }
             return _buildErrorBody();

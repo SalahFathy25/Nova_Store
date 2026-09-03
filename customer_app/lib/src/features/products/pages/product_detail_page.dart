@@ -1,6 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
+import '../../cart/bloc/cart_bloc.dart';
+import '../../cart/bloc/cart_event.dart';
+import '../../wishlist/bloc/wishlist_bloc.dart';
+import '../../wishlist/bloc/wishlist_event.dart';
+import '../../wishlist/bloc/wishlist_state.dart';
+import '../../reviews/bloc/review_bloc.dart';
+import '../../reviews/bloc/review_event.dart';
+import '../../reviews/bloc/review_state.dart';
+import '../../reviews/pages/review_submit_page.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final Product product;
@@ -15,7 +25,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   late PageController _imagePageController;
   int _currentImageIndex = 0;
   int _quantity = 1;
-  bool _isWishlisted = false;
   bool _isDescriptionExpanded = false;
   String? _selectedColor;
   String? _selectedSize;
@@ -25,6 +34,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     super.initState();
     _imagePageController = PageController();
     _initializeVariants();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ReviewBloc>().add(LoadReviews(productId: widget.product.id));
+    });
   }
 
   void _initializeVariants() {
@@ -169,47 +181,48 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         onPressed: () => Navigator.of(context).pop(),
       ),
       actions: [
-        GestureDetector(
-          onTap: () {
-            setState(() => _isWishlisted = !_isWishlisted);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  _isWishlisted ? 'Added to wishlist' : 'Removed from wishlist',
+        BlocBuilder<WishlistBloc, WishlistState>(
+          builder: (context, wishlistState) {
+            final isWishlisted = wishlistState is WishlistLoaded &&
+                wishlistState.isProductWishlisted(widget.product.id);
+            return GestureDetector(
+              onTap: () {
+                if (isWishlisted) {
+                  context.read<WishlistBloc>().add(
+                        RemoveFromWishlist(productId: widget.product.id),
+                      );
+                } else {
+                  context.read<WishlistBloc>().add(
+                        AddToWishlist(productId: widget.product.id),
+                      );
+                }
+              },
+              child: Container(
+                width: 36,
+                height: 36,
+                margin: const EdgeInsets.only(right: 8),
+                decoration: BoxDecoration(
+                  color: NovaTheme.surfaceColor.withOpacity(0.9),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: NovaTheme.primaryColor.withOpacity(0.08),
+                      blurRadius: 6,
+                    ),
+                  ],
                 ),
-                duration: const Duration(seconds: 1),
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                child: Icon(
+                  isWishlisted
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_border_rounded,
+                  size: 18,
+                  color: isWishlisted
+                      ? NovaTheme.secondaryColor
+                      : NovaTheme.textSecondary,
                 ),
-                backgroundColor: NovaTheme.primaryColor,
               ),
             );
           },
-          child: Container(
-            width: 36,
-            height: 36,
-            margin: const EdgeInsets.only(right: 8),
-            decoration: BoxDecoration(
-              color: NovaTheme.surfaceColor.withOpacity(0.9),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: NovaTheme.primaryColor.withOpacity(0.08),
-                  blurRadius: 6,
-                ),
-              ],
-            ),
-            child: Icon(
-              _isWishlisted
-                  ? Icons.favorite_rounded
-                  : Icons.favorite_border_rounded,
-              size: 18,
-              color: _isWishlisted
-                  ? NovaTheme.secondaryColor
-                  : NovaTheme.textSecondary,
-            ),
-          ),
         ),
         Container(
           width: 36,
@@ -399,38 +412,46 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ],
           ),
           const SizedBox(height: 12),
-          Row(
-            children: [
-              ...List.generate(5, (index) {
-                final rating = 4.0 + (widget.product.basePrice % 9) * 0.1;
-                return Icon(
-                  index < rating.floor()
-                      ? Icons.star_rounded
-                      : index < rating
-                          ? Icons.star_half_rounded
-                          : Icons.star_outline_rounded,
-                  size: 20,
-                  color: NovaTheme.secondaryColor,
-                );
-              }),
-              const SizedBox(width: 6),
-              Text(
-                '\${(4.0 + (widget.product.basePrice % 9) * 0.1).toStringAsFixed(1)}',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: NovaTheme.textPrimary,
-                ),
-              ),
-              const SizedBox(width: 4),
-              Text(
-                '(\${(widget.product.basePrice % 200).round() + 47} reviews)',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: NovaTheme.textSecondary,
-                ),
-              ),
-            ],
+          BlocBuilder<ReviewBloc, ReviewState>(
+            builder: (context, reviewState) {
+              final summary = reviewState is ReviewsLoaded ? reviewState.summary : null;
+              final avgRating = summary?.averageRating ?? 0;
+              final totalReviews = summary?.totalReviews ?? 0;
+              return Row(
+                children: [
+                  ...List.generate(5, (index) {
+                    return Icon(
+                      index < avgRating.floor()
+                          ? Icons.star_rounded
+                          : index < avgRating
+                              ? Icons.star_half_rounded
+                              : Icons.star_outline_rounded,
+                      size: 20,
+                      color: index < avgRating
+                          ? NovaTheme.secondaryColor
+                          : NovaTheme.borderColor,
+                    );
+                  }),
+                  const SizedBox(width: 6),
+                  Text(
+                    avgRating.toStringAsFixed(1),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: avgRating > 0 ? NovaTheme.textPrimary : NovaTheme.textSecondary,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    '($totalReviews reviews)',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: NovaTheme.textSecondary,
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -821,262 +842,335 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   }
 
   Widget _buildReviewsSummary() {
-    final rating = 4.0 + (widget.product.basePrice % 9) * 0.1;
-    final reviewCount = (widget.product.basePrice % 200).round() + 47;
+    return BlocBuilder<ReviewBloc, ReviewState>(
+      builder: (context, state) {
+        final summary = state is ReviewsLoaded ? state.summary : null;
+        final avgRating = summary?.averageRating ?? 0;
+        final totalReviews = summary?.totalReviews ?? 0;
+        final distribution = summary?.ratingDistribution ?? {};
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Reviews',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: NovaTheme.textPrimary,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Reviews',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: NovaTheme.textPrimary,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => BlocProvider.value(
+                                value: context.read<ReviewBloc>(),
+                                child: ReviewSubmitPage(
+                                  productId: widget.product.id,
+                                  productName: widget.product.title,
+                                ),
+                              ),
+                            ),
+                          ).then((_) {
+                            context.read<ReviewBloc>().add(LoadReviews(productId: widget.product.id));
+                          });
+                        },
+                        child: const Text(
+                          'Write a Review',
+                          style: TextStyle(color: NovaTheme.secondaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'See All',
-                  style: TextStyle(color: NovaTheme.secondaryColor),
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: NovaTheme.surfaceColor,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: NovaTheme.dividerColor),
+                ),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          avgRating.toStringAsFixed(1),
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.w800,
+                            color: avgRating > 0 ? NovaTheme.textPrimary : NovaTheme.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: List.generate(
+                            5,
+                            (index) => Icon(
+                              index < avgRating.floor()
+                                  ? Icons.star_rounded
+                                  : index < avgRating
+                                      ? Icons.star_half_rounded
+                                      : Icons.star_outline_rounded,
+                              size: 16,
+                              color: index < avgRating
+                                  ? NovaTheme.secondaryColor
+                                  : NovaTheme.borderColor,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '$totalReviews reviews',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: NovaTheme.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 24),
+                    Expanded(
+                      child: Column(
+                        children: List.generate(5, (index) {
+                          final starCount = 5 - index;
+                          final count = distribution[starCount] ?? 0;
+                          final percent = totalReviews > 0 ? count / totalReviews : 0.0;
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            child: Row(
+                              children: [
+                                Text(
+                                  '$starCount',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: NovaTheme.textSecondary,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                const Icon(
+                                  Icons.star_rounded,
+                                  size: 12,
+                                  color: NovaTheme.secondaryColor,
+                                ),
+                                const SizedBox(width: 6),
+                                Expanded(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(2),
+                                    child: LinearProgressIndicator(
+                                      value: percent,
+                                      minHeight: 6,
+                                      backgroundColor: NovaTheme.borderColor,
+                                      valueColor: const AlwaysStoppedAnimation<Color>(
+                                        NovaTheme.secondaryColor,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: NovaTheme.surfaceColor,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: NovaTheme.dividerColor),
-            ),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      rating.toStringAsFixed(1),
-                      style: const TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w800,
-                        color: NovaTheme.textPrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: List.generate(
-                        5,
-                        (index) => Icon(
-                          index < rating.floor()
-                              ? Icons.star_rounded
-                              : index < rating
-                                  ? Icons.star_half_rounded
-                                  : Icons.star_outline_rounded,
-                          size: 16,
-                          color: NovaTheme.secondaryColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '\$reviewCount reviews',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: NovaTheme.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 24),
-                Expanded(
-                  child: Column(
-                    children: List.generate(5, (index) {
-                      final starCount = 5 - index;
-                      final percent =
-                          (reviewCount - (starCount * 15)).clamp(0, reviewCount);
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        child: Row(
-                          children: [
-                            Text(
-                              '\$starCount',
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: NovaTheme.textSecondary,
-                              ),
-                            ),
-                            const SizedBox(width: 6),
-                            const Icon(
-                              Icons.star_rounded,
-                              size: 12,
-                              color: NovaTheme.secondaryColor,
-                            ),
-                            const SizedBox(width: 6),
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(2),
-                                child: LinearProgressIndicator(
-                                  value: percent / reviewCount,
-                                  minHeight: 6,
-                                  backgroundColor: NovaTheme.borderColor,
-                                  valueColor:
-                                      const AlwaysStoppedAnimation<Color>(
-                                    NovaTheme.secondaryColor,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
   Widget _buildReviewsList() {
-    final reviews = [
-      {
-        'name': 'Ahmed M.',
-        'rating': 5,
-        'date': '2 days ago',
-        'comment': 'Excellent product! Exceeded my expectations in every way.',
-      },
-      {
-        'name': 'Sara K.',
-        'rating': 4,
-        'date': '1 week ago',
-        'comment':
-            'Great quality and fast delivery. Would recommend to others.',
-      },
-      {
-        'name': 'Mohamed A.',
-        'rating': 5,
-        'date': '2 weeks ago',
-        'comment':
-            'Perfect fit and beautiful design. Very happy with my purchase!',
-      },
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: reviews.map((review) {
-          return Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-              color: NovaTheme.surfaceColor,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: NovaTheme.dividerColor),
+    return BlocBuilder<ReviewBloc, ReviewState>(
+      builder: (context, state) {
+        if (state is ReviewLoading) {
+          return const Padding(
+            padding: EdgeInsets.all(20),
+            child: Center(
+              child: CircularProgressIndicator(color: NovaTheme.secondaryColor),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      width: 32,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        color: NovaTheme.secondaryColor.withOpacity(0.12),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Text(
-                          (review['name'] as String)[0],
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: NovaTheme.secondaryColor,
-                          ),
+          );
+        }
+
+        if (state is ReviewsLoaded) {
+          if (state.reviews.isEmpty) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: NovaTheme.surfaceColor,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: NovaTheme.dividerColor),
+                ),
+                child: const Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.reviews_outlined, size: 40, color: NovaTheme.textHint),
+                      SizedBox(height: 8),
+                      Text(
+                        'No reviews yet',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: NovaTheme.textSecondary,
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      SizedBox(height: 4),
+                      Text(
+                        'Be the first to review this product',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: NovaTheme.textHint,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: state.reviews.take(5).map((review) {
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: NovaTheme.surfaceColor,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: NovaTheme.dividerColor),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          Text(
-                            review['name'] as String,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: NovaTheme.textPrimary,
+                          Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              color: NovaTheme.secondaryColor.withOpacity(0.12),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Text(
+                                (review.userName ?? 'U')[0].toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: NovaTheme.secondaryColor,
+                                ),
+                              ),
                             ),
                           ),
-                          Text(
-                            review['date'] as String,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: NovaTheme.textSecondary,
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  review.userName ?? 'Anonymous',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: NovaTheme.textPrimary,
+                                  ),
+                                ),
+                                Text(
+                                  review.createdAt != null
+                                      ? '${review.createdAt!.day}/${review.createdAt!.month}/${review.createdAt!.year}'
+                                      : '',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: NovaTheme.textSecondary,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: List.generate(
+                              review.rating,
+                              (index) => const Icon(
+                                Icons.star_rounded,
+                                size: 14,
+                                color: NovaTheme.secondaryColor,
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    Row(
-                      children: List.generate(
-                        review['rating'] as int,
-                        (index) => const Icon(
-                          Icons.star_rounded,
-                          size: 14,
-                          color: NovaTheme.secondaryColor,
+                      if (review.title != null && review.title!.isNotEmpty) ...[
+                        const SizedBox(height: 10),
+                        Text(
+                          review.title!,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: NovaTheme.textPrimary,
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  review['comment'] as String,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    height: 1.5,
-                    color: NovaTheme.textSecondary,
+                      ],
+                      if (review.comment != null && review.comment!.isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          review.comment!,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            height: 1.5,
+                            color: NovaTheme.textSecondary,
+                          ),
+                        ),
+                      ],
+                      if (review.isVerifiedPurchase) ...[
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                          decoration: BoxDecoration(
+                            color: NovaTheme.successColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: const Text(
+                            'Verified Purchase',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: NovaTheme.successColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
-                ),
-              ],
+                );
+              }).toList(),
             ),
           );
-        }).toList(),
-      ),
+        }
+
+        return const SizedBox.shrink();
+      },
     );
   }
 
   Widget _buildRelatedProducts() {
-    final relatedProducts = List.generate(
-      6,
-      (index) => Product(
-        id: 'related_\$index',
-        tenantId: 't1',
-        title: 'Related Product \${index + 1}',
-        slug: 'related-product-\$index',
-        basePrice: (index + 1) * 199.99,
-        compareAtPrice: index % 2 == 0 ? (index + 1) * 299.99 : null,
-        images: [
-          ProductImage(
-            id: 'rel_img_\$index',
-            url: 'https://picsum.photos/seed/rel\$index/400/400',
-          ),
-        ],
-      ),
-    );
-
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Column(
@@ -1094,155 +1188,26 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ),
           ),
           const SizedBox(height: 12),
-          SizedBox(
-            height: 220,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              itemCount: relatedProducts.length,
-              itemBuilder: (context, index) {
-                final product = relatedProducts[index];
-                final hasDiscount = product.compareAtPrice != null &&
-                    product.compareAtPrice! > product.basePrice;
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => ProductDetailPage(product: product),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 150,
-                    margin: const EdgeInsets.only(right: 12),
-                    decoration: BoxDecoration(
-                      color: NovaTheme.surfaceColor,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: NovaTheme.primaryColor.withOpacity(0.06),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.vertical(
-                                  top: Radius.circular(12),
-                                ),
-                                child: CachedNetworkImage(
-                                  imageUrl: product.images.isNotEmpty
-                                      ? product.images.first.url
-                                      : '',
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url) => Container(
-                                    color: NovaTheme.backgroundColor,
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.image_outlined,
-                                        color: NovaTheme.textHint,
-                                      ),
-                                    ),
-                                  ),
-                                  errorWidget:
-                                      (context, url, error) => Container(
-                                    color: NovaTheme.backgroundColor,
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.broken_image_outlined,
-                                        color: NovaTheme.textHint,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              if (hasDiscount)
-                                Positioned(
-                                  top: 8,
-                                  left: 8,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 6,
-                                      vertical: 3,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: NovaTheme.secondaryColor,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Text(
-                                      '-\${((product.compareAtPrice! - product.basePrice) / product.compareAtPrice! * 100).round()}%',
-                                      style: const TextStyle(
-                                        color: NovaTheme.surfaceColor,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  product.title,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: NovaTheme.textPrimary,
-                                  ),
-                                ),
-                                const Spacer(),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      'EGP \${product.basePrice.toStringAsFixed(0)}',
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w700,
-                                        color: NovaTheme.primaryColor,
-                                      ),
-                                    ),
-                                    if (hasDiscount) ...[
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        'EGP \${product.compareAtPrice!.toStringAsFixed(0)}',
-                                        style: const TextStyle(
-                                          fontSize: 10,
-                                          color: NovaTheme.textHint,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                    ],
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+          Container(
+            height: 120,
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              color: NovaTheme.surfaceColor,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: NovaTheme.dividerColor),
+            ),
+            child: const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.shopping_bag_outlined, size: 32, color: NovaTheme.textHint),
+                  SizedBox(height: 8),
+                  Text(
+                    'More products coming soon',
+                    style: TextStyle(fontSize: 13, color: NovaTheme.textHint),
                   ),
-                );
-              },
+                ],
+              ),
             ),
           ),
         ],
@@ -1294,10 +1259,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               child: ElevatedButton(
                 onPressed: _stockStatus != 'out_of_stock'
                     ? () {
+                        context.read<CartBloc>().add(
+                              AddToCart(
+                                productId: widget.product.id,
+                                variantId: _selectedVariant?.id,
+                                quantity: _quantity,
+                              ),
+                            );
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Added \$_quantity item(s) to cart',
+                              'Added $_quantity item(s) to cart',
                             ),
                             behavior: SnackBarBehavior.floating,
                             shape: RoundedRectangleBorder(
@@ -1329,24 +1301,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ),
           ),
           const SizedBox(width: 10),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: ElevatedButton(
-              onPressed: _stockStatus != 'out_of_stock'
-                  ? () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text('Proceeding to checkout...'),
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          backgroundColor: NovaTheme.primaryColor,
-                        ),
-                      );
-                    }
-                  : null,
+            SizedBox(
+              height: 50,
+              width: 50,
+              child: ElevatedButton(
+                onPressed: _stockStatus != 'out_of_stock'
+                    ? () {
+                        context.read<CartBloc>().add(
+                              AddToCart(
+                                productId: widget.product.id,
+                                variantId: _selectedVariant?.id,
+                                quantity: _quantity,
+                              ),
+                            );
+                        Navigator.pushNamed(context, '/cart');
+                      }
+                    : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor: NovaTheme.primaryColor,
                 foregroundColor: NovaTheme.surfaceColor,

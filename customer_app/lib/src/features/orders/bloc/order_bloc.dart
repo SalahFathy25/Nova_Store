@@ -20,12 +20,18 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     final result = await _orderRepository.getOrders(page: event.page);
     result.fold(
       (failure) => emit(OrderError(message: failure.message)),
-      (data) => emit(OrdersLoaded(
-        orders: data['data'] ?? [],
-        total: data['total'] ?? 0,
-        page: data['page'] ?? 1,
-        totalPages: data['total_pages'] ?? 0,
-      )),
+      (data) {
+        final ordersList = data['data'] ?? [];
+        final orders = (ordersList as List)
+            .map((o) => Order.fromJson(o as Map<String, dynamic>))
+            .toList();
+        emit(OrdersLoaded(
+          orders: orders,
+          total: data['total'] ?? 0,
+          page: data['page'] ?? 1,
+          totalPages: data['total_pages'] ?? 0,
+        ));
+      },
     );
   }
 
@@ -34,7 +40,10 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     final result = await _orderRepository.getOrder(event.orderId);
     result.fold(
       (failure) => emit(OrderError(message: failure.message)),
-      (data) => emit(OrderDetailLoaded(order: data)),
+      (data) {
+        final order = Order.fromJson(data);
+        emit(OrderDetailLoaded(order: order));
+      },
     );
   }
 
@@ -45,10 +54,14 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       paymentMethod: event.paymentMethod,
       couponCode: event.couponCode,
       notes: event.notes,
+      scheduledDeliveryDate: event.scheduledDeliveryDate,
     );
     result.fold(
       (failure) => emit(OrderError(message: failure.message)),
-      (data) => emit(OrderCreated(order: data)),
+      (data) {
+        final order = Order.fromJson(data);
+        emit(OrderCreated(order: order));
+      },
     );
   }
 

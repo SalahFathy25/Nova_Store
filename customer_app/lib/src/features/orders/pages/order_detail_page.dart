@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../core/utils/responsive_layout.dart';
+import '../../cart/bloc/cart_bloc.dart';
+import '../../cart/bloc/cart_event.dart';
+import '../bloc/order_bloc.dart';
+import '../bloc/order_event.dart';
 
 class OrderDetailPage extends StatelessWidget {
   final Order order;
@@ -69,6 +74,7 @@ class OrderDetailPage extends StatelessWidget {
                 _buildShippingAddress(),
                 _buildPaymentMethod(),
                 if (canCancel) _buildCancelSection(context),
+                if (order.status == 'Delivered' || order.status == 'Cancelled') _buildReorderSection(context),
                 const SizedBox(height: 24),
               ],
             ),
@@ -590,6 +596,45 @@ class OrderDetailPage extends StatelessWidget {
     );
   }
 
+  Widget _buildReorderSection(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.all(16),
+      color: NovaTheme.surfaceColor,
+      child: ElevatedButton(
+        onPressed: () => _handleReorder(context),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: NovaTheme.primaryColor,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        child: const Text('Reorder'),
+      ),
+    );
+  }
+
+  void _handleReorder(BuildContext context) {
+    final cartBloc = context.read<CartBloc>();
+    for (final item in order.items) {
+      cartBloc.add(AddToCart(
+        productId: item.productId,
+        variantId: item.productVariantId,
+        quantity: item.quantity,
+      ));
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${order.items.length} item(s) added to cart'),
+        backgroundColor: NovaTheme.successColor,
+      ),
+    );
+    Navigator.pushNamed(context, '/cart');
+  }
+
   void _showCancelDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -607,9 +652,10 @@ class OrderDetailPage extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
+              context.read<OrderBloc>().add(CancelOrder(orderId: order.id));
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: const Text('Order cancelled successfully'),
+                  content: const Text('Order cancellation requested'),
                   backgroundColor: NovaTheme.successColor,
                 ),
               );

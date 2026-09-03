@@ -40,13 +40,10 @@ class _SearchPageState extends State<SearchPage> {
     'Sunglasses',
   ];
 
-  final List<Map<String, dynamic>> _mockProducts = [];
-
   @override
   void initState() {
     super.initState();
     _loadSearchHistory();
-    _generateMockProducts();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
     });
@@ -58,53 +55,6 @@ class _SearchPageState extends State<SearchPage> {
     _focusNode.dispose();
     _debounceTimer?.cancel();
     super.dispose();
-  }
-
-  void _generateMockProducts() {
-    final titles = [
-      'Premium Wireless Headphones',
-      'Smart Fitness Tracker',
-      'Ultra Slim Laptop Stand',
-      'Organic Cotton T-Shirt',
-      'Stainless Steel Water Bottle',
-      'Leather Crossbody Bag',
-      'LED Desk Lamp',
-      'Bamboo Cutting Board Set',
-      'Ceramic Plant Pot',
-      'Scented Soy Candle',
-      'Bamboo Wireless Charger',
-      'Memory Foam Pillow',
-      'Bluetooth Speaker Mini',
-      'Yoga Mat Premium',
-      'Kitchen Scale Digital',
-      'Wireless Earbuds Pro',
-      'Smart Home Hub',
-      'Portable Power Bank',
-      'Minimalist Wallet',
-      'Travel Backpack',
-    ];
-
-    for (int i = 0; i < titles.length; i++) {
-      final hasDiscount = i % 3 == 0;
-      final basePrice = (i + 1) * 150.0 + 99.99;
-      _mockProducts.add({
-        'product': Product(
-          id: 'search_$i',
-          tenantId: 't1',
-          title: titles[i],
-          slug: 'product-\$i',
-          basePrice: basePrice,
-          compareAtPrice: hasDiscount ? basePrice * 1.3 : null,
-          images: [
-            ProductImage(
-              id: 'img_\$i',
-              url: 'https://picsum.photos/seed/search\$i/400/400',
-            ),
-          ],
-        ),
-        'title': titles[i].toLowerCase(),
-      });
-    }
   }
 
   Future<void> _loadSearchHistory() async {
@@ -151,23 +101,33 @@ class _SearchPageState extends State<SearchPage> {
       return;
     }
 
-    _debounceTimer = Timer(const Duration(milliseconds: 500), () {
-      _performSearch(value);
+    final query = value.toLowerCase();
+    final matches = <String>[];
+
+    for (final history in _searchHistory) {
+      if (history.toLowerCase().contains(query) && !matches.contains(history)) {
+        matches.add(history);
+      }
+    }
+
+    for (final popular in _popularSearches) {
+      if (popular.toLowerCase().contains(query) && !matches.contains(popular)) {
+        matches.add(popular);
+      }
+    }
+
+    setState(() {
+      _suggestions = matches.take(5).toList();
+      _showSuggestions = _suggestions.isNotEmpty;
     });
   }
 
   void _performSearch(String query) {
     if (query.trim().isEmpty) return;
 
-    final lowerQuery = query.toLowerCase();
-    final results = _mockProducts
-        .where((p) => (p['title'] as String).contains(lowerQuery))
-        .map((p) => p['title'] as String)
-        .toList();
-
+    context.read<ProductBloc>().add(LoadProducts(search: query));
     setState(() {
-      _suggestions = results;
-      _showSuggestions = results.isNotEmpty;
+      _showSuggestions = false;
     });
   }
 
@@ -209,34 +169,7 @@ class _SearchPageState extends State<SearchPage> {
                     );
                   }
                   if (state is ProductsLoaded) {
-                    final results = state.products.map((p) => Product(
-                      id: p['id'] ?? '',
-                      tenantId: p['tenant_id'] ?? '',
-                      title: p['title'] ?? '',
-                      slug: p['slug'] ?? '',
-                      description: p['description'] ?? '',
-                      shortDescription: p['short_description'] ?? '',
-                      basePrice: (p['base_price'] ?? 0).toDouble(),
-                      compareAtPrice: p['compare_at_price']?.toDouble(),
-                      isActive: p['is_active'] ?? true,
-                      isFeatured: p['is_featured'] ?? false,
-                      categoryId: p['category_id'] ?? '',
-                      brandId: p['brand_id'] ?? '',
-                      tags: List<String>.from(p['tags'] ?? []),
-                      images: (p['images'] as List? ?? []).map((img) => ProductImage(
-                        id: img['id'] ?? '',
-                        url: img['url'] ?? '',
-                        altText: img['alt_text'] ?? '',
-                        isPrimary: img['is_primary'] ?? false,
-                      )).toList(),
-                      variants: (p['variants'] as List? ?? []).map((v) => ProductVariant(
-                        id: v['id'] ?? '',
-                        sku: v['sku'] ?? '',
-                        attributes: Map<String, String>.from(v['attributes'] ?? {}),
-                        stockQuantity: v['stock_quantity'] ?? 0,
-                      )).toList(),
-                    )).toList();
-                    return _buildSearchResults(results, isTablet);
+                    return _buildSearchResults(state.products, isTablet);
                   }
                   return _buildSearchResults([], isTablet);
                 },

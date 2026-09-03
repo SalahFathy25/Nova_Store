@@ -76,6 +76,9 @@ export class ParentOrder {
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0, name: 'coupon_discount' })
   coupon_discount: number;
 
+  @Column({ type: 'timestamptz', nullable: true, name: 'scheduled_delivery_date' })
+  scheduled_delivery_date: Date;
+
   @CreateDateColumn({ type: 'timestamptz', name: 'created_at' })
   created_at: Date;
 

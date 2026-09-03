@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsUUID, IsIn } from 'class-validator';
+import { IsString, IsOptional, IsUUID, IsIn, IsDateString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateOrderDto {
@@ -20,4 +20,9 @@ export class CreateOrderDto {
   @IsString()
   @IsOptional()
   notes?: string;
+
+  @ApiPropertyOptional({ description: 'Scheduled delivery date (ISO 8601)' })
+  @IsDateString()
+  @IsOptional()
+  scheduled_delivery_date?: string;
 }

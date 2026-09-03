@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nova_core/nova_core.dart';
 
 abstract class AddressState extends Equatable {
   const AddressState();
@@ -12,7 +13,7 @@ class AddressInitial extends AddressState {}
 class AddressLoading extends AddressState {}
 
 class AddressesLoaded extends AddressState {
-  final List<dynamic> addresses;
+  final List<Address> addresses;
 
   const AddressesLoaded({required this.addresses});
 

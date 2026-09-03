@@ -21,6 +21,7 @@ export 'src/domain/entities/brand.dart';
 export 'src/domain/entities/coupon.dart';
 export 'src/domain/entities/app_config.dart';
 export 'src/domain/entities/driver.dart';
+export 'src/domain/entities/review.dart';
 
 // Domain - Failures
 export 'src/domain/failures/failures.dart';
@@ -42,6 +43,8 @@ export 'src/data/datasources/address_remote_data_source.dart';
 export 'src/data/datasources/wishlist_remote_data_source.dart';
 export 'src/data/datasources/notification_remote_data_source.dart';
 export 'src/data/datasources/delivery_remote_data_source.dart';
+export 'src/data/datasources/review_remote_data_source.dart';
+export 'src/data/datasources/coupon_remote_data_source.dart';
 
 // Data - Repositories
 export 'src/data/repositories/auth_repository.dart';
@@ -54,3 +57,5 @@ export 'src/data/repositories/address_repository.dart';
 export 'src/data/repositories/wishlist_repository.dart';
 export 'src/data/repositories/notification_repository.dart';
 export 'src/data/repositories/app_config_repository.dart';
+export 'src/data/repositories/review_repository.dart';
+export 'src/data/repositories/coupon_repository.dart';

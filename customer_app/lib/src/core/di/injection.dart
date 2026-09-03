@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nova_core/nova_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../../features/auth/bloc/auth_bloc.dart';
 import '../../features/auth/bloc/auth_event.dart';
@@ -17,6 +18,8 @@ import '../../features/notifications/bloc/notification_bloc.dart';
 import '../../features/notifications/bloc/notification_event.dart';
 import '../../features/profile/bloc/profile_bloc.dart';
 import '../../features/app_config/app_config_cubit.dart';
+import '../../features/reviews/bloc/review_bloc.dart';
+import '../services/push_notification_service.dart';
 
 final getIt = GetIt.instance;
 
@@ -47,6 +50,12 @@ void configureDependencies(SharedPreferences prefs) {
   getIt.registerLazySingleton<NotificationRemoteDataSource>(
     () => NotificationRemoteDataSource(getIt<NovaApiClient>().dio),
   );
+  getIt.registerLazySingleton<ReviewRemoteDataSource>(
+    () => ReviewRemoteDataSource(getIt<NovaApiClient>().dio),
+  );
+  getIt.registerLazySingleton<CouponRemoteDataSource>(
+    () => CouponRemoteDataSource(getIt<NovaApiClient>().dio),
+  );
 
   // Repositories
   getIt.registerLazySingleton<AuthRepository>(
@@ -73,11 +82,17 @@ void configureDependencies(SharedPreferences prefs) {
   getIt.registerLazySingleton<NotificationRepository>(
     () => NotificationRepository(getIt<NotificationRemoteDataSource>()),
   );
+  getIt.registerLazySingleton<ReviewRepository>(
+    () => ReviewRepository(getIt<ReviewRemoteDataSource>()),
+  );
+  getIt.registerLazySingleton<CouponRepository>(
+    () => CouponRepository(getIt<CouponRemoteDataSource>()),
+  );
   getIt.registerLazySingleton<AppConfigRepository>(
     () => AppConfigRepository(getIt<NovaApiClient>().dio),
   );
 
-  // BLoCs
+  // BLoCs - Auth, Home, Product are factory (new instance per route)
   getIt.registerFactory<AuthBloc>(
     () => AuthBloc(
       authRepository: getIt<AuthRepository>(),
@@ -90,40 +105,39 @@ void configureDependencies(SharedPreferences prefs) {
   getIt.registerFactory<ProductBloc>(
     () => ProductBloc(productRepository: getIt<ProductRepository>()),
   );
-  getIt.registerFactory<CartBloc>(
+
+  // BLoCs - Stateful ones are lazy singletons (preserve state across navigation)
+  getIt.registerLazySingleton<CartBloc>(
     () => CartBloc(cartRepository: getIt<CartRepository>()),
   );
+  getIt.registerLazySingleton<WishlistBloc>(
+    () => WishlistBloc(wishlistRepository: getIt<WishlistRepository>()),
+  );
+  getIt.registerLazySingleton<ProfileBloc>(
+    () => ProfileBloc(authRepository: getIt<AuthRepository>()),
+  );
+
+  // BLoCs - Factory for route-specific use
   getIt.registerFactory<OrderBloc>(
     () => OrderBloc(orderRepository: getIt<OrderRepository>()),
   );
   getIt.registerFactory<AddressBloc>(
     () => AddressBloc(addressRepository: getIt<AddressRepository>()),
   );
-  getIt.registerFactory<WishlistBloc>(
-    () => WishlistBloc(wishlistRepository: getIt<WishlistRepository>()),
-  );
   getIt.registerFactory<NotificationBloc>(
     () => NotificationBloc(notificationRepository: getIt<NotificationRepository>()),
-  );
-  getIt.registerFactory<ProfileBloc>(
-    () => ProfileBloc(authRepository: getIt<AuthRepository>()),
   );
   getIt.registerFactory<AppConfigCubit>(
     () => AppConfigCubit(repository: getIt<AppConfigRepository>()),
   );
-}
+  getIt.registerFactory<ReviewBloc>(
+    () => ReviewBloc(reviewRepository: getIt<ReviewRepository>()),
+  );
 
-List<BlocProvider> get appBLoCs => [
-      BlocProvider<AuthBloc>(
-        create: (_) => getIt<AuthBloc>()..add(const AuthCheckStatus()),
-      ),
-      BlocProvider<HomeBloc>(
-        create: (_) => getIt<HomeBloc>()..add(const LoadHome()),
-      ),
-      BlocProvider<CartBloc>(
-        create: (_) => getIt<CartBloc>()..add(const LoadCart()),
-      ),
-      BlocProvider<NotificationBloc>(
-        create: (_) => getIt<NotificationBloc>()..add(const LoadUnreadCount()),
-      ),
-    ];
+  getIt.registerLazySingleton<PushNotificationService>(
+    () => PushNotificationService(
+      FirebaseMessaging.instance,
+      getIt<NovaApiClient>(),
+    ),
+  );
+}

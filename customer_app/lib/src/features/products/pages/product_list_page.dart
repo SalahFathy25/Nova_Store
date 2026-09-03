@@ -8,6 +8,9 @@ import 'package:shimmer/shimmer.dart';
 import '../bloc/product_bloc.dart';
 import '../bloc/product_event.dart';
 import '../bloc/product_state.dart';
+import '../../wishlist/bloc/wishlist_bloc.dart';
+import '../../wishlist/bloc/wishlist_event.dart';
+import '../../wishlist/bloc/wishlist_state.dart';
 
 class ProductListPage extends StatefulWidget {
   final String? categoryId;
@@ -36,7 +39,6 @@ class _ProductListPageState extends State<ProductListPage> {
   bool _isLoadingMore = false;
   bool _hasMore = true;
   int _currentPage = 1;
-  static const int _pageSize = 20;
 
   // Filter state
   String? _selectedCategoryId;
@@ -112,107 +114,22 @@ class _ProductListPageState extends State<ProductListPage> {
       _hasMore = true;
     });
 
-    // Simulate API call
-    await Future.delayed(const Duration(seconds: 1));
-
-    if (!mounted) return;
-
-    setState(() {
-      _products.clear();
-      _products.addAll(_generateMockProducts(_currentPage));
-      _isLoading = false;
-      _currentPage++;
-      if (_products.length < _pageSize) {
-        _hasMore = false;
-      }
-    });
+    context.read<ProductBloc>().add(LoadProducts(
+      categoryId: _selectedCategoryId ?? widget.categoryId,
+      brandId: widget.brandId,
+      search: widget.searchQuery,
+    ));
   }
 
   Future<void> _loadMoreProducts() async {
     if (_isLoadingMore || !_hasMore || _isLoading) return;
     setState(() => _isLoadingMore = true);
 
-    await Future.delayed(const Duration(milliseconds: 800));
-
-    if (!mounted) return;
-
-    final newProducts = _generateMockProducts(_currentPage);
-    setState(() {
-      _products.addAll(newProducts);
-      _isLoadingMore = false;
-      _currentPage++;
-      if (newProducts.length < _pageSize) {
-        _hasMore = false;
-      }
-    });
-  }
-
-  List<Product> _generateMockProducts(int page) {
-    final startIndex = (page - 1) * _pageSize;
-    return List.generate(_pageSize, (index) {
-      final i = startIndex + index;
-      final hasDiscount = i % 3 == 0;
-      final basePrice = (i + 1) * 150.0 + 99.99;
-      return Product(
-        id: 'prod_$i',
-        tenantId: 't1',
-        title: _getProductTitle(i),
-        slug: 'product-$i',
-        description:
-            'High quality product with excellent features. This product is designed to meet your everyday needs with style and durability.',
-        shortDescription: 'Premium quality product',
-        basePrice: basePrice,
-        compareAtPrice: hasDiscount ? basePrice * 1.3 : null,
-        isActive: true,
-        isFeatured: i % 5 == 0,
-        categoryId: _categories[i % _categories.length].id,
-        brandId: _brands[i % _brands.length].id,
-        tags: ['new', 'trending'],
-        images: [
-          ProductImage(
-            id: 'img_$i',
-            url: 'https://picsum.photos/seed/prod$i/400/400',
-            altText: _getProductTitle(i),
-            isPrimary: true,
-          ),
-        ],
-        variants: [
-          ProductVariant(
-            id: 'var_${i}_1',
-            sku: 'SKU-$i-1',
-            attributes: {'color': 'Black', 'size': 'M'},
-            stockQuantity: 25,
-          ),
-          ProductVariant(
-            id: 'var_${i}_2',
-            sku: 'SKU-$i-2',
-            attributes: {'color': 'White', 'size': 'L'},
-            stockQuantity: 3,
-          ),
-        ],
-      );
-    });
-  }
-
-  String _getProductTitle(int index) {
-    final titles = [
-      'Premium Wireless Headphones',
-      'Smart Fitness Tracker',
-      'Ultra Slim Laptop Stand',
-      'Organic Cotton T-Shirt',
-      'Stainless Steel Water Bottle',
-      'Leather Crossbody Bag',
-      'LED Desk Lamp',
-      'Bamboo Cutting Board Set',
-      'Ceramic Plant Pot',
-      'Scented Soy Candle',
-      'Bamboo Wireless Charger',
-      'Memory Foam Pillow',
-      'Bluetooth Speaker Mini',
-      'Yoga Mat Premium',
-      'Kitchen Scale Digital',
-    ];
-    return titles[index % titles.length];
+    context.read<ProductBloc>().add(LoadMoreProducts(
+      categoryId: _selectedCategoryId ?? widget.categoryId,
+      brandId: widget.brandId,
+      search: widget.searchQuery,
+    ));
   }
 
   @override
@@ -259,33 +176,7 @@ class _ProductListPageState extends State<ProductListPage> {
           }
           if (state is ProductsLoaded) {
             _products.clear();
-            _products.addAll(state.products.map((p) => Product(
-              id: p['id'] ?? '',
-              tenantId: p['tenant_id'] ?? '',
-              title: p['title'] ?? '',
-              slug: p['slug'] ?? '',
-              description: p['description'] ?? '',
-              shortDescription: p['short_description'] ?? '',
-              basePrice: (p['base_price'] ?? 0).toDouble(),
-              compareAtPrice: p['compare_at_price']?.toDouble(),
-              isActive: p['is_active'] ?? true,
-              isFeatured: p['is_featured'] ?? false,
-              categoryId: p['category_id'] ?? '',
-              brandId: p['brand_id'] ?? '',
-              tags: List<String>.from(p['tags'] ?? []),
-              images: (p['images'] as List? ?? []).map((img) => ProductImage(
-                id: img['id'] ?? '',
-                url: img['url'] ?? '',
-                altText: img['alt_text'] ?? '',
-                isPrimary: img['is_primary'] ?? false,
-              )).toList(),
-              variants: (p['variants'] as List? ?? []).map((v) => ProductVariant(
-                id: v['id'] ?? '',
-                sku: v['sku'] ?? '',
-                attributes: Map<String, String>.from(v['attributes'] ?? {}),
-                stockQuantity: v['stock_quantity'] ?? 0,
-              )).toList(),
-            )));
+            _products.addAll(state.products);
             _hasMore = state.hasMore;
             _currentPage = state.page + 1;
             return _buildProductGrid(isTablet);
@@ -854,44 +745,45 @@ class _WishlistButton extends StatefulWidget {
 }
 
 class _WishlistButtonState extends State<_WishlistButton> {
-  bool _isWishlisted = false;
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() => _isWishlisted = !_isWishlisted);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              _isWishlisted ? 'Added to wishlist' : 'Removed from wishlist',
+    return BlocBuilder<WishlistBloc, WishlistState>(
+      builder: (context, wishlistState) {
+        final isWishlisted = wishlistState is WishlistLoaded &&
+            wishlistState.isProductWishlisted(widget.productId);
+        return GestureDetector(
+          onTap: () {
+            if (isWishlisted) {
+              context.read<WishlistBloc>().add(
+                    RemoveFromWishlist(productId: widget.productId),
+                  );
+            } else {
+              context.read<WishlistBloc>().add(
+                    AddToWishlist(productId: widget.productId),
+                  );
+            }
+          },
+          child: Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              color: NovaTheme.surfaceColor,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: NovaTheme.primaryColor.withOpacity(0.12),
+                  blurRadius: 6,
+                ),
+              ],
             ),
-            duration: const Duration(seconds: 1),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            backgroundColor: NovaTheme.primaryColor,
+            child: Icon(
+              isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+              size: 18,
+              color: isWishlisted ? NovaTheme.secondaryColor : NovaTheme.textSecondary,
+            ),
           ),
         );
       },
-      child: Container(
-        width: 34,
-        height: 34,
-        decoration: BoxDecoration(
-          color: NovaTheme.surfaceColor,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: NovaTheme.primaryColor.withOpacity(0.12),
-              blurRadius: 6,
-            ),
-          ],
-        ),
-        child: Icon(
-          _isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-          size: 18,
-          color: _isWishlisted ? NovaTheme.secondaryColor : NovaTheme.textSecondary,
-        ),
-      ),
     );
   }
 }

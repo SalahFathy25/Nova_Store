@@ -12,7 +12,6 @@ import { Store } from '../stores/store.entity.js';
 
 @Entity('users')
 @Index(['tenant_id', 'email'], { unique: true })
-@Index(['tenant_id', 'phone'], { unique: true })
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;

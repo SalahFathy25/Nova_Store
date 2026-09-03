@@ -19,7 +19,12 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     final result = await _wishlistRepository.getWishlist();
     result.fold(
       (failure) => emit(WishlistError(message: failure.message)),
-      (items) => emit(WishlistLoaded(items: items)),
+      (items) {
+        final wishlistItems = (items as List)
+            .map((item) => WishlistItem.fromJson(item as Map<String, dynamic>))
+            .toList();
+        emit(WishlistLoaded(items: wishlistItems));
+      },
     );
   }
 

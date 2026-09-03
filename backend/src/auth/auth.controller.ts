@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Get, Patch, Body, UseGuards, Request } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from './auth.service.js';
 import { JwtAuthGuard } from './guards/jwt-auth.guard.js';
@@ -10,6 +10,7 @@ import {
   RefreshTokenDto,
   ForgotPasswordDto,
   ResetPasswordDto,
+  UpdateFcmTokenDto,
 } from './dto/auth.dto.js';
 import { CurrentTenantId } from '../common/decorators/tenant.decorator.js';
 import { CurrentUser } from '../common/decorators/user.decorator.js';
@@ -98,5 +99,17 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'User profile' })
   async getProfile(@CurrentUser('id') userId: string) {
     return this.authService.getProfile(userId);
+  }
+
+  @Patch('fcm-token')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Update FCM token for push notifications' })
+  @ApiResponse({ status: 200, description: 'FCM token updated' })
+  async updateFcmToken(
+    @CurrentUser('id') userId: string,
+    @Body() dto: UpdateFcmTokenDto,
+  ) {
+    return this.authService.updateFcmToken(userId, dto.fcm_token);
   }
 }

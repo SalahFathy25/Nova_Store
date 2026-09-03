@@ -6,6 +6,8 @@ import 'package:shimmer/shimmer.dart';
 import '../bloc/wishlist_bloc.dart';
 import '../bloc/wishlist_event.dart';
 import '../bloc/wishlist_state.dart';
+import '../../cart/bloc/cart_bloc.dart';
+import '../../cart/bloc/cart_event.dart';
 import '../../../core/di/injection.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/utils/responsive_layout.dart';
@@ -38,9 +40,8 @@ class _WishlistView extends StatelessWidget {
                 return TextButton(
                   onPressed: () {
                     for (final item in state.items) {
-                      final productId = item['product_id'] ?? item['productId'] ?? '';
-                      if (productId.toString().isNotEmpty) {
-                        context.read<WishlistBloc>().add(RemoveFromWishlist(productId: productId));
+                      if (item.productId.isNotEmpty) {
+                        context.read<WishlistBloc>().add(RemoveFromWishlist(productId: item.productId));
                       }
                     }
                   },
@@ -124,14 +125,17 @@ class _WishlistView extends StatelessWidget {
     );
   }
 
-  Widget _buildWishlistCard(BuildContext context, dynamic item, int index) {
-    final productId = item['product_id'] ?? item['productId'] ?? '';
-    final productTitle = item['product_title'] ?? item['productTitle'] ?? '';
-    final productPrice = (item['product_price'] ?? item['productPrice'] ?? 0).toDouble();
-    final imageUrl = item['image_url'] ?? item['imageUrl'] ?? '';
-
+  Widget _buildWishlistCard(BuildContext context, WishlistItem item, int index) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, AppRouter.productDetail, arguments: item),
+      onTap: () {
+        Navigator.pushNamed(context, AppRouter.productDetail, arguments: Product(
+          id: item.productId,
+          tenantId: '',
+          title: item.productTitle ?? '',
+          slug: item.productId,
+          basePrice: item.productPrice ?? 0,
+        ));
+      },
       child: Container(
         decoration: BoxDecoration(
           color: NovaTheme.surfaceColor,
@@ -152,9 +156,9 @@ class _WishlistView extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                      child: imageUrl.toString().isNotEmpty
+                      child: item.imageUrl != null && item.imageUrl!.isNotEmpty
                           ? CachedNetworkImage(
-                              imageUrl: imageUrl,
+                              imageUrl: item.imageUrl!,
                               fit: BoxFit.cover,
                               placeholder: (context, url) => const Center(child: CircularProgressIndicator(strokeWidth: 2)),
                               errorWidget: (context, url, error) => const Icon(Icons.image_outlined, size: 40, color: NovaTheme.textHint),
@@ -166,7 +170,7 @@ class _WishlistView extends StatelessWidget {
                     top: 8,
                     right: 8,
                     child: GestureDetector(
-                      onTap: () => context.read<WishlistBloc>().add(RemoveFromWishlist(productId: productId)),
+                      onTap: () => context.read<WishlistBloc>().add(RemoveFromWishlist(productId: item.productId)),
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
@@ -185,14 +189,43 @@ class _WishlistView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(productTitle, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: NovaTheme.textPrimary), maxLines: 2, overflow: TextOverflow.ellipsis),
+                  Text(item.productTitle ?? '', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: NovaTheme.textPrimary), maxLines: 2, overflow: TextOverflow.ellipsis),
                   const SizedBox(height: 4),
-                  Text('EGP ${productPrice.toStringAsFixed(2)}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: NovaTheme.primaryColor)),
+                  Text('EGP ${(item.productPrice ?? 0).toStringAsFixed(2)}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: NovaTheme.primaryColor)),
+                  const SizedBox(height: 4),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () => _moveToCart(context, item),
+                      icon: const Icon(Icons.shopping_cart_outlined, size: 16),
+                      label: const Text('Move to Cart', style: TextStyle(fontSize: 11)),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: NovaTheme.primaryColor,
+                        side: const BorderSide(color: NovaTheme.primaryColor),
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _moveToCart(BuildContext context, WishlistItem item) {
+    context.read<CartBloc>().add(AddToCart(
+      productId: item.productId,
+      quantity: 1,
+    ));
+    context.read<WishlistBloc>().add(RemoveFromWishlist(productId: item.productId));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${item.productTitle} added to cart'),
+        backgroundColor: NovaTheme.successColor,
       ),
     );
   }

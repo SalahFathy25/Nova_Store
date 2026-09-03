@@ -21,7 +21,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     final result = await _cartRepository.getCart();
     result.fold(
       (failure) => emit(CartError(message: failure.message)),
-      (cart) => emit(CartLoaded(cart: cart)),
+      (cartData) {
+        final cart = Cart.fromJson(cartData);
+        emit(CartLoaded(cart: cart));
+      },
     );
   }
 

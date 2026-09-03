@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import '../../domain/entities/address.dart';
 import '../../domain/failures/failures.dart';
 import '../datasources/address_remote_data_source.dart';
 
@@ -8,11 +9,14 @@ class AddressRepository {
 
   AddressRepository(this._dataSource);
 
-  Future<Either<Failure, List<dynamic>>> getAddresses() async {
+  Future<Either<Failure, List<Address>>> getAddresses() async {
     try {
       final response = await _dataSource.getAddresses();
       if (response.success && response.data != null) {
-        return Right(response.data!);
+        final addresses = (response.data as List)
+            .map((a) => Address.fromJson(a as Map<String, dynamic>))
+            .toList();
+        return Right(addresses);
       }
       return Left(ServerFailure(message: response.message));
     } on DioException catch (e) {

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nova_core/nova_core.dart';
 
 abstract class OrderState extends Equatable {
   const OrderState();
@@ -12,7 +13,7 @@ class OrderInitial extends OrderState {}
 class OrderLoading extends OrderState {}
 
 class OrdersLoaded extends OrderState {
-  final List<dynamic> orders;
+  final List<Order> orders;
   final int total;
   final int page;
   final int totalPages;
@@ -29,7 +30,7 @@ class OrdersLoaded extends OrderState {
 }
 
 class OrderDetailLoaded extends OrderState {
-  final Map<String, dynamic> order;
+  final Order order;
 
   const OrderDetailLoaded({required this.order});
 
@@ -38,7 +39,7 @@ class OrderDetailLoaded extends OrderState {
 }
 
 class OrderCreated extends OrderState {
-  final Map<String, dynamic> order;
+  final Order order;
 
   const OrderCreated({required this.order});
 

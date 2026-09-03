@@ -10,6 +10,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       : _authRepository = authRepository,
         super(ProfileInitial()) {
     on<LoadProfile>(_onLoadProfile);
+    on<UpdateProfile>(_onUpdateProfile);
   }
 
   Future<void> _onLoadProfile(LoadProfile event, Emitter<ProfileState> emit) async {
@@ -18,6 +19,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     result.fold(
       (failure) => emit(ProfileError(message: failure.message)),
       (user) => emit(ProfileLoaded(user: user)),
+    );
+  }
+
+  Future<void> _onUpdateProfile(UpdateProfile event, Emitter<ProfileState> emit) async {
+    final currentUser = state is ProfileLoaded ? (state as ProfileLoaded).user : null;
+    if (currentUser != null) {
+      emit(ProfileUpdating(user: currentUser));
+    }
+
+    final result = await _authRepository.updateProfile(
+      fullName: event.fullName,
+      email: event.email,
+      phone: event.phone,
+    );
+    result.fold(
+      (failure) => emit(ProfileError(message: failure.message)),
+      (user) => emit(ProfileUpdated(user: user)),
     );
   }
 }

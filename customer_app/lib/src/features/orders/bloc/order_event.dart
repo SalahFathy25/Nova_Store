@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nova_core/nova_core.dart';
 
 abstract class OrderEvent extends Equatable {
   const OrderEvent();
@@ -30,16 +31,18 @@ class CreateOrder extends OrderEvent {
   final String paymentMethod;
   final String? couponCode;
   final String? notes;
+  final DateTime? scheduledDeliveryDate;
 
   const CreateOrder({
     required this.addressId,
     required this.paymentMethod,
     this.couponCode,
     this.notes,
+    this.scheduledDeliveryDate,
   });
 
   @override
-  List<Object?> get props => [addressId, paymentMethod, couponCode, notes];
+  List<Object?> get props => [addressId, paymentMethod, couponCode, notes, scheduledDeliveryDate];
 }
 
 class CancelOrder extends OrderEvent {

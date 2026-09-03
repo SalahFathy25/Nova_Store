@@ -233,6 +233,7 @@ export class OrdersService {
       notes: dto.notes,
       coupon_code: coupon?.code,
       coupon_discount: Math.round(couponDiscount * 100) / 100,
+      scheduled_delivery_date: dto.scheduled_delivery_date ? new Date(dto.scheduled_delivery_date) : null,
     });
 
     const savedOrder = await this.orderRepo.save(parentOrder);

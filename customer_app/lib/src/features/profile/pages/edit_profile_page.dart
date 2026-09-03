@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
+import '../bloc/profile_bloc.dart';
+import '../bloc/profile_event.dart';
+import '../bloc/profile_state.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -10,10 +14,19 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController(text: 'Guest User');
-  final _emailController = TextEditingController(text: 'guest@example.com');
-  final _phoneController = TextEditingController(text: '+20 100 000 0000');
-  bool _isLoading = false;
+  late TextEditingController _nameController;
+  late TextEditingController _emailController;
+  late TextEditingController _phoneController;
+
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<ProfileBloc>().state;
+    final user = state is ProfileLoaded ? state.user : null;
+    _nameController = TextEditingController(text: user?.fullName ?? '');
+    _emailController = TextEditingController(text: user?.email ?? '');
+    _phoneController = TextEditingController(text: user?.phone ?? '');
+  }
 
   @override
   void dispose() {
@@ -23,47 +36,57 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  Future<void> _saveProfile() async {
+  void _saveProfile() {
     if (!_formKey.currentState!.validate()) return;
 
-    setState(() => _isLoading = true);
-
-    await Future.delayed(const Duration(seconds: 1));
-
-    setState(() => _isLoading = false);
-
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Profile updated successfully'),
-          backgroundColor: NovaTheme.successColor,
-        ),
-      );
-      Navigator.pop(context);
-    }
+    context.read<ProfileBloc>().add(UpdateProfile(
+          fullName: _nameController.text.trim(),
+          email: _emailController.text.trim(),
+          phone: _phoneController.text.trim(),
+        ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: NovaTheme.backgroundColor,
-      appBar: AppBar(
-        title: const Text('Edit Profile'),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _buildAvatarSection(),
-                const SizedBox(height: 32),
-                _buildFormFields(),
-                const SizedBox(height: 32),
-                _buildSaveButton(),
-              ],
+    return BlocListener<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        if (state is ProfileUpdated) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Profile updated successfully'),
+              backgroundColor: NovaTheme.successColor,
+            ),
+          );
+          Navigator.pop(context);
+        } else if (state is ProfileError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: NovaTheme.errorColor,
+            ),
+          );
+        }
+      },
+      child: Scaffold(
+        backgroundColor: NovaTheme.backgroundColor,
+        appBar: AppBar(
+          title: const Text('Edit Profile'),
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _buildAvatarSection(),
+                  const SizedBox(height: 32),
+                  _buildFormFields(),
+                  const SizedBox(height: 32),
+                  _buildSaveButton(),
+                ],
+              ),
             ),
           ),
         ),
@@ -167,33 +190,38 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   Widget _buildSaveButton() {
-    return ElevatedButton(
-      onPressed: _isLoading ? null : _saveProfile,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: NovaTheme.primaryColor,
-        foregroundColor: NovaTheme.surfaceColor,
-        disabledBackgroundColor: NovaTheme.borderColor,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-      child: _isLoading
-          ? const SizedBox(
-              height: 20,
-              width: 20,
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
-                color: NovaTheme.surfaceColor,
-              ),
-            )
-          : const Text(
-              'Save Changes',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        final isLoading = state is ProfileUpdating;
+        return ElevatedButton(
+          onPressed: isLoading ? null : _saveProfile,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: NovaTheme.primaryColor,
+            foregroundColor: NovaTheme.surfaceColor,
+            disabledBackgroundColor: NovaTheme.borderColor,
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
+          ),
+          child: isLoading
+              ? const SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: NovaTheme.surfaceColor,
+                  ),
+                )
+              : const Text(
+                  'Save Changes',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+        );
+      },
     );
   }
 }

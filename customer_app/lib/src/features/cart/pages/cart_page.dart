@@ -44,7 +44,7 @@ class CartPage extends StatelessWidget {
         }
 
         if (state is CartLoaded) {
-          final items = state.cart['items'] as List<dynamic>? ?? [];
+          final items = state.cartItems;
           if (items.isEmpty) return _buildEmptyState(context);
 
           return _buildCartBody(context, state, items);
@@ -55,7 +55,7 @@ class CartPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCartBody(BuildContext context, CartLoaded state, List<dynamic> items) {
+  Widget _buildCartBody(BuildContext context, CartLoaded state, List<CartItem> items) {
     final subtotal = state.subtotal;
     const shippingFee = 30.0;
     final total = subtotal + shippingFee;
@@ -105,18 +105,9 @@ class CartPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCartItem(BuildContext context, dynamic item) {
-    final id = item['id'] ?? '';
-    final productTitle = item['product_title'] ?? item['productTitle'] ?? 'Product';
-    final variantTitle = item['variant_title'] ?? item['variantTitle'];
-    final imageUrl = item['image_url'] ?? item['imageUrl'] ?? '';
-    final quantity = item['quantity'] ?? 1;
-    final unitPrice = (item['unit_price'] ?? item['unitPrice'] ?? 0).toDouble();
-    final totalPrice = (item['total_price'] ?? item['totalPrice'] ?? unitPrice * quantity).toDouble();
-    final stockQuantity = item['stock_quantity'] ?? item['stockQuantity'] ?? 10;
-
+  Widget _buildCartItem(BuildContext context, CartItem item) {
     return Dismissible(
-      key: Key(id),
+      key: Key(item.id),
       direction: DismissDirection.endToStart,
       background: Container(
         alignment: Alignment.centerRight,
@@ -128,7 +119,7 @@ class CartPage extends StatelessWidget {
         ),
         child: const Icon(Icons.delete_outline, color: NovaTheme.textOnPrimary, size: 28),
       ),
-      onDismissed: (_) => context.read<CartBloc>().add(RemoveFromCart(itemId: id)),
+      onDismissed: (_) => context.read<CartBloc>().add(RemoveFromCart(itemId: item.id)),
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(12),
@@ -143,7 +134,7 @@ class CartPage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(NovaTheme.radiusSm),
               child: CachedNetworkImage(
-                imageUrl: imageUrl,
+                imageUrl: item.imageUrl ?? '',
                 width: 80,
                 height: 80,
                 fit: BoxFit.cover,
@@ -156,17 +147,17 @@ class CartPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(productTitle, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: NovaTheme.textPrimary), maxLines: 2, overflow: TextOverflow.ellipsis),
-                  if (variantTitle != null) ...[const SizedBox(height: 4), Text(variantTitle, style: NovaTheme.bodySmall)],
+                  Text(item.productTitle ?? 'Product', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: NovaTheme.textPrimary), maxLines: 2, overflow: TextOverflow.ellipsis),
+                  if (item.variantTitle != null) ...[const SizedBox(height: 4), Text(item.variantTitle!, style: NovaTheme.bodySmall)],
                   const SizedBox(height: 8),
-                  Text('${unitPrice.toStringAsFixed(0)} EGP', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: NovaTheme.primaryColor)),
+                  Text('${item.unitPrice.toStringAsFixed(0)} EGP', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: NovaTheme.primaryColor)),
                   const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildQuantitySelector(context, id, quantity, stockQuantity),
+                      _buildQuantitySelector(context, item.id, item.quantity, item.stockQuantity),
                       IconButton(
-                        onPressed: () => context.read<CartBloc>().add(RemoveFromCart(itemId: id)),
+                        onPressed: () => context.read<CartBloc>().add(RemoveFromCart(itemId: item.id)),
                         icon: const Icon(Icons.delete_outline, color: NovaTheme.errorColor, size: 20),
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
@@ -176,7 +167,7 @@ class CartPage extends StatelessWidget {
                   const SizedBox(height: 4),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text('Total: ${totalPrice.toStringAsFixed(0)} EGP', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: NovaTheme.textPrimary)),
+                    child: Text('Total: ${item.totalPrice.toStringAsFixed(0)} EGP', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: NovaTheme.textPrimary)),
                   ),
                 ],
               ),

@@ -21,12 +21,14 @@ class OrderRemoteDataSource {
     required String paymentMethod,
     String? couponCode,
     String? notes,
+    String? scheduledDeliveryDate,
   }) async {
     final response = await _dio.post(ApiConstants.orders, data: {
       'address_id': addressId,
       'payment_method': paymentMethod,
       if (couponCode != null) 'coupon_code': couponCode,
       if (notes != null) 'notes': notes,
+      if (scheduledDeliveryDate != null) 'scheduled_delivery_date': scheduledDeliveryDate,
     });
     return ApiResponse(success: true, message: '', data: response.data as Map<String, dynamic>);
   }

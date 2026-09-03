@@ -312,6 +312,11 @@ export class AuthService {
     return Math.floor(100000 + Math.random() * 900000).toString();
   }
 
+  async updateFcmToken(userId: string, fcmToken: string): Promise<{ success: boolean }> {
+    await this.userRepo.update(userId, { fcm_token: fcmToken });
+    return { success: true };
+  }
+
   private sanitizeUser(user: User) {
     const { password_hash, fcm_token, ...result } = user as any;
     return result;

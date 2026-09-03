@@ -136,6 +136,62 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<Either<Failure, User>> updateProfile({
+    String? fullName,
+    String? email,
+    String? phone,
+  }) async {
+    try {
+      final data = <String, dynamic>{};
+      if (fullName != null) data['full_name'] = fullName;
+      if (email != null) data['email'] = email;
+      if (phone != null) data['phone'] = phone;
+
+      final response = await _dio.patch(ApiConstants.profile, data: data);
+      final user = User.fromJson(response.data['data'] ?? response.data);
+      return Right(user);
+    } on DioException catch (e) {
+      return Left(_handleDioError(e));
+    } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> forgotPassword({required String email}) async {
+    try {
+      final response = await _dio.post(ApiConstants.forgotPassword, data: {
+        'email': email,
+      });
+      return Right(response.data['message'] ?? 'Password reset email sent');
+    } on DioException catch (e) {
+      return Left(_handleDioError(e));
+    } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> resetPassword({
+    required String email,
+    required String code,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await _dio.post(ApiConstants.resetPassword, data: {
+        'email': email,
+        'code': code,
+        'new_password': newPassword,
+      });
+      return Right(response.data['message'] ?? 'Password reset successfully');
+    } on DioException catch (e) {
+      return Left(_handleDioError(e));
+    } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> logout() async {
     try {
       await _localStorage.clearTokens();

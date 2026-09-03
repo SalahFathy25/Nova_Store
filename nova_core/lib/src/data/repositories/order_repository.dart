@@ -41,6 +41,7 @@ class OrderRepository {
     required String paymentMethod,
     String? couponCode,
     String? notes,
+    DateTime? scheduledDeliveryDate,
   }) async {
     try {
       final response = await _dataSource.createOrder(
@@ -48,6 +49,7 @@ class OrderRepository {
         paymentMethod: paymentMethod,
         couponCode: couponCode,
         notes: notes,
+        scheduledDeliveryDate: scheduledDeliveryDate?.toIso8601String(),
       );
       if (response.success && response.data != null) {
         return Right(response.data!);

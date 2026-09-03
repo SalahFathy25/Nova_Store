@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nova_core/nova_core.dart';
 
 abstract class ProductState extends Equatable {
   const ProductState();
@@ -12,7 +13,7 @@ class ProductInitial extends ProductState {}
 class ProductLoading extends ProductState {}
 
 class ProductsLoaded extends ProductState {
-  final List<dynamic> products;
+  final List<Product> products;
   final int total;
   final int page;
   final int totalPages;
@@ -31,7 +32,7 @@ class ProductsLoaded extends ProductState {
 }
 
 class ProductDetailLoaded extends ProductState {
-  final Map<String, dynamic> product;
+  final Product product;
 
   const ProductDetailLoaded({required this.product});
 
@@ -40,7 +41,7 @@ class ProductDetailLoaded extends ProductState {
 }
 
 class CategoriesLoaded extends ProductState {
-  final List<dynamic> categories;
+  final List<Category> categories;
 
   const CategoriesLoaded({required this.categories});
 
@@ -49,7 +50,7 @@ class CategoriesLoaded extends ProductState {
 }
 
 class BrandsLoaded extends ProductState {
-  final List<dynamic> brands;
+  final List<Brand> brands;
 
   const BrandsLoaded({required this.brands});
 

@@ -4,9 +4,14 @@ import 'package:nova_core/nova_core.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../addresses/bloc/address_bloc.dart';
 import '../../addresses/bloc/address_state.dart';
+import '../../app_config/app_config_cubit.dart';
+import '../../app_config/app_config_state.dart';
+import '../../cart/bloc/cart_bloc.dart';
+import '../../cart/bloc/cart_state.dart';
 import '../../orders/bloc/order_bloc.dart';
 import '../../orders/bloc/order_event.dart';
 import '../../orders/bloc/order_state.dart';
+import '../../../core/di/injection.dart';
 import 'address_form_page.dart';
 import 'order_confirmation_page.dart';
 
@@ -26,60 +31,80 @@ class _CheckoutPageState extends State<CheckoutPage> {
   final _couponController = TextEditingController();
   final _notesController = TextEditingController();
   bool _isPlacingOrder = false;
+  DateTime? _scheduledDeliveryDate;
 
   List<Address> _addresses = [];
 
   List<CartItem> _cartItems = [];
 
   static const double _shippingFee = 30;
-  static const double _taxRate = 0.14;
 
   double get _subtotal =>
       _cartItems.fold(0, (sum, item) => sum + item.totalPrice);
 
-  double get _tax => _subtotal * _taxRate;
+  double _getTax(BuildContext context) {
+    final state = context.read<AppConfigCubit>().state;
+    final taxRate = state is AppConfigLoaded ? state.config.features.taxRate : 0.14;
+    return _subtotal * taxRate;
+  }
 
   double get _discount => _couponDiscount;
 
-  double get _grandTotal => _subtotal + _shippingFee + _tax - _discount;
+  double _getGrandTotal(BuildContext context) => _subtotal + _shippingFee + _getTax(context) - _discount;
 
-  void _applyCoupon() {
+  void _applyCoupon() async {
     final code = _couponController.text.trim().toUpperCase();
     if (code.isEmpty) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Applying coupon...'),
-        duration: Duration(seconds: 1),
-      ),
+    setState(() => _isPlacingOrder = true);
+
+    final couponRepo = getIt<CouponRepository>();
+    final result = await couponRepo.validateCoupon(
+      code: code,
+      subtotal: _subtotal,
     );
 
-    Future.delayed(const Duration(seconds: 1), () {
-      if (!mounted) return;
-      if (code == 'SAVE10') {
+    if (!mounted) return;
+
+    result.fold(
+      (failure) {
         setState(() {
-          _couponCode = code;
-          _couponDiscount = _subtotal * 0.1;
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Coupon applied! 10% off'),
-            backgroundColor: NovaTheme.successColor,
-          ),
-        );
-      } else {
-        setState(() {
+          _isPlacingOrder = false;
           _couponCode = '';
           _couponDiscount = 0;
         });
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Invalid coupon code'),
+          SnackBar(
+            content: Text(failure.message),
             backgroundColor: NovaTheme.errorColor,
           ),
         );
-      }
-    });
+      },
+      (validation) {
+        setState(() {
+          _isPlacingOrder = false;
+          if (validation.valid) {
+            _couponCode = code;
+            _couponDiscount = validation.discountAmount ?? 0;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(validation.message ?? 'Coupon applied!'),
+                backgroundColor: NovaTheme.successColor,
+              ),
+            );
+          } else {
+            _couponCode = '';
+            _couponDiscount = 0;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(validation.message ?? 'Invalid coupon code'),
+                backgroundColor: NovaTheme.errorColor,
+              ),
+            );
+          }
+        });
+      },
+    );
   }
 
   void _removeCoupon() {
@@ -119,7 +144,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
       paymentMethod: _selectedPayment,
       couponCode: _couponCode.isNotEmpty ? _couponCode : null,
       notes: _notesController.text.isNotEmpty ? _notesController.text : null,
+      scheduledDeliveryDate: _scheduledDeliveryDate,
     ));
+  }
+
+  Future<void> _pickDeliveryDate() async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _scheduledDeliveryDate ?? now.add(const Duration(days: 1)),
+      firstDate: now.add(const Duration(days: 1)),
+      lastDate: now.add(const Duration(days: 30)),
+    );
+    if (picked != null) {
+      setState(() => _scheduledDeliveryDate = picked);
+    }
   }
 
   Future<void> _addNewAddress() async {
@@ -132,6 +171,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
         _addresses.add(result);
         _selectedAddress = result;
       });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final cartState = context.read<CartBloc>().state;
+    if (cartState is CartLoaded) {
+      _cartItems = cartState.cartItems;
     }
   }
 
@@ -152,7 +200,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             context,
             MaterialPageRoute(
               builder: (_) => OrderConfirmationPage(
-                orderNumber: state.order['order_number'] ?? '',
+                orderNumber: state.order.orderNumber ?? '',
               ),
             ),
           );
@@ -297,19 +345,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           );
         }
         if (state is AddressesLoaded) {
-          _addresses = state.addresses.map((a) => Address(
-            id: a['id'] ?? '',
-            label: a['label'] ?? '',
-            fullAddress: a['full_address'] ?? '',
-            street: a['street'] ?? '',
-            building: a['building'] ?? '',
-            floor: a['floor'] ?? '',
-            apartment: a['apartment'] ?? '',
-            landmark: a['landmark'] ?? '',
-            city: a['city'] ?? '',
-            state: a['state'] ?? '',
-            isDefault: a['is_default'] ?? false,
-          )).toList();
+          _addresses = state.addresses;
           if (_addresses.isNotEmpty && _selectedAddress == null) {
             _selectedAddress = _addresses.firstWhere(
               (a) => a.isDefault,
@@ -738,6 +774,42 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         ),
         const SizedBox(height: NovaTheme.spacingMd),
+        _buildSection(
+          title: 'Scheduled Delivery (Optional)',
+          child: InkWell(
+            onTap: _pickDeliveryDate,
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                border: Border.all(color: NovaTheme.borderColor),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.calendar_today, size: 20, color: NovaTheme.textSecondary),
+                  const SizedBox(width: 12),
+                  Text(
+                    _scheduledDeliveryDate != null
+                        ? '${_scheduledDeliveryDate!.day}/${_scheduledDeliveryDate!.month}/${_scheduledDeliveryDate!.year}'
+                        : 'Select delivery date',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: _scheduledDeliveryDate != null ? NovaTheme.textPrimary : NovaTheme.textHint,
+                    ),
+                  ),
+                  if (_scheduledDeliveryDate != null) ...[
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () => setState(() => _scheduledDeliveryDate = null),
+                      child: const Icon(Icons.close, size: 18, color: NovaTheme.textSecondary),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: NovaTheme.spacingMd),
         _buildPriceBreakdown(),
       ],
     );
@@ -781,7 +853,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         children: [
           _buildPriceRow('Subtotal', _subtotal),
           _buildPriceRow('Shipping', _shippingFee),
-          _buildPriceRow('Tax (14%)', _tax),
+          _buildPriceRow('Tax (14%)', _getTax(context)),
           if (_discount > 0)
             _buildPriceRow('Discount', -_discount, isDiscount: true),
           const Divider(color: NovaTheme.borderColor, height: 24),
@@ -797,7 +869,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
               ),
               Text(
-                '${_grandTotal.toStringAsFixed(2)} ج.م',
+                '${_getGrandTotal(context).toStringAsFixed(2)} ج.م',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -887,8 +959,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         color: NovaTheme.textOnPrimary,
                       ),
                     )
-                  : Text(
-                      'Place Order - ${_grandTotal.toStringAsFixed(2)} ج.م',
+                   : Text(
+                      'Place Order - ${_getGrandTotal(context).toStringAsFixed(2)} ج.م',
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

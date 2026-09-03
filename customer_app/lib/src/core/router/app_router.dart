@@ -4,6 +4,7 @@ import '../../app/main_shell.dart';
 import '../../features/auth/pages/login_page.dart';
 import '../../features/auth/pages/register_page.dart';
 import '../../features/auth/pages/otp_page.dart';
+import '../../features/auth/pages/phone_input_page.dart';
 import '../../features/products/pages/product_list_page.dart';
 import '../../features/products/pages/product_detail_page.dart';
 import '../../features/cart/pages/cart_page.dart';
@@ -13,6 +14,7 @@ import '../../features/orders/pages/order_list_page.dart';
 import '../../features/orders/pages/order_detail_page.dart';
 import '../../features/wishlist/pages/wishlist_page.dart';
 import '../../features/notifications/pages/notifications_page.dart';
+import '../../features/reviews/bloc/review_bloc.dart';
 import '../../features/categories/pages/category_page.dart';
 import '../../features/search/pages/search_page.dart';
 import '../../features/checkout/pages/checkout_page.dart';
@@ -28,6 +30,7 @@ class AppRouter {
   static const String root = '/';
   static const String login = '/login';
   static const String register = '/register';
+  static const String phoneInput = '/phone-input';
   static const String otp = '/otp';
   static const String search = '/search';
   static const String categories = '/categories';
@@ -54,6 +57,9 @@ class AppRouter {
 
       case register:
         return MaterialPageRoute(builder: (_) => const RegisterPage());
+
+      case phoneInput:
+        return MaterialPageRoute(builder: (_) => const PhoneInputPage());
 
       case otp:
         final args = settings.arguments as String? ?? '';
@@ -93,7 +99,10 @@ class AppRouter {
       case productDetail:
         final product = settings.arguments;
         return MaterialPageRoute(
-          builder: (_) => ProductDetailPage(product: product as dynamic),
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<ReviewBloc>(),
+            child: ProductDetailPage(product: product as dynamic),
+          ),
         );
 
       case cart:
