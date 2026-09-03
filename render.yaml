@@ -34,4 +34,4 @@ services:
         value: dev
       - key: CORS_ORIGINS
         value: '*'
-    healthCheckPath: /api/v1/app-config
+    healthCheckPath: /health

@@ -2,5 +2,5 @@
 builder = "dockerfile"
 
 [deploy]
-startCommand = "npm run start:prod"
+startCommand = "node --dns-result-order=ipv4first dist/main"
 healthcheckPath = "/health"
