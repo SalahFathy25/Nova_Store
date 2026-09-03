@@ -29,19 +29,8 @@ export async function seedDatabase(dataSource: DataSource): Promise<void> {
 
   const existingStore = await storeRepo.findOne({ where: { domain: 'demo.novacommerce.io' } });
   if (existingStore) {
-    console.log('Clearing existing seed data...');
-    await dataSource.query('DELETE FROM flash_sale_products');
-    await dataSource.query('DELETE FROM flash_sales');
-    await dataSource.query('DELETE FROM home_sections');
-    await dataSource.query('DELETE FROM banners');
-    await dataSource.query('DELETE FROM product_images');
-    await dataSource.query('DELETE FROM product_variants');
-    await dataSource.query('DELETE FROM products');
-    await dataSource.query('DELETE FROM feature_flags');
-    await dataSource.query('DELETE FROM brands');
-    await dataSource.query('DELETE FROM categories');
-    await dataSource.query('DELETE FROM stores');
-    console.log('Existing data cleared.');
+    console.log('Store already exists, skipping seed.');
+    return;
   }
 
   console.log('Seeding database...');

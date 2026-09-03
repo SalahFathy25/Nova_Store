@@ -3,4 +3,4 @@ builder = "dockerfile"
 
 [deploy]
 startCommand = "npm run start:prod"
-healthcheckPath = "/api/v1/app-config"
+healthcheckPath = "/health"

@@ -46,12 +46,14 @@ async function bootstrap() {
   const dataSource = app.get(DataSource);
 
   if (appConfig.isProduction) {
-    logger.log('Production mode - syncing schema...');
+    logger.log('Production mode - syncing schema and seeding...');
     try {
       await dataSource.synchronize();
       logger.log('Schema synced successfully');
+      await seedDatabase(dataSource);
+      logger.log('Database seeded successfully');
     } catch (err) {
-      logger.error('Schema sync failed', err);
+      logger.error('Schema sync or seed failed', err);
     }
   } else {
     logger.log('Development mode - syncing schema and seeding...');
