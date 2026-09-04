@@ -9,6 +9,8 @@ COPY . .
 RUN npm run build
 
 ENV NODE_OPTIONS="--dns-result-order=ipv4first"
+ARG BUILD_TIME=now
+ENV BUILD_TIME=${BUILD_TIME}
 
 EXPOSE 3000
 
