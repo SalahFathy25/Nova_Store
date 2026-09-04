@@ -17,6 +17,7 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
 import { AppConfigModule } from './modules/app-config/app-config.module.js';
 import { DeliveryModule } from './modules/delivery/delivery.module.js';
 import { ReviewsModule } from './modules/reviews/reviews.module.js';
+import { AppController } from './app.controller.js';
 import { TenantMiddleware } from './common/middleware/tenant.middleware.js';
 import { getDatabaseConfig } from './config/database.config.js';
 
@@ -59,6 +60,7 @@ import { AuditLog } from './modules/audit-logs/audit-log.entity.js';
 import { FeatureFlag } from './modules/feature-flags/feature-flag.entity.js';
 
 @Module({
+  controllers: [AppController],
   imports: [
     TypeOrmModule.forRoot(getDatabaseConfig()),
     TypeOrmModule.forFeature([
