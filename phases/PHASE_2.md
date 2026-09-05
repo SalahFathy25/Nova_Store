@@ -156,7 +156,7 @@ admin:drivers:locations → Admin App
 ### 9. Enhanced Live Driver Tracking (Days 12-14)
 
 - [ ] Real-time location sharing (every 10 seconds during delivery)
-- [ ] Driver location history table
+- [x] Driver location history table
 - [ ] Live map view for customers
 - [ ] ETA calculation
 - [ ] Distance remaining display
@@ -210,13 +210,13 @@ GET  /api/v1/admin/drivers/locations
 ## Acceptance Criteria
 
 - [ ] Driver can register and get approved
-- [ ] Driver can start/end shift
-- [ ] Driver receives order assignments
-- [ ] Driver can navigate to pickup and delivery
-- [ ] OTP verification works end-to-end
-- [ ] COD cash ledger is accurate
-- [ ] Customer sees real-time driver location
-- [ ] All status transitions are tracked
+- [x] Driver can start/end shift
+- [x] Driver receives order assignments
+- [x] Driver can navigate to pickup and delivery
+- [x] OTP verification works end-to-end
+- [x] COD cash ledger is accurate
+- [x] Customer sees real-time driver location
+- [x] All status transitions are tracked
 
 ---
 
