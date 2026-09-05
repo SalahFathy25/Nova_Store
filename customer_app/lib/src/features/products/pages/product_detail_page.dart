@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
+import '../../../core/di/injection.dart';
 import '../../cart/bloc/cart_bloc.dart';
 import '../../cart/bloc/cart_event.dart';
 import '../../wishlist/bloc/wishlist_bloc.dart';
@@ -44,19 +45,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
   Future<void> _loadRelatedProducts() async {
     try {
-      final dataSource = ProductRemoteDataSource(context.read<NovaApiClient>().dio);
-      final response = await dataSource.getRelatedProducts(productId: widget.product.id, limit: 10);
-      if (response.success && response.data != null) {
-        final productsData = response.data!['products'] ?? response.data!['data'] ?? [];
-        if (productsData is List) {
-          setState(() {
-            _relatedProducts = productsData.map((p) => Product.fromJson(p)).toList();
-            _isLoadingRelated = false;
-          });
-          return;
-        }
-      }
-      setState(() => _isLoadingRelated = false);
+      final repo = getIt<ProductRepository>();
+      final result = await repo.getRelatedProducts(productId: widget.product.id, limit: 10);
+      result.fold(
+        (_) => setState(() => _isLoadingRelated = false),
+        (data) {
+          final productsData = data['products'] ?? data['data'] ?? [];
+          if (productsData is List) {
+            setState(() {
+              _relatedProducts = productsData.map((p) => Product.fromJson(p)).toList();
+              _isLoadingRelated = false;
+            });
+            return;
+          }
+          setState(() => _isLoadingRelated = false);
+        },
+      );
     } catch (_) {
       setState(() => _isLoadingRelated = false);
     }

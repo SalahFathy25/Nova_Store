@@ -45,7 +45,7 @@ class ProductRemoteDataSource {
 
   Future<ApiResponse<List<dynamic>>> getSearchSuggestions({required String query}) async {
     try {
-      final response = await _dio.get('/api/v1/catalog/suggestions', queryParameters: {'q': query});
+      final response = await _dio.get('${ApiConstants.products}/suggestions', queryParameters: {'q': query});
       final data = response.data;
       return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
     } catch (_) {
@@ -55,7 +55,7 @@ class ProductRemoteDataSource {
 
   Future<ApiResponse<List<dynamic>>> getPopularSearches() async {
     try {
-      final response = await _dio.get('/api/v1/catalog/popular-searches');
+      final response = await _dio.get('${ApiConstants.products}/popular-searches');
       final data = response.data;
       return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
     } catch (_) {

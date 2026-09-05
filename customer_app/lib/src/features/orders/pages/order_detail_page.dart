@@ -649,35 +649,66 @@ class OrderDetailPage extends StatelessWidget {
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.all(16),
       color: NovaTheme.surfaceColor,
-      child: ElevatedButton(
-        onPressed: () => _handleReorder(context),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: NovaTheme.primaryColor,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Reorder Items',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: NovaTheme.textPrimary),
           ),
-        ),
-        child: const Text('Reorder'),
+          const SizedBox(height: 8),
+          ...order.items.map((item) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    '${item.productTitle} (x${item.quantity})',
+                    style: const TextStyle(fontSize: 13, color: NovaTheme.textPrimary),
+                  ),
+                ),
+                Text(
+                  'EGP ${item.totalPrice.toStringAsFixed(2)}',
+                  style: const TextStyle(fontSize: 13, color: NovaTheme.textSecondary),
+                ),
+              ],
+            ),
+          )),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () => _handleReorder(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: NovaTheme.primaryColor,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: const Text('Reorder All Items'),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   void _handleReorder(BuildContext context) async {
     final cartBloc = context.read<CartBloc>();
+    int addedCount = 0;
     for (final item in order.items) {
       cartBloc.add(AddToCart(
         productId: item.productId,
         variantId: item.productVariantId,
         quantity: item.quantity,
       ));
+      addedCount++;
     }
     await Future.delayed(const Duration(milliseconds: 500));
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('${order.items.length} item(s) added to cart'),
+        content: Text('$addedCount item(s) added to cart'),
         backgroundColor: NovaTheme.successColor,
       ),
     );

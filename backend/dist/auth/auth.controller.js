@@ -10,11 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Post, Get, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, Patch, Body, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from './auth.service.js';
 import { JwtAuthGuard } from './guards/jwt-auth.guard.js';
-import { RegisterDto, LoginDto, SendOtpDto, VerifyOtpDto, RefreshTokenDto, ForgotPasswordDto, ResetPasswordDto, } from './dto/auth.dto.js';
+import { RegisterDto, LoginDto, SendOtpDto, VerifyOtpDto, RefreshTokenDto, ForgotPasswordDto, ResetPasswordDto, UpdateFcmTokenDto, } from './dto/auth.dto.js';
 import { CurrentTenantId } from '../common/decorators/tenant.decorator.js';
 import { CurrentUser } from '../common/decorators/user.decorator.js';
 let AuthController = class AuthController {
@@ -45,6 +45,9 @@ let AuthController = class AuthController {
     }
     async getProfile(userId) {
         return this.authService.getProfile(userId);
+    }
+    async updateFcmToken(userId, dto) {
+        return this.authService.updateFcmToken(userId, dto.fcm_token);
     }
 };
 __decorate([
@@ -127,6 +130,18 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "getProfile", null);
+__decorate([
+    Patch('fcm-token'),
+    UseGuards(JwtAuthGuard),
+    ApiBearerAuth(),
+    ApiOperation({ summary: 'Update FCM token for push notifications' }),
+    ApiResponse({ status: 200, description: 'FCM token updated' }),
+    __param(0, CurrentUser('id')),
+    __param(1, Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, UpdateFcmTokenDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "updateFcmToken", null);
 AuthController = __decorate([
     ApiTags('Auth'),
     Controller('api/v1/auth'),

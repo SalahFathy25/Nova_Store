@@ -41,6 +41,8 @@ class OrderRepository {
     required String paymentMethod,
     String? couponCode,
     String? notes,
+    String deliveryType = 'instant',
+    String? scheduledTimeSlot,
     DateTime? scheduledDeliveryDate,
   }) async {
     try {
@@ -49,6 +51,8 @@ class OrderRepository {
         paymentMethod: paymentMethod,
         couponCode: couponCode,
         notes: notes,
+        deliveryType: deliveryType,
+        scheduledTimeSlot: scheduledTimeSlot,
         scheduledDeliveryDate: scheduledDeliveryDate?.toIso8601String(),
       );
       if (response.success && response.data != null) {

@@ -17,6 +17,7 @@ class Order extends Equatable {
   final String? couponCode;
   final double couponDiscount;
   final String deliveryType;
+  final String? scheduledTimeSlot;
   final DateTime? scheduledDeliveryDate;
   final DateTime? estimatedDeliveryDate;
   final List<OrderItem> items;
@@ -40,6 +41,7 @@ class Order extends Equatable {
     this.couponCode,
     this.couponDiscount = 0,
     this.deliveryType = 'instant',
+    this.scheduledTimeSlot,
     this.scheduledDeliveryDate,
     this.estimatedDeliveryDate,
     this.items = const [],
@@ -65,6 +67,7 @@ class Order extends Equatable {
       couponCode: json['coupon_code'],
       couponDiscount: (json['coupon_discount'] ?? 0).toDouble(),
       deliveryType: json['delivery_type'] ?? 'instant',
+      scheduledTimeSlot: json['scheduled_time_slot'],
       scheduledDeliveryDate: json['scheduled_delivery_date'] != null ? DateTime.parse(json['scheduled_delivery_date']) : null,
       estimatedDeliveryDate: json['estimated_delivery_date'] != null ? DateTime.parse(json['estimated_delivery_date']) : null,
       items: (json['items'] as List?)?.map((e) => OrderItem.fromJson(e)).toList() ?? [],
@@ -74,7 +77,7 @@ class Order extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, orderNumber, status, grandTotal];
+  List<Object?> get props => [id, orderNumber, status, grandTotal, deliveryType];
 }
 
 class OrderItem extends Equatable {

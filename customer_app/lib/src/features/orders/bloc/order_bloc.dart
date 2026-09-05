@@ -54,6 +54,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       paymentMethod: event.paymentMethod,
       couponCode: event.couponCode,
       notes: event.notes,
+      deliveryType: event.deliveryType,
+      scheduledTimeSlot: event.scheduledTimeSlot,
       scheduledDeliveryDate: event.scheduledDeliveryDate,
     );
     result.fold(

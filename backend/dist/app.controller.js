@@ -10,6 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 let AppController = class AppController {
+    root() {
+        return {
+            status: 'ok',
+            timestamp: new Date().toISOString(),
+            service: 'NOVA Commerce API',
+        };
+    }
     health() {
         return {
             status: 'ok',
@@ -18,6 +25,13 @@ let AppController = class AppController {
         };
     }
 };
+__decorate([
+    Get(),
+    ApiOperation({ summary: 'Root health check' }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "root", null);
 __decorate([
     Get('health'),
     ApiOperation({ summary: 'Health check endpoint' }),

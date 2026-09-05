@@ -150,6 +150,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       couponCode: _couponCode.isNotEmpty ? _couponCode : null,
       notes: _notesController.text.isNotEmpty ? _notesController.text : null,
       deliveryType: _deliveryType,
+      scheduledTimeSlot: _deliveryType == 'scheduled' ? _selectedTimeSlot : null,
       scheduledDeliveryDate: _deliveryType == 'scheduled' ? _scheduledDeliveryDate : null,
     ));
   }
@@ -546,6 +547,134 @@ class _CheckoutPageState extends State<CheckoutPage> {
           isComingSoon: true,
         ),
       ],
+    );
+  }
+
+  Widget _buildDeliveryTypeOption({
+    required String value,
+    required String title,
+    required String subtitle,
+    required IconData icon,
+  }) {
+    final isSelected = _deliveryType == value;
+    return GestureDetector(
+      onTap: () => setState(() {
+        _deliveryType = value;
+        if (value == 'instant') {
+          _scheduledDeliveryDate = null;
+          _selectedTimeSlot = null;
+        }
+      }),
+      child: Container(
+        padding: const EdgeInsets.all(NovaTheme.spacingMd),
+        decoration: BoxDecoration(
+          color: NovaTheme.surfaceColor,
+          borderRadius: BorderRadius.circular(NovaTheme.radiusMd),
+          border: Border.all(
+            color: isSelected ? NovaTheme.primaryColor : NovaTheme.borderColor,
+            width: isSelected ? 2 : 1,
+          ),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, color: isSelected ? NovaTheme.primaryColor : NovaTheme.textHint, size: 28),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+                color: isSelected ? NovaTheme.primaryColor : NovaTheme.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              subtitle,
+              style: const TextStyle(fontSize: 11, color: NovaTheme.textSecondary),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildScheduledDeliverySection() {
+    return Container(
+      padding: const EdgeInsets.all(NovaTheme.spacingMd),
+      decoration: BoxDecoration(
+        color: NovaTheme.surfaceColor,
+        borderRadius: BorderRadius.circular(NovaTheme.radiusMd),
+        border: Border.all(color: NovaTheme.borderColor),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.calendar_today_outlined, size: 18, color: NovaTheme.primaryColor),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  _scheduledDeliveryDate != null
+                      ? '${_scheduledDeliveryDate!.day}/${_scheduledDeliveryDate!.month}/${_scheduledDeliveryDate!.year}'
+                      : 'Select delivery date',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: _scheduledDeliveryDate != null ? NovaTheme.textPrimary : NovaTheme.textHint,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: _pickDeliveryDate,
+                child: const Text('Pick Date'),
+              ),
+            ],
+          ),
+          if (_scheduledDeliveryDate != null) ...[
+            const Divider(height: 24),
+            const Text(
+              'Select time slot',
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: NovaTheme.textSecondary),
+            ),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                _buildTimeSlot('09:00 - 12:00'),
+                _buildTimeSlot('12:00 - 15:00'),
+                _buildTimeSlot('15:00 - 18:00'),
+                _buildTimeSlot('18:00 - 21:00'),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTimeSlot(String slot) {
+    final isSelected = _selectedTimeSlot == slot;
+    return GestureDetector(
+      onTap: () => setState(() => _selectedTimeSlot = slot),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? NovaTheme.primaryColor : NovaTheme.backgroundColor,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: isSelected ? NovaTheme.primaryColor : NovaTheme.borderColor,
+          ),
+        ),
+        child: Text(
+          slot,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w500,
+            color: isSelected ? Colors.white : NovaTheme.textPrimary,
+          ),
+        ),
+      ),
     );
   }
 
@@ -1027,4 +1156,39 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     return Container(
       padding: const EdgeInsets.all(NovaTheme.spacingMd),
-      decoration: BoxDecora
+      decoration: BoxDecoration(
+        color: NovaTheme.surfaceColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: _nextStep,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: NovaTheme.primaryColor,
+              foregroundColor: NovaTheme.textOnPrimary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(NovaTheme.radiusSm),
+              ),
+            ),
+            child: Text(
+              _currentStep == 0 ? 'Continue to Payment' : 'Review Order',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -36,6 +36,7 @@ let AuthService = AuthService_1 = class AuthService {
         this.smsService = smsService;
     }
     async register(dto, tenantId) {
+        this.logger.log(`Register attempt for email: ${dto.email}, tenant: ${tenantId}`);
         const existingUser = await this.userRepo.findOne({
             where: { tenant_id: tenantId, email: dto.email },
         });
@@ -47,12 +48,14 @@ let AuthService = AuthService_1 = class AuthService {
             tenant_id: tenantId,
             full_name: dto.full_name,
             email: dto.email,
-            phone: dto.phone,
+            phone: dto.phone || undefined,
             password_hash: passwordHash,
             role: 'customer',
             is_verified: true,
         });
+        this.logger.log('Saving user...');
         const savedUser = await this.userRepo.save(user);
+        this.logger.log(`User saved: ${savedUser.id}`);
         const tokens = await this.generateTokens(savedUser, tenantId);
         await this.createSession(savedUser.id, tokens.refresh_token);
         return { user: this.sanitizeUser(savedUser), tokens };
@@ -236,6 +239,10 @@ let AuthService = AuthService_1 = class AuthService {
     }
     generateOtpCode() {
         return Math.floor(100000 + Math.random() * 900000).toString();
+    }
+    async updateFcmToken(userId, fcmToken) {
+        await this.userRepo.update(userId, { fcm_token: fcmToken });
+        return { success: true };
     }
     sanitizeUser(user) {
         const { password_hash, fcm_token, ...result } = user;

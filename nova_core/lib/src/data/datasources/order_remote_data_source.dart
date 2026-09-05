@@ -21,11 +21,15 @@ class OrderRemoteDataSource {
     required String paymentMethod,
     String? couponCode,
     String? notes,
+    String deliveryType = 'instant',
+    String? scheduledTimeSlot,
     String? scheduledDeliveryDate,
   }) async {
     final response = await _dio.post(ApiConstants.orders, data: {
       'address_id': addressId,
       'payment_method': paymentMethod,
+      'delivery_type': deliveryType,
+      if (scheduledTimeSlot != null) 'scheduled_time_slot': scheduledTimeSlot,
       if (couponCode != null) 'coupon_code': couponCode,
       if (notes != null) 'notes': notes,
       if (scheduledDeliveryDate != null) 'scheduled_delivery_date': scheduledDeliveryDate,

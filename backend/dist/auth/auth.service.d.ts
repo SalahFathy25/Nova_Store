@@ -32,5 +32,8 @@ export declare class AuthService {
     private generateTokens;
     private createSession;
     private generateOtpCode;
+    updateFcmToken(userId: string, fcmToken: string): Promise<{
+        success: boolean;
+    }>;
     private sanitizeUser;
 }

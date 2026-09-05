@@ -22,6 +22,8 @@ import { MarketingModule } from './modules/marketing/marketing.module.js';
 import { NotificationsModule } from './modules/notifications/notifications.module.js';
 import { AppConfigModule } from './modules/app-config/app-config.module.js';
 import { DeliveryModule } from './modules/delivery/delivery.module.js';
+import { ReviewsModule } from './modules/reviews/reviews.module.js';
+import { AppController } from './app.controller.js';
 import { TenantMiddleware } from './common/middleware/tenant.middleware.js';
 import { getDatabaseConfig } from './config/database.config.js';
 import { Store } from './modules/stores/store.entity.js';
@@ -67,6 +69,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     Module({
+        controllers: [AppController],
         imports: [
             TypeOrmModule.forRoot(getDatabaseConfig()),
             TypeOrmModule.forFeature([
@@ -123,6 +126,7 @@ AppModule = __decorate([
             NotificationsModule,
             AppConfigModule,
             DeliveryModule,
+            ReviewsModule,
         ],
     })
 ], AppModule);

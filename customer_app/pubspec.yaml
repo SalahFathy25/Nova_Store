@@ -25,6 +25,7 @@ dependencies:
   google_maps_flutter: ^2.12.1
   share_plus: ^10.1.4
   flutter_local_notifications: ^18.0.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

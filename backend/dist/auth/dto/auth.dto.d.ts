@@ -38,3 +38,6 @@ export declare class AuthResponse {
     user: any;
     tokens: AuthTokens;
 }
+export declare class UpdateFcmTokenDto {
+    fcm_token: string;
+}

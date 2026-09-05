@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { IsString, IsOptional, IsUUID, IsIn } from 'class-validator';
+import { IsString, IsOptional, IsUUID, IsIn, IsDateString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class CreateOrderDto {
     address_id;
     payment_method;
     coupon_code;
     notes;
+    scheduled_delivery_date;
 }
 __decorate([
     ApiProperty({ description: 'Shipping address ID' }),
@@ -38,4 +39,10 @@ __decorate([
     IsOptional(),
     __metadata("design:type", String)
 ], CreateOrderDto.prototype, "notes", void 0);
+__decorate([
+    ApiPropertyOptional({ description: 'Scheduled delivery date (ISO 8601)' }),
+    IsDateString(),
+    IsOptional(),
+    __metadata("design:type", String)
+], CreateOrderDto.prototype, "scheduled_delivery_date", void 0);
 //# sourceMappingURL=order.dto.js.map

@@ -44,18 +44,18 @@ Build the complete Delivery App and driver management system — a key different
 
 ### 1. Driver Auth & Profile (Days 1-2)
 
-- [ ] Driver registration with vehicle info
-- [ ] Driver profile screen
+- [x] Driver registration with vehicle info
+- [x] Driver profile screen
 - [ ] Document upload (license, vehicle registration)
 - [ ] Admin approval flow
 
 ### 2. Delivery App Core (Days 2-5)
 
-- [ ] Dashboard (today's stats)
-- [ ] Order list (pending, active, completed)
-- [ ] Order detail with navigation
-- [ ] Accept/Reject order
-- [ ] Status updates (picked up, on the way, delivered)
+- [x] Dashboard (today's stats)
+- [x] Order list (pending, active, completed)
+- [x] Order detail with navigation
+- [x] Accept/Reject order
+- [x] Status updates (picked up, on the way, delivered)
 
 **Screens:**
 ```
@@ -81,10 +81,10 @@ OrderDetailScreen
 
 ### 3. Shift Management (Days 5-7)
 
-- [ ] Go Online / Go Offline toggle
-- [ ] Shift history
-- [ ] Active shift tracking
-- [ ] Location tracking during shift
+- [x] Go Online / Go Offline toggle
+- [x] Shift history
+- [x] Active shift tracking
+- [x] Location tracking during shift
 
 **API Endpoints:**
 ```
@@ -97,11 +97,11 @@ PATCH /api/v1/driver/location
 
 ### 4. OTP Verification Engine (Days 7-8)
 
-- [ ] Generate OTP per sub-order
-- [ ] Display OTP to customer
-- [ ] Driver enters OTP to confirm delivery
-- [ ] OTP expiry handling
-- [ ] Failed OTP attempts tracking
+- [x] Generate OTP per sub-order
+- [x] Display OTP to customer
+- [x] Driver enters OTP to confirm delivery
+- [x] OTP expiry handling
+- [x] Failed OTP attempts tracking
 
 **API Endpoints:**
 ```
@@ -111,11 +111,11 @@ POST /api/v1/sub-orders/:id/verify-otp
 
 ### 5. COD Cash Ledger (Days 8-9)
 
-- [ ] Track cash collected per order
-- [ ] Shift cash summary (expected vs collected)
-- [ ] Cash reconciliation screen
-- [ ] Discrepancy flagging
-- [ ] Admin notification on discrepancy
+- [x] Track cash collected per order
+- [x] Shift cash summary (expected vs collected)
+- [x] Cash reconciliation screen
+- [x] Discrepancy flagging
+- [x] Admin notification on discrepancy
 
 **API Endpoints:**
 ```
@@ -126,18 +126,18 @@ POST /api/v1/driver/cash/submit
 
 ### 6. Navigation Integration (Days 9-10)
 
-- [ ] Google Maps integration
-- [ ] Directions to store (pickup)
-- [ ] Directions to customer (delivery)
+- [x] Google Maps integration
+- [x] Directions to store (pickup)
+- [x] Directions to customer (delivery)
 - [ ] Distance & time estimation
-- [ ] Deep link to Google Maps / Apple Maps
+- [x] Deep link to Google Maps / Apple Maps
 
 ### 7. Real-time Location Tracking (Days 10-11)
 
-- [ ] Send driver location to server
-- [ ] Customer can see driver location on map
-- [ ] Admin can see all active drivers
-- [ ] Location history for analytics
+- [x] Send driver location to server
+- [x] Customer can see driver location on map
+- [x] Admin can see all active drivers
+- [x] Location history for analytics
 
 **WebSocket Events:**
 ```
@@ -148,10 +148,10 @@ admin:drivers:locations → Admin App
 
 ### 8. Push Notifications for Drivers (Days 11-12)
 
-- [ ] New order assignment notification
-- [ ] Order cancelled notification
-- [ ] Shift reminder notifications
-- [ ] Earnings summary notification
+- [x] New order assignment notification
+- [x] Order cancelled notification
+- [x] Shift reminder notifications
+- [x] Earnings summary notification
 
 ### 9. Enhanced Live Driver Tracking (Days 12-14)
 

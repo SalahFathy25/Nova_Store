@@ -142,4 +142,12 @@ export class AuthResponse {
     user;
     tokens;
 }
+export class UpdateFcmTokenDto {
+    fcm_token;
+}
+__decorate([
+    ApiProperty({ example: 'fcm_token_123' }),
+    IsString(),
+    __metadata("design:type", String)
+], UpdateFcmTokenDto.prototype, "fcm_token", void 0);
 //# sourceMappingURL=auth.dto.js.map

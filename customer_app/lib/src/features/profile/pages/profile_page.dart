@@ -167,7 +167,7 @@ class _ProfileView extends StatelessWidget {
             context: context,
             icon: Icons.local_offer_outlined,
             title: 'Coupons',
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRouter.myCoupons),
           ),
           _buildDivider(),
           BlocBuilder<NotificationBloc, NotificationState>(
@@ -195,6 +195,13 @@ class _ProfileView extends StatelessWidget {
           _buildMenuItem(context: context, icon: Icons.help_outline, title: 'Help Center', onTap: () {}),
           _buildDivider(),
           _buildMenuItem(context: context, icon: Icons.info_outline, title: 'About', onTap: () {}),
+          _buildDivider(),
+          _buildMenuItem(
+            context: context,
+            icon: Icons.notifications_active_outlined,
+            title: 'Notification Preferences',
+            onTap: () => Navigator.pushNamed(context, AppRouter.notificationPreferences),
+          ),
           _buildDivider(),
           _buildMenuItem(
             context: context,

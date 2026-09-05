@@ -190,4 +190,53 @@ export class ProductsService {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
   }
+
+  async getSuggestions(tenantId: string, query: string): Promise<string[]> {
+    const results = await this.productRepo
+      .createQueryBuilder('product')
+      .select('product.title')
+      .where('product.tenant_id = :tenantId', { tenantId })
+      .andWhere('product.title ILIKE :query', { query: `%${query}%` })
+      .limit(8)
+      .getMany();
+
+    return results.map((r: any) => r.title);
+  }
+
+  async getPopularSearches(tenantId: string): Promise<string[]> {
+    const results = await this.productRepo
+      .createQueryBuilder('product')
+      .select('product.title')
+      .where('product.tenant_id = :tenantId', { tenantId })
+      .orderBy('product.view_count', 'DESC')
+      .limit(10)
+      .getMany();
+
+    return results.map((r: any) => r.title);
+  }
+
+  async getRelatedProducts(tenantId: string, productId: string, limit = 10): Promise<any[]> {
+    const product = await this.findOne(productId, tenantId);
+    if (!product) return [];
+
+    const related = await this.productRepo
+      .createQueryBuilder('product')
+      .leftJoinAndSelect('product.category', 'category')
+      .where('product.tenant_id = :tenantId', { tenantId })
+      .andWhere('product.id != :productId', { productId })
+      .andWhere('product.category_id = :categoryId', { categoryId: product.category_id })
+      .orderBy('RANDOM()')
+      .limit(limit)
+      .getMany();
+
+    return Promise.all(
+      related.map(async (p: any) => {
+        const [images, variants] = await Promise.all([
+          this.imageRepo.find({ where: { product_id: p.id } }),
+          this.variantRepo.find({ where: { product_id: p.id } }),
+        ]);
+        return { ...p, images, variants };
+      }),
+    );
+  }
 }

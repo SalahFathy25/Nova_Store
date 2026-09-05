@@ -77,4 +77,46 @@ class ProductRepository {
       return Left(ServerFailure(message: e.toString()));
     }
   }
+
+  Future<Either<Failure, List<dynamic>>> getSearchSuggestions({required String query}) async {
+    try {
+      final response = await _dataSource.getSearchSuggestions(query: query);
+      if (response.success && response.data != null) {
+        return Right(response.data!);
+      }
+      return Left(ServerFailure(message: response.message));
+    } on DioException catch (e) {
+      return Left(ServerFailure(message: e.message ?? 'Failed to load suggestions'));
+    } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  Future<Either<Failure, List<dynamic>>> getPopularSearches() async {
+    try {
+      final response = await _dataSource.getPopularSearches();
+      if (response.success && response.data != null) {
+        return Right(response.data!);
+      }
+      return Left(ServerFailure(message: response.message));
+    } on DioException catch (e) {
+      return Left(ServerFailure(message: e.message ?? 'Failed to load popular searches'));
+    } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  Future<Either<Failure, Map<String, dynamic>>> getRelatedProducts({required String productId, int limit = 10}) async {
+    try {
+      final response = await _dataSource.getRelatedProducts(productId: productId, limit: limit);
+      if (response.success && response.data != null) {
+        return Right(response.data!);
+      }
+      return Left(ServerFailure(message: response.message));
+    } on DioException catch (e) {
+      return Left(ServerFailure(message: e.message ?? 'Failed to load related products'));
+    } catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
 }

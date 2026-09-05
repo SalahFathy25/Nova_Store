@@ -32,6 +32,7 @@ class CreateOrder extends OrderEvent {
   final String? couponCode;
   final String? notes;
   final String deliveryType;
+  final String? scheduledTimeSlot;
   final DateTime? scheduledDeliveryDate;
 
   const CreateOrder({
@@ -40,11 +41,12 @@ class CreateOrder extends OrderEvent {
     this.couponCode,
     this.notes,
     this.deliveryType = 'instant',
+    this.scheduledTimeSlot,
     this.scheduledDeliveryDate,
   });
 
   @override
-  List<Object?> get props => [addressId, paymentMethod, couponCode, notes, deliveryType, scheduledDeliveryDate];
+  List<Object?> get props => [addressId, paymentMethod, couponCode, notes, deliveryType, scheduledTimeSlot, scheduledDeliveryDate];
 }
 
 class CancelOrder extends OrderEvent {

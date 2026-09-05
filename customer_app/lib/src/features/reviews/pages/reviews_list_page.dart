@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
 import '../bloc/review_bloc.dart';
+import '../bloc/review_event.dart';
 import '../bloc/review_state.dart';
 
 class ReviewsListPage extends StatefulWidget {
@@ -266,6 +267,26 @@ class _ReviewsListPageState extends State<ReviewsListPage> {
               ),
             ),
           ],
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  context.read<ReviewBloc>().add(MarkReviewHelpful(reviewId: review.id));
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.thumb_up_outlined, size: 16, color: NovaTheme.textSecondary),
+                    const SizedBox(width: 4),
+                    Text(
+                      review.helpfulCount > 0 ? '${review.helpfulCount}' : 'Helpful',
+                      style: const TextStyle(fontSize: 12, color: NovaTheme.textSecondary),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

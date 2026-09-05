@@ -2,22 +2,40 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-export const getDatabaseConfig = () => ({
-    type: 'postgres',
-    host: process.env.DB_HOST || 'localhost',
-    port: parseInt(process.env.DB_PORT || '5432', 10),
-    username: process.env.DB_USERNAME || 'postgres',
-    password: process.env.DB_PASSWORD || 'postgres',
-    database: process.env.DB_NAME || 'nova_commerce',
-    entities: [join(__dirname, '..', 'modules', '**', '*.entity.{ts,js}')],
-    synchronize: process.env.APP_ENV === 'development',
-    logging: process.env.APP_ENV === 'development',
-    ssl: process.env.DB_SSL === 'true' || process.env.APP_ENV === 'production'
-        ? { rejectUnauthorized: false }
-        : false,
-    extra: {
-        max: process.env.APP_ENV === 'production' ? 5 : 10,
-        connectionTimeoutMillis: 10000,
-    },
-});
+export const getDatabaseConfig = () => {
+    const isProduction = process.env.APP_ENV === 'production';
+    if (isProduction && process.env.DATABASE_URL) {
+        return {
+            type: 'postgres',
+            url: process.env.DATABASE_URL,
+            entities: [join(__dirname, '..', 'modules', '**', '*.entity.{ts,js}')],
+            synchronize: true,
+            logging: false,
+            ssl: { rejectUnauthorized: false },
+            extra: {
+                max: 5,
+                connectionTimeoutMillis: 15000,
+                ssl: { rejectUnauthorized: false },
+            },
+        };
+    }
+    return {
+        type: 'postgres',
+        host: process.env.DB_HOST || 'localhost',
+        port: parseInt(process.env.DB_PORT || '5432', 10),
+        username: process.env.DB_USERNAME || 'postgres',
+        password: process.env.DB_PASSWORD || 'postgres',
+        database: process.env.DB_NAME || 'nova_commerce',
+        entities: [join(__dirname, '..', 'modules', '**', '*.entity.{ts,js}')],
+        synchronize: process.env.APP_ENV === 'development',
+        logging: process.env.APP_ENV === 'development',
+        ssl: process.env.DB_SSL === 'true' || isProduction
+            ? { rejectUnauthorized: false }
+            : false,
+        extra: {
+            max: isProduction ? 5 : 10,
+            connectionTimeoutMillis: 10000,
+        },
+    };
+};
 //# sourceMappingURL=database.config.js.map

@@ -1,5 +1,5 @@
 import { AuthService } from './auth.service.js';
-import { RegisterDto, LoginDto, SendOtpDto, VerifyOtpDto, RefreshTokenDto, ForgotPasswordDto, ResetPasswordDto } from './dto/auth.dto.js';
+import { RegisterDto, LoginDto, SendOtpDto, VerifyOtpDto, RefreshTokenDto, ForgotPasswordDto, ResetPasswordDto, UpdateFcmTokenDto } from './dto/auth.dto.js';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
@@ -19,4 +19,7 @@ export declare class AuthController {
         message: string;
     }>;
     getProfile(userId: string): Promise<any>;
+    updateFcmToken(userId: string, dto: UpdateFcmTokenDto): Promise<{
+        success: boolean;
+    }>;
 }

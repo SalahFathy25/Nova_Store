@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/di/injection.dart';
 import '../../products/bloc/product_bloc.dart';
 import '../../products/bloc/product_event.dart';
 import '../../products/bloc/product_state.dart';
@@ -56,14 +57,17 @@ class _SearchPageState extends State<SearchPage> {
 
   Future<void> _loadPopularSearches() async {
     try {
-      final dataSource = ProductRemoteDataSource(context.read<NovaApiClient>().dio);
-      final response = await dataSource.getPopularSearches();
-      if (response.success && response.data != null) {
-        setState(() {
-          _popularSearches.clear();
-          _popularSearches.addAll((response.data as List).map((e) => e.toString()));
-        });
-      }
+      final repo = getIt<ProductRepository>();
+      final result = await repo.getPopularSearches();
+      result.fold(
+        (_) {},
+        (data) {
+          setState(() {
+            _popularSearches.clear();
+            _popularSearches.addAll((data as List).map((e) => e.toString()));
+          });
+        },
+      );
     } catch (_) {}
   }
 
@@ -111,40 +115,47 @@ class _SearchPageState extends State<SearchPage> {
 
   Future<void> _fetchServerSuggestions(String query) async {
     try {
-      final dataSource = ProductRemoteDataSource(context.read<NovaApiClient>().dio);
-      final response = await dataSource.getSearchSuggestions(query: query);
-      if (response.success && response.data != null) {
-        final serverSuggestions = (response.data as List).map((e) => e.toString()).toList();
-        final localMatches = <String>[];
-        for (final history in _searchHistory) {
-          if (history.toLowerCase().contains(query.toLowerCase()) && !localMatches.contains(history)) {
-            localMatches.add(history);
+      final repo = getIt<ProductRepository>();
+      final result = await repo.getSearchSuggestions(query: query);
+      result.fold(
+        (_) => _fetchLocalSuggestions(query),
+        (data) {
+          final serverSuggestions = (data as List).map((e) => e.toString()).toList();
+          final localMatches = <String>[];
+          for (final history in _searchHistory) {
+            if (history.toLowerCase().contains(query.toLowerCase()) && !localMatches.contains(history)) {
+              localMatches.add(history);
+            }
           }
-        }
-        final allSuggestions = <String>{...localMatches, ...serverSuggestions}.toList();
-        setState(() {
-          _suggestions = allSuggestions.take(8).toList();
-          _showSuggestions = _suggestions.isNotEmpty;
-        });
-      }
+          final allSuggestions = <String>{...localMatches, ...serverSuggestions}.toList();
+          setState(() {
+            _suggestions = allSuggestions.take(8).toList();
+            _showSuggestions = _suggestions.isNotEmpty;
+          });
+        },
+      );
     } catch (_) {
-      final queryLower = query.toLowerCase();
-      final matches = <String>[];
-      for (final history in _searchHistory) {
-        if (history.toLowerCase().contains(queryLower) && !matches.contains(history)) {
-          matches.add(history);
-        }
-      }
-      for (final popular in _popularSearches) {
-        if (popular.toLowerCase().contains(queryLower) && !matches.contains(popular)) {
-          matches.add(popular);
-        }
-      }
-      setState(() {
-        _suggestions = matches.take(5).toList();
-        _showSuggestions = _suggestions.isNotEmpty;
-      });
+      _fetchLocalSuggestions(query);
     }
+  }
+
+  void _fetchLocalSuggestions(String query) {
+    final queryLower = query.toLowerCase();
+    final matches = <String>[];
+    for (final history in _searchHistory) {
+      if (history.toLowerCase().contains(queryLower) && !matches.contains(history)) {
+        matches.add(history);
+      }
+    }
+    for (final popular in _popularSearches) {
+      if (popular.toLowerCase().contains(queryLower) && !matches.contains(popular)) {
+        matches.add(popular);
+      }
+    }
+    setState(() {
+      _suggestions = matches.take(5).toList();
+      _showSuggestions = _suggestions.isNotEmpty;
+    });
   }
 
   void _performSearch(String query) {

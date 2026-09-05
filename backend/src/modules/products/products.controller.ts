@@ -121,4 +121,31 @@ export class ProductsController {
     await this.productsService.removeImage(imageId);
     return { message: 'Image deleted successfully' };
   }
+
+  @Get('suggestions')
+  @ApiOperation({ summary: 'Get search suggestions' })
+  @ApiQuery({ name: 'q', required: true, type: String })
+  async getSuggestions(
+    @CurrentTenantId() tenantId: string,
+    @Query('q') query: string,
+  ) {
+    return this.productsService.getSuggestions(tenantId, query || '');
+  }
+
+  @Get('popular-searches')
+  @ApiOperation({ summary: 'Get popular searches' })
+  async getPopularSearches(@CurrentTenantId() tenantId: string) {
+    return this.productsService.getPopularSearches(tenantId);
+  }
+
+  @Get(':id/related')
+  @ApiOperation({ summary: 'Get related products' })
+  @ApiQuery({ name: 'limit', required: false, type: Number })
+  async getRelatedProducts(
+    @Param('id') id: string,
+    @CurrentTenantId() tenantId: string,
+    @Query('limit') limit?: number,
+  ) {
+    return this.productsService.getRelatedProducts(tenantId, id, limit || 10);
+  }
 }

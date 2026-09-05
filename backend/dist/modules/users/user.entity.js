@@ -103,8 +103,7 @@ __decorate([
 ], User.prototype, "updated_at", void 0);
 User = __decorate([
     Entity('users'),
-    Index(['tenant_id', 'email'], { unique: true }),
-    Index(['tenant_id', 'phone'], { unique: true })
+    Index(['tenant_id', 'email'], { unique: true })
 ], User);
 export { User };
 //# sourceMappingURL=user.entity.js.map

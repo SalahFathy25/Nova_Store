@@ -8,6 +8,7 @@ export interface MulterFile {
 }
 export declare class UploadService {
     private readonly uploadDir;
+    private readonly isServerless;
     constructor();
     uploadImage(file: MulterFile, folder?: string): Promise<{
         url: string;

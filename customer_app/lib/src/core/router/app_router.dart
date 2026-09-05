@@ -22,6 +22,8 @@ import '../../features/checkout/pages/checkout_page.dart';
 import '../../features/checkout/pages/address_form_page.dart';
 import '../../features/checkout/pages/order_confirmation_page.dart';
 import '../../features/reviews/pages/reviews_list_page.dart';
+import '../../features/coupons/pages/my_coupons_page.dart';
+import '../../features/profile/pages/notification_preferences_page.dart';
 import '../di/injection.dart';
 import '../../features/products/bloc/product_bloc.dart';
 import '../../features/orders/bloc/order_bloc.dart';
@@ -50,6 +52,8 @@ class AppRouter {
   static const String notifications = '/notifications';
   static const String forgotPassword = '/forgot-password';
   static const String reviewsList = '/reviews';
+  static const String myCoupons = '/my-coupons';
+  static const String notificationPreferences = '/notification-preferences';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -168,6 +172,12 @@ class AppRouter {
 
       case notifications:
         return MaterialPageRoute(builder: (_) => const NotificationsPage());
+
+      case myCoupons:
+        return MaterialPageRoute(builder: (_) => const MyCouponsPage());
+
+      case notificationPreferences:
+        return MaterialPageRoute(builder: (_) => const NotificationPreferencesPage());
 
       default:
         final uri = Uri.parse(settings.name ?? '');

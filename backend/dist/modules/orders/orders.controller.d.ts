@@ -33,6 +33,7 @@ export declare class OrdersController {
         notes: string;
         coupon_code: string;
         coupon_discount: number;
+        scheduled_delivery_date: Date;
         created_at: Date;
         updated_at: Date;
     }>;
@@ -59,6 +60,7 @@ export declare class OrdersController {
         notes: string;
         coupon_code: string;
         coupon_discount: number;
+        scheduled_delivery_date: Date;
         created_at: Date;
         updated_at: Date;
     }>;
@@ -85,6 +87,7 @@ export declare class OrdersController {
         notes: string;
         coupon_code: string;
         coupon_discount: number;
+        scheduled_delivery_date: Date;
         created_at: Date;
         updated_at: Date;
     }>;

@@ -31,6 +31,7 @@ let ParentOrder = class ParentOrder {
     notes;
     coupon_code;
     coupon_discount;
+    scheduled_delivery_date;
     created_at;
     updated_at;
 };
@@ -116,6 +117,10 @@ __decorate([
     Column({ type: 'decimal', precision: 10, scale: 2, default: 0, name: 'coupon_discount' }),
     __metadata("design:type", Number)
 ], ParentOrder.prototype, "coupon_discount", void 0);
+__decorate([
+    Column({ type: 'timestamptz', nullable: true, name: 'scheduled_delivery_date' }),
+    __metadata("design:type", Date)
+], ParentOrder.prototype, "scheduled_delivery_date", void 0);
 __decorate([
     CreateDateColumn({ type: 'timestamptz', name: 'created_at' }),
     __metadata("design:type", Date)

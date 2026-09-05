@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:nova_core/nova_core.dart';
 import '../../addresses/bloc/address_bloc.dart';
 import '../../addresses/bloc/address_event.dart';
@@ -28,6 +31,9 @@ class _AddressFormPageState extends State<AddressFormPage> {
   bool _isLoading = false;
   double? _latitude;
   double? _longitude;
+  List<Map<String, dynamic>> _autocompleteResults = [];
+
+  static const String _googleMapsApiKey = 'AlzaSyD9W-FwHKKQsp-KKEYXSvqKutCTsauk-3U';
 
   final List<String> _labelOptions = ['Home', 'Work', 'Other'];
 
@@ -43,6 +49,66 @@ class _AddressFormPageState extends State<AddressFormPage> {
     _cityController.dispose();
     _stateController.dispose();
     super.dispose();
+  }
+
+  Future<void> _searchPlaces(String query) async {
+    if (query.length < 3) {
+      setState(() => _autocompleteResults = []);
+      return;
+    }
+    try {
+      final url = Uri.parse(
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_googleMapsApiKey&components=country:eg',
+      );
+      final response = await http.get(url);
+      final data = json.decode(response.body);
+      if (data['status'] == 'OK') {
+        setState(() {
+          _autocompleteResults = List<Map<String, dynamic>>.from(
+            data['predictions'].map((p) => {
+              'place_id': p['place_id'],
+              'description': p['description'],
+            }),
+          );
+        });
+      }
+    } catch (_) {}
+  }
+
+  Future<void> _getPlaceDetails(String placeId) async {
+    try {
+      final url = Uri.parse(
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&key=$_googleMapsApiKey&fields=geometry,formatted_address,address_components',
+      );
+      final response = await http.get(url);
+      final data = json.decode(response.body);
+      if (data['status'] == 'OK') {
+        final result = data['result'];
+        final location = result['geometry']['location'];
+        final address = result['formatted_address'] ?? '';
+        final components = result['address_components'] as List? ?? [];
+
+        setState(() {
+          _latitude = location['lat'];
+          _longitude = location['lng'];
+          _fullAddressController.text = address;
+          _autocompleteResults = [];
+        });
+
+        for (final component in components) {
+          final types = component['types'] as List;
+          if (types.contains('route')) {
+            _streetController.text = component['long_name'];
+          }
+          if (types.contains('locality')) {
+            _cityController.text = component['long_name'];
+          }
+          if (types.contains('administrative_area_level_1')) {
+            _stateController.text = component['long_name'];
+          }
+        }
+      }
+    } catch (_) {}
   }
 
   void _saveAddress() {
@@ -250,11 +316,40 @@ class _AddressFormPageState extends State<AddressFormPage> {
                   : null,
               isDense: true,
             ),
-            onChanged: (value) {
-              // TODO: Integrate with Google Places API when configured
-              // For now, this is a placeholder for future Google Maps integration
-            },
+            onChanged: _searchPlaces,
           ),
+          if (_autocompleteResults.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Container(
+              constraints: const BoxConstraints(maxHeight: 200),
+              decoration: BoxDecoration(
+                color: NovaTheme.surfaceColor,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: NovaTheme.borderColor),
+              ),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: _autocompleteResults.length,
+                itemBuilder: (context, index) {
+                  final result = _autocompleteResults[index];
+                  return ListTile(
+                    dense: true,
+                    leading: const Icon(Icons.location_on_outlined, size: 18),
+                    title: Text(
+                      result['description'] ?? '',
+                      style: const TextStyle(fontSize: 13),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    onTap: () {
+                      _getPlaceDetails(result['place_id']);
+                      _searchController.text = result['description'] ?? '';
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
           if (_latitude != null && _longitude != null) ...[
             const SizedBox(height: NovaTheme.spacingSm),
             Text(

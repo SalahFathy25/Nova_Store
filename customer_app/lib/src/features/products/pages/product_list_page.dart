@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
 import 'package:shimmer/shimmer.dart';
+import '../../../core/di/injection.dart';
 import '../bloc/product_bloc.dart';
 import '../bloc/product_event.dart';
 import '../bloc/product_state.dart';
@@ -85,11 +86,40 @@ class _ProductListPageState extends State<ProductListPage> {
     super.initState();
     _selectedCategoryId = widget.categoryId;
     _scrollController.addListener(_onScroll);
+    _loadFilters();
     context.read<ProductBloc>().add(LoadProducts(
       categoryId: widget.categoryId,
       brandId: widget.brandId,
       search: widget.searchQuery,
     ));
+  }
+
+  void _loadFilters() async {
+    final repo = getIt<ProductRepository>();
+    final categoriesResult = await repo.getCategories();
+    categoriesResult.fold(
+      (_) {},
+      (data) {
+        if (data is List && mounted) {
+          setState(() {
+            _categories.clear();
+            _categories.addAll(data.map((c) => Category.fromJson(c)).toList());
+          });
+        }
+      },
+    );
+    final brandsResult = await repo.getBrands();
+    brandsResult.fold(
+      (_) {},
+      (data) {
+        if (data is List && mounted) {
+          setState(() {
+            _brands.clear();
+            _brands.addAll(data.map((b) => Brand.fromJson(b)).toList());
+          });
+        }
+      },
+    );
   }
 
   @override

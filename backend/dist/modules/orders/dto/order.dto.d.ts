@@ -3,4 +3,5 @@ export declare class CreateOrderDto {
     payment_method: string;
     coupon_code?: string;
     notes?: string;
+    scheduled_delivery_date?: string;
 }

@@ -13,14 +13,20 @@ import { join } from 'path';
 import { v4 as uuidv4 } from 'uuid';
 let UploadService = class UploadService {
     uploadDir = join(process.cwd(), 'uploads');
+    isServerless = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME;
     constructor() {
-        if (!existsSync(this.uploadDir)) {
-            mkdirSync(this.uploadDir, { recursive: true });
+        if (!this.isServerless) {
+            if (!existsSync(this.uploadDir)) {
+                mkdirSync(this.uploadDir, { recursive: true });
+            }
         }
     }
     async uploadImage(file, folder = 'general') {
         if (!file) {
             throw new BadRequestException('No file provided');
+        }
+        if (this.isServerless) {
+            throw new BadRequestException('File upload not available in serverless environment. Use S3 or external storage.');
         }
         const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
         if (!allowedMimeTypes.includes(file.mimetype)) {

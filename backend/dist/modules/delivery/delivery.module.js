@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DeliveryController } from './delivery.controller.js';
 import { DeliveryService } from './delivery.service.js';
@@ -18,6 +19,7 @@ import { DriverLocationHistory } from './driver-location-history.entity.js';
 import { User } from '../users/user.entity.js';
 import { SubOrder } from '../orders/sub-order.entity.js';
 import { ParentOrder } from '../orders/parent-order.entity.js';
+import { JwtStrategy } from '../../auth/strategies/jwt.strategy.js';
 let DeliveryModule = class DeliveryModule {
 };
 DeliveryModule = __decorate([
@@ -32,6 +34,7 @@ DeliveryModule = __decorate([
                 SubOrder,
                 ParentOrder,
             ]),
+            PassportModule.register({ defaultStrategy: 'jwt' }),
             JwtModule.registerAsync({
                 imports: [ConfigModule],
                 useFactory: (config) => ({
@@ -42,7 +45,7 @@ DeliveryModule = __decorate([
             }),
         ],
         controllers: [DeliveryController],
-        providers: [DeliveryService, DeliveryGateway],
+        providers: [DeliveryService, DeliveryGateway, JwtStrategy],
         exports: [DeliveryService],
     })
 ], DeliveryModule);

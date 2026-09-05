@@ -34,17 +34,32 @@ async function bootstrap() {
     SwaggerModule.setup('docs', app, document);
     const dataSource = app.get(DataSource);
     if (appConfig.isProduction) {
-        logger.log('Production mode - syncing schema only...');
-        await dataSource.synchronize();
+        logger.log('Production mode - syncing schema and seeding...');
+        try {
+            await dataSource.synchronize();
+            logger.log('Schema synced successfully');
+        }
+        catch (err) {
+            logger.error('Schema sync failed', err);
+        }
     }
     else {
         logger.log('Development mode - syncing schema and seeding...');
         await dataSource.synchronize();
-        await seedDatabase(dataSource);
     }
     await app.listen(appConfig.port);
     logger.log(`Application running on: http://localhost:${appConfig.port}`);
     logger.log(`API Documentation: http://localhost:${appConfig.port}/docs`);
+    if (appConfig.isProduction) {
+        seedDatabase(dataSource)
+            .then(() => logger.log('Database seeded successfully'))
+            .catch((err) => logger.error('Seed failed (non-fatal)', err));
+    }
+    else {
+        seedDatabase(dataSource)
+            .then(() => logger.log('Database seeded successfully'))
+            .catch((err) => logger.error('Seed failed (non-fatal)', err));
+    }
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
