@@ -92,14 +92,14 @@ void configureDependencies(SharedPreferences prefs) {
     () => AppConfigRepository(getIt<NovaApiClient>().dio),
   );
 
-  // BLoCs - Auth, Home, Product are factory (new instance per route)
+  // BLoCs - Auth, Product are factory (new instance per route)
   getIt.registerFactory<AuthBloc>(
     () => AuthBloc(
       authRepository: getIt<AuthRepository>(),
       localStorage: getIt<LocalStorage>(),
     ),
   );
-  getIt.registerFactory<HomeBloc>(
+  getIt.registerLazySingleton<HomeBloc>(
     () => HomeBloc(homeRepository: getIt<HomeRepository>()),
   );
   getIt.registerFactory<ProductBloc>(
@@ -136,7 +136,6 @@ void configureDependencies(SharedPreferences prefs) {
 
   getIt.registerLazySingleton<PushNotificationService>(
     () => PushNotificationService(
-      FirebaseMessaging.instance,
       getIt<NovaApiClient>(),
     ),
   );

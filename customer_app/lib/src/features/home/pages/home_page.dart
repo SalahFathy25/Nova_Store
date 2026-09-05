@@ -21,12 +21,7 @@ class _HomePageState extends State<HomePage> {
   final PageController _bannerController = PageController();
   int _currentBannerIndex = 0;
   Timer? _bannerTimer;
-
-  @override
-  void initState() {
-    super.initState();
-    _startBannerAutoScroll();
-  }
+  bool _bannerStarted = false;
 
   @override
   void dispose() {
@@ -35,18 +30,17 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void _startBannerAutoScroll() {
+  void _startBannerAutoScroll(int bannerCount) {
+    if (_bannerStarted || bannerCount == 0) return;
+    _bannerStarted = true;
     _bannerTimer = Timer.periodic(const Duration(seconds: 4), (timer) {
       if (_bannerController.hasClients) {
-        final state = context.read<HomeBloc>().state;
-        if (state is HomeLoaded && state.banners.isNotEmpty) {
-          final nextPage = (_currentBannerIndex + 1) % state.banners.length;
-          _bannerController.animateToPage(
-            nextPage,
-            duration: const Duration(milliseconds: 350),
-            curve: Curves.easeInOut,
-          );
-        }
+        final nextPage = (_currentBannerIndex + 1) % bannerCount;
+        _bannerController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.easeInOut,
+        );
       }
     });
   }
@@ -334,6 +328,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildContentBody(HomeLoaded state) {
+    _startBannerAutoScroll(state.banners.length);
     return RefreshIndicator(
       onRefresh: () async => context.read<HomeBloc>().add(const RefreshHome()),
       color: NovaTheme.primaryColor,

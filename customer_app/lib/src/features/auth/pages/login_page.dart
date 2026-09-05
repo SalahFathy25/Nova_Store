@@ -166,7 +166,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/forgot-password');
+                                    },
                                     style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,
                                       minimumSize: Size.zero,

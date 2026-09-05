@@ -3,3 +3,7 @@ builder = "dockerfile"
 
 [deploy]
 startCommand = "node --dns-result-order=ipv4first dist/main"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

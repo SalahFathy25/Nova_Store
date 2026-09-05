@@ -58,3 +58,12 @@ class AuthCheckStatus extends AuthEvent {
 class AuthLogout extends AuthEvent {
   const AuthLogout();
 }
+
+class AuthForgotPassword extends AuthEvent {
+  final String email;
+
+  const AuthForgotPassword({required this.email});
+
+  @override
+  List<Object?> get props => [email];
+}

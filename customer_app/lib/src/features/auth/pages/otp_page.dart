@@ -149,17 +149,19 @@ class _OtpPageState extends State<OtpPage> with SingleTickerProviderStateMixin {
                               return SizedBox(
                                 width: 48,
                                 height: 56,
-                                child: RawKeyboardListener(
-                                  focusNode: FocusNode(),
-                                  onKey: (event) {
-                                    if (event is RawKeyDownEvent &&
+                                child: Focus(
+                                  focusNode: _focusNodes[index],
+                                  onKeyEvent: (node, event) {
+                                    if (event is KeyDownEvent &&
                                         event.logicalKey ==
                                             LogicalKeyboardKey.backspace &&
                                         _controllers[index].text.isEmpty &&
                                         index > 0) {
                                       _focusNodes[index - 1].requestFocus();
                                       _controllers[index - 1].clear();
+                                      return KeyEventResult.handled;
                                     }
+                                    return KeyEventResult.ignored;
                                   },
                                   child: TextFormField(
                                     controller: _controllers[index],

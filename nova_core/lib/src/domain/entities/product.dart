@@ -14,6 +14,7 @@ class Product extends Equatable {
   final bool isFeatured;
   final String? categoryId;
   final String? brandId;
+  final String? brandName;
   final List<String> tags;
   final List<ProductImage> images;
   final List<ProductVariant> variants;
@@ -32,6 +33,7 @@ class Product extends Equatable {
     this.isFeatured = false,
     this.categoryId,
     this.brandId,
+    this.brandName,
     this.tags = const [],
     this.images = const [],
     this.variants = const [],
@@ -52,6 +54,7 @@ class Product extends Equatable {
       isFeatured: json['is_featured'] ?? false,
       categoryId: json['category_id'],
       brandId: json['brand_id'],
+      brandName: json['brand_name'],
       tags: List<String>.from(json['tags'] ?? []),
       images: (json['images'] as List?)
               ?.map((e) => ProductImage.fromJson(e))

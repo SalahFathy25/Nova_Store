@@ -42,4 +42,33 @@ class ProductRemoteDataSource {
     final data = response.data;
     return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
   }
+
+  Future<ApiResponse<List<dynamic>>> getSearchSuggestions({required String query}) async {
+    try {
+      final response = await _dio.get('/api/v1/catalog/suggestions', queryParameters: {'q': query});
+      final data = response.data;
+      return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
+    } catch (_) {
+      return ApiResponse(success: false, message: 'Failed to load suggestions', data: <dynamic>[]);
+    }
+  }
+
+  Future<ApiResponse<List<dynamic>>> getPopularSearches() async {
+    try {
+      final response = await _dio.get('/api/v1/catalog/popular-searches');
+      final data = response.data;
+      return ApiResponse(success: true, message: '', data: (data is List) ? data : <dynamic>[]);
+    } catch (_) {
+      return ApiResponse(success: false, message: 'Failed to load popular searches', data: <dynamic>[]);
+    }
+  }
+
+  Future<ApiResponse<Map<String, dynamic>>> getRelatedProducts({required String productId, int limit = 10}) async {
+    try {
+      final response = await _dio.get('${ApiConstants.products}/$productId/related', queryParameters: {'limit': limit});
+      return ApiResponse(success: true, message: '', data: response.data as Map<String, dynamic>);
+    } catch (_) {
+      return ApiResponse(success: false, message: 'Failed to load related products', data: <String, dynamic>{});
+    }
+  }
 }

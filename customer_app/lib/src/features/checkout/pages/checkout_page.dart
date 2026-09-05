@@ -31,37 +31,42 @@ class _CheckoutPageState extends State<CheckoutPage> {
   final _couponController = TextEditingController();
   final _notesController = TextEditingController();
   bool _isPlacingOrder = false;
+  bool _isApplyingCoupon = false;
+  String _deliveryType = 'instant';
   DateTime? _scheduledDeliveryDate;
+  String? _selectedTimeSlot;
 
   List<Address> _addresses = [];
 
-  List<CartItem> _cartItems = [];
-
   static const double _shippingFee = 30;
 
-  double get _subtotal =>
-      _cartItems.fold(0, (sum, item) => sum + item.totalPrice);
+  double _getSubtotal(List<CartItem> cartItems) =>
+      cartItems.fold(0, (sum, item) => sum + item.totalPrice);
 
-  double _getTax(BuildContext context) {
+  double _getTax(BuildContext context, List<CartItem> cartItems) {
     final state = context.read<AppConfigCubit>().state;
     final taxRate = state is AppConfigLoaded ? state.config.features.taxRate : 0.14;
-    return _subtotal * taxRate;
+    return _getSubtotal(cartItems) * taxRate;
   }
 
   double get _discount => _couponDiscount;
 
-  double _getGrandTotal(BuildContext context) => _subtotal + _shippingFee + _getTax(context) - _discount;
+  double _getGrandTotal(BuildContext context, List<CartItem> cartItems) =>
+      _getSubtotal(cartItems) + _shippingFee + _getTax(context, cartItems) - _discount;
 
   void _applyCoupon() async {
     final code = _couponController.text.trim().toUpperCase();
     if (code.isEmpty) return;
 
-    setState(() => _isPlacingOrder = true);
+    setState(() => _isApplyingCoupon = true);
+
+    final cartState = context.read<CartBloc>().state;
+    final currentSubtotal = cartState is CartLoaded ? _getSubtotal(cartState.cartItems) : 0.0;
 
     final couponRepo = getIt<CouponRepository>();
     final result = await couponRepo.validateCoupon(
       code: code,
-      subtotal: _subtotal,
+      subtotal: currentSubtotal,
     );
 
     if (!mounted) return;
@@ -69,7 +74,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     result.fold(
       (failure) {
         setState(() {
-          _isPlacingOrder = false;
+          _isApplyingCoupon = false;
           _couponCode = '';
           _couponDiscount = 0;
         });
@@ -82,7 +87,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       },
       (validation) {
         setState(() {
-          _isPlacingOrder = false;
+          _isApplyingCoupon = false;
           if (validation.valid) {
             _couponCode = code;
             _couponDiscount = validation.discountAmount ?? 0;
@@ -144,7 +149,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
       paymentMethod: _selectedPayment,
       couponCode: _couponCode.isNotEmpty ? _couponCode : null,
       notes: _notesController.text.isNotEmpty ? _notesController.text : null,
-      scheduledDeliveryDate: _scheduledDeliveryDate,
+      deliveryType: _deliveryType,
+      scheduledDeliveryDate: _deliveryType == 'scheduled' ? _scheduledDeliveryDate : null,
     ));
   }
 
@@ -177,10 +183,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   void initState() {
     super.initState();
-    final cartState = context.read<CartBloc>().state;
-    if (cartState is CartLoaded) {
-      _cartItems = cartState.cartItems;
-    }
   }
 
   @override
@@ -214,35 +216,44 @@ class _CheckoutPageState extends State<CheckoutPage> {
           );
         }
       },
-      child: Scaffold(
-        backgroundColor: NovaTheme.backgroundColor,
-        appBar: AppBar(
-          title: const Text('Checkout'),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              if (_currentStep > 0) {
-                _previousStep();
-              } else {
-                Navigator.pop(context);
-              }
-            },
-          ),
-        ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              _buildStepIndicator(),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(NovaTheme.spacingMd),
-                  child: _buildCurrentStep(),
-                ),
+      child: BlocBuilder<CartBloc, CartState>(
+        builder: (context, cartState) {
+          final cartItems = cartState is CartLoaded ? cartState.cartItems : <CartItem>[];
+          final subtotal = _getSubtotal(cartItems);
+          final tax = _getTax(context, cartItems);
+          final grandTotal = _getGrandTotal(context, cartItems);
+
+          return Scaffold(
+            backgroundColor: NovaTheme.backgroundColor,
+            appBar: AppBar(
+              title: const Text('Checkout'),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_ios),
+                onPressed: () {
+                  if (_currentStep > 0) {
+                    _previousStep();
+                  } else {
+                    Navigator.pop(context);
+                  }
+                },
               ),
-              _buildBottomBar(),
-            ],
-          ),
-        ),
+            ),
+            body: SafeArea(
+              child: Column(
+                children: [
+                  _buildStepIndicator(),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(NovaTheme.spacingMd),
+                      child: _buildCurrentStep(cartItems, subtotal, tax, grandTotal),
+                    ),
+                  ),
+                  _buildBottomBar(grandTotal),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -323,14 +334,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildCurrentStep() {
+  Widget _buildCurrentStep(List<CartItem> cartItems, double subtotal, double tax, double grandTotal) {
     switch (_currentStep) {
       case 0:
         return _buildAddressStep();
       case 1:
         return _buildPaymentStep();
       case 2:
-        return _buildConfirmStep();
+        return _buildConfirmStep(cartItems, subtotal, tax, grandTotal);
       default:
         return const SizedBox.shrink();
     }
@@ -351,6 +362,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
               (a) => a.isDefault,
               orElse: () => _addresses.first,
             );
+          } else if (_selectedAddress != null && !_addresses.any((a) => a.id == _selectedAddress!.id)) {
+            _selectedAddress = _addresses.isNotEmpty ? _addresses.first : null;
           }
         }
         return Column(
@@ -475,7 +488,38 @@ class _CheckoutPageState extends State<CheckoutPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Select Payment Method',
+          'Delivery Type',
+          style: NovaTheme.headingSmall,
+        ),
+        const SizedBox(height: NovaTheme.spacingSm),
+        Row(
+          children: [
+            Expanded(
+              child: _buildDeliveryTypeOption(
+                value: 'instant',
+                title: 'Instant',
+                subtitle: '1-3 business days',
+                icon: Icons.local_shipping_outlined,
+              ),
+            ),
+            const SizedBox(width: NovaTheme.spacingSm),
+            Expanded(
+              child: _buildDeliveryTypeOption(
+                value: 'scheduled',
+                title: 'Scheduled',
+                subtitle: 'Choose date & time',
+                icon: Icons.calendar_today_outlined,
+              ),
+            ),
+          ],
+        ),
+        if (_deliveryType == 'scheduled') ...[
+          const SizedBox(height: NovaTheme.spacingMd),
+          _buildScheduledDeliverySection(),
+        ],
+        const SizedBox(height: NovaTheme.spacingLg),
+        const Text(
+          'Payment Method',
           style: NovaTheme.headingSmall,
         ),
         const SizedBox(height: NovaTheme.spacingMd),
@@ -608,7 +652,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildConfirmStep() {
+  Widget _buildConfirmStep(List<CartItem> cartItems, double subtotal, double tax, double grandTotal) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -618,9 +662,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         const SizedBox(height: NovaTheme.spacingMd),
         _buildSection(
-          title: 'Items (${_cartItems.length})',
+          title: 'Items (${cartItems.length})',
           child: Column(
-            children: _cartItems.map((item) {
+            children: cartItems.map((item) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: NovaTheme.spacingSm),
                 child: Row(
@@ -748,7 +792,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                     const SizedBox(width: 8),
                     ElevatedButton(
-                      onPressed: _applyCoupon,
+                      onPressed: _isApplyingCoupon ? null : _applyCoupon,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: NovaTheme.secondaryColor,
                         padding: const EdgeInsets.symmetric(
@@ -756,7 +800,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           vertical: 12,
                         ),
                       ),
-                      child: const Text('Apply'),
+                      child: _isApplyingCoupon
+                          ? const SizedBox(
+                              height: 16,
+                              width: 16,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Text('Apply'),
                     ),
                   ],
                 ),
@@ -810,7 +863,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         ),
         const SizedBox(height: NovaTheme.spacingMd),
-        _buildPriceBreakdown(),
+        _buildPriceBreakdown(subtotal, tax, grandTotal),
       ],
     );
   }
@@ -841,7 +894,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildPriceBreakdown() {
+  Widget _buildPriceBreakdown(double subtotal, double tax, double grandTotal) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(NovaTheme.spacingMd),
@@ -851,9 +904,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
       ),
       child: Column(
         children: [
-          _buildPriceRow('Subtotal', _subtotal),
+          _buildPriceRow('Subtotal', subtotal),
           _buildPriceRow('Shipping', _shippingFee),
-          _buildPriceRow('Tax (14%)', _getTax(context)),
+          _buildPriceRow('Tax (14%)', tax),
           if (_discount > 0)
             _buildPriceRow('Discount', -_discount, isDiscount: true),
           const Divider(color: NovaTheme.borderColor, height: 24),
@@ -869,7 +922,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
               ),
               Text(
-                '${_getGrandTotal(context).toStringAsFixed(2)} ج.م',
+                '${grandTotal.toStringAsFixed(2)} ج.م',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -922,7 +975,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  Widget _buildBottomBar() {
+  Widget _buildBottomBar(double grandTotal) {
     if (_currentStep == 2) {
       return Container(
         padding: const EdgeInsets.all(NovaTheme.spacingMd),
@@ -960,7 +1013,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ),
                     )
                    : Text(
-                      'Place Order - ${_getGrandTotal(context).toStringAsFixed(2)} ج.م',
+                      'Place Order - ${grandTotal.toStringAsFixed(2)} ج.م',
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -974,39 +1027,4 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     return Container(
       padding: const EdgeInsets.all(NovaTheme.spacingMd),
-      decoration: BoxDecoration(
-        color: NovaTheme.surfaceColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          height: 50,
-          child: ElevatedButton(
-            onPressed: _nextStep,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: NovaTheme.primaryColor,
-              foregroundColor: NovaTheme.textOnPrimary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(NovaTheme.radiusSm),
-              ),
-            ),
-            child: Text(
-              _currentStep == 0 ? 'Continue to Payment' : 'Review Order',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+      decoration: BoxDecora

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nova_core/nova_core.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../core/utils/responsive_layout.dart';
 import '../../cart/bloc/cart_bloc.dart';
 import '../../cart/bloc/cart_event.dart';
@@ -59,6 +60,12 @@ class OrderDetailPage extends StatelessWidget {
       backgroundColor: NovaTheme.backgroundColor,
       appBar: AppBar(
         title: Text('Order ${order.orderNumber}'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.share_outlined),
+            onPressed: _shareOrder,
+          ),
+        ],
       ),
       body: SafeArea(
         child: ResponsiveLayout.constrainWidth(
@@ -85,6 +92,8 @@ class OrderDetailPage extends StatelessWidget {
   }
 
   Widget _buildOrderHeader() {
+    final isShipped = order.status == 'Shipped';
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -133,6 +142,44 @@ class OrderDetailPage extends StatelessWidget {
               ),
             ],
           ),
+          if (isShipped && order.estimatedDeliveryDate != null) ...[
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: NovaTheme.successColor.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.local_shipping_outlined, size: 20, color: NovaTheme.successColor),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Estimated Delivery',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: NovaTheme.textSecondary,
+                          ),
+                        ),
+                        Text(
+                          _formatDate(order.estimatedDeliveryDate),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: NovaTheme.textPrimary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -617,7 +664,7 @@ class OrderDetailPage extends StatelessWidget {
     );
   }
 
-  void _handleReorder(BuildContext context) {
+  void _handleReorder(BuildContext context) async {
     final cartBloc = context.read<CartBloc>();
     for (final item in order.items) {
       cartBloc.add(AddToCart(
@@ -626,6 +673,8 @@ class OrderDetailPage extends StatelessWidget {
         quantity: item.quantity,
       ));
     }
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${order.items.length} item(s) added to cart'),
@@ -653,12 +702,6 @@ class OrderDetailPage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
               context.read<OrderBloc>().add(CancelOrder(orderId: order.id));
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text('Order cancellation requested'),
-                  backgroundColor: NovaTheme.successColor,
-                ),
-              );
             },
             child: const Text(
               'Yes, Cancel',
@@ -677,5 +720,20 @@ class OrderDetailPage extends StatelessWidget {
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
     return '${date.day} ${months[date.month - 1]} ${date.year}';
+  }
+
+  void _shareOrder() {
+    final items = order.items.map((item) => '• ${item.productTitle} (x${item.quantity})').join('\n');
+    final text = '''
+Order ${order.orderNumber}
+Date: ${_formatDate(order.createdAt)}
+Status: ${order.status}
+
+Items:
+$items
+
+Total: EGP ${order.grandTotal.toStringAsFixed(2)}
+''';
+    Share.share(text);
   }
 }

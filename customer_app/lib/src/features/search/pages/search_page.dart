@@ -27,23 +27,13 @@ class _SearchPageState extends State<SearchPage> {
   static const int _maxHistoryItems = 20;
   List<String> _searchHistory = [];
 
-  final List<String> _popularSearches = [
-    'Wireless Headphones',
-    'Smart Watch',
-    'Laptop Stand',
-    'Running Shoes',
-    'Phone Case',
-    'Bluetooth Speaker',
-    'Yoga Mat',
-    'Water Bottle',
-    'Backpack',
-    'Sunglasses',
-  ];
+  final List<String> _popularSearches = [];
 
   @override
   void initState() {
     super.initState();
     _loadSearchHistory();
+    _loadPopularSearches();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
     });
@@ -62,6 +52,19 @@ class _SearchPageState extends State<SearchPage> {
     setState(() {
       _searchHistory = prefs.getStringList(_historyKey) ?? [];
     });
+  }
+
+  Future<void> _loadPopularSearches() async {
+    try {
+      final dataSource = ProductRemoteDataSource(context.read<NovaApiClient>().dio);
+      final response = await dataSource.getPopularSearches();
+      if (response.success && response.data != null) {
+        setState(() {
+          _popularSearches.clear();
+          _popularSearches.addAll((response.data as List).map((e) => e.toString()));
+        });
+      }
+    } catch (_) {}
   }
 
   Future<void> _saveSearchHistory() async {
@@ -101,30 +104,51 @@ class _SearchPageState extends State<SearchPage> {
       return;
     }
 
-    final query = value.toLowerCase();
-    final matches = <String>[];
-
-    for (final history in _searchHistory) {
-      if (history.toLowerCase().contains(query) && !matches.contains(history)) {
-        matches.add(history);
-      }
-    }
-
-    for (final popular in _popularSearches) {
-      if (popular.toLowerCase().contains(query) && !matches.contains(popular)) {
-        matches.add(popular);
-      }
-    }
-
-    setState(() {
-      _suggestions = matches.take(5).toList();
-      _showSuggestions = _suggestions.isNotEmpty;
+    _debounceTimer = Timer(const Duration(milliseconds: 300), () {
+      _fetchServerSuggestions(value.trim());
     });
+  }
+
+  Future<void> _fetchServerSuggestions(String query) async {
+    try {
+      final dataSource = ProductRemoteDataSource(context.read<NovaApiClient>().dio);
+      final response = await dataSource.getSearchSuggestions(query: query);
+      if (response.success && response.data != null) {
+        final serverSuggestions = (response.data as List).map((e) => e.toString()).toList();
+        final localMatches = <String>[];
+        for (final history in _searchHistory) {
+          if (history.toLowerCase().contains(query.toLowerCase()) && !localMatches.contains(history)) {
+            localMatches.add(history);
+          }
+        }
+        final allSuggestions = <String>{...localMatches, ...serverSuggestions}.toList();
+        setState(() {
+          _suggestions = allSuggestions.take(8).toList();
+          _showSuggestions = _suggestions.isNotEmpty;
+        });
+      }
+    } catch (_) {
+      final queryLower = query.toLowerCase();
+      final matches = <String>[];
+      for (final history in _searchHistory) {
+        if (history.toLowerCase().contains(queryLower) && !matches.contains(history)) {
+          matches.add(history);
+        }
+      }
+      for (final popular in _popularSearches) {
+        if (popular.toLowerCase().contains(queryLower) && !matches.contains(popular)) {
+          matches.add(popular);
+        }
+      }
+      setState(() {
+        _suggestions = matches.take(5).toList();
+        _showSuggestions = _suggestions.isNotEmpty;
+      });
+    }
   }
 
   void _performSearch(String query) {
     if (query.trim().isEmpty) return;
-
     context.read<ProductBloc>().add(LoadProducts(search: query));
     setState(() {
       _showSuggestions = false;
@@ -432,7 +456,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   child: Center(
                     child: Text(
-                      '\${index + 1}',
+                      '${index + 1}',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
@@ -678,7 +702,7 @@ class _SearchPageState extends State<SearchPage> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'EGP \${product.basePrice.toStringAsFixed(2)}',
+                          'EGP ${product.basePrice.toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
@@ -688,7 +712,7 @@ class _SearchPageState extends State<SearchPage> {
                         if (hasDiscount) ...[
                           const SizedBox(width: 6),
                           Text(
-                            'EGP \${product.compareAtPrice!.toStringAsFixed(2)}',
+                            'EGP ${product.compareAtPrice!.toStringAsFixed(2)}',
                             style: const TextStyle(
                               fontSize: 11,
                               color: NovaTheme.textHint,
@@ -708,7 +732,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         const SizedBox(width: 2),
                         Text(
-                          '4.\${(product.basePrice % 9).round() + 1}',
+                          '4.${(product.basePrice % 9).round() + 1}',
                           style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
@@ -717,7 +741,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          '(\${(product.basePrice % 200).round() + 20})',
+                          '(${(product.basePrice % 200).round() + 20})',
                           style: const TextStyle(
                             fontSize: 11,
                             color: NovaTheme.textSecondary,

@@ -5,6 +5,7 @@ import '../../features/auth/pages/login_page.dart';
 import '../../features/auth/pages/register_page.dart';
 import '../../features/auth/pages/otp_page.dart';
 import '../../features/auth/pages/phone_input_page.dart';
+import '../../features/auth/pages/forgot_password_page.dart';
 import '../../features/products/pages/product_list_page.dart';
 import '../../features/products/pages/product_detail_page.dart';
 import '../../features/cart/pages/cart_page.dart';
@@ -20,6 +21,7 @@ import '../../features/search/pages/search_page.dart';
 import '../../features/checkout/pages/checkout_page.dart';
 import '../../features/checkout/pages/address_form_page.dart';
 import '../../features/checkout/pages/order_confirmation_page.dart';
+import '../../features/reviews/pages/reviews_list_page.dart';
 import '../di/injection.dart';
 import '../../features/products/bloc/product_bloc.dart';
 import '../../features/orders/bloc/order_bloc.dart';
@@ -46,6 +48,8 @@ class AppRouter {
   static const String editProfile = '/profile/edit';
   static const String wishlist = '/wishlist';
   static const String notifications = '/notifications';
+  static const String forgotPassword = '/forgot-password';
+  static const String reviewsList = '/reviews';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -64,6 +68,21 @@ class AppRouter {
       case otp:
         final args = settings.arguments as String? ?? '';
         return MaterialPageRoute(builder: (_) => OtpPage(phone: args));
+
+      case forgotPassword:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
+
+      case reviewsList:
+        final args = settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<ReviewBloc>(),
+            child: ReviewsListPage(
+              productId: args?['productId'] as String? ?? '',
+              productName: args?['productName'] as String? ?? '',
+            ),
+          ),
+        );
 
       case search:
         return MaterialPageRoute(

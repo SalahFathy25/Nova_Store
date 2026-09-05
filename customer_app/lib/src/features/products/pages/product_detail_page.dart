@@ -28,6 +28,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   bool _isDescriptionExpanded = false;
   String? _selectedColor;
   String? _selectedSize;
+  List<Product> _relatedProducts = [];
+  bool _isLoadingRelated = true;
 
   @override
   void initState() {
@@ -36,7 +38,28 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     _initializeVariants();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ReviewBloc>().add(LoadReviews(productId: widget.product.id));
+      _loadRelatedProducts();
     });
+  }
+
+  Future<void> _loadRelatedProducts() async {
+    try {
+      final dataSource = ProductRemoteDataSource(context.read<NovaApiClient>().dio);
+      final response = await dataSource.getRelatedProducts(productId: widget.product.id, limit: 10);
+      if (response.success && response.data != null) {
+        final productsData = response.data!['products'] ?? response.data!['data'] ?? [];
+        if (productsData is List) {
+          setState(() {
+            _relatedProducts = productsData.map((p) => Product.fromJson(p)).toList();
+            _isLoadingRelated = false;
+          });
+          return;
+        }
+      }
+      setState(() => _isLoadingRelated = false);
+    } catch (_) {
+      setState(() => _isLoadingRelated = false);
+    }
   }
 
   void _initializeVariants() {
@@ -346,11 +369,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (widget.product.brandId != null)
-            const Padding(
-              padding: EdgeInsets.only(bottom: 6),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
               child: Text(
-                'Brand Name',
-                style: TextStyle(
+                widget.product.brandName ?? 'Brand',
+                style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                   color: NovaTheme.textSecondary,
@@ -372,7 +395,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                'EGP \${_displayPrice.toStringAsFixed(2)}',
+                'EGP ${_displayPrice.toStringAsFixed(2)}',
                 style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.w800,
@@ -382,7 +405,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               if (_hasDiscount) ...[
                 const SizedBox(width: 10),
                 Text(
-                  'EGP \${widget.product.compareAtPrice!.toStringAsFixed(2)}',
+                  'EGP ${widget.product.compareAtPrice!.toStringAsFixed(2)}',
                   style: const TextStyle(
                     fontSize: 16,
                     color: NovaTheme.textHint,
@@ -471,7 +494,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         break;
       case 'low_stock':
         statusColor = NovaTheme.warningColor;
-        statusText = 'Low Stock - Only \$_stockQuantity left!';
+        statusText = 'Low Stock - Only $_stockQuantity left!';
         statusIcon = Icons.warning_rounded;
         break;
       case 'out_of_stock':
@@ -541,7 +564,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               if (_selectedColor != null) ...[
                 const SizedBox(width: 8),
                 Text(
-                  '- \$_selectedColor',
+                  '- $_selectedColor',
                   style: const TextStyle(
                     fontSize: 14,
                     color: NovaTheme.textSecondary,
@@ -619,7 +642,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               if (_selectedSize != null) ...[
                 const SizedBox(width: 8),
                 Text(
-                  '- \$_selectedSize',
+                  '- $_selectedSize',
                   style: const TextStyle(
                     fontSize: 14,
                     color: NovaTheme.textSecondary,
@@ -716,7 +739,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 height: 44,
                 alignment: Alignment.center,
                 child: Text(
-                  '\$_quantity',
+                  '$_quantity',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -889,6 +912,23 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           style: TextStyle(color: NovaTheme.secondaryColor),
                         ),
                       ),
+                      if (totalReviews > 5)
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/reviews',
+                              arguments: {
+                                'productId': widget.product.id,
+                                'productName': widget.product.title,
+                              },
+                            );
+                          },
+                          child: const Text(
+                            'View All',
+                            style: TextStyle(color: NovaTheme.secondaryColor),
+                          ),
+                        ),
                     ],
                   ),
                 ],
@@ -1171,6 +1211,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   }
 
   Widget _buildRelatedProducts() {
+    if (_isLoadingRelated) {
+      return const Padding(
+        padding: EdgeInsets.only(top: 16),
+        child: Center(child: CircularProgressIndicator(color: NovaTheme.secondaryColor)),
+      );
+    }
+    if (_relatedProducts.isEmpty) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Column(
@@ -1188,26 +1235,73 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ),
           ),
           const SizedBox(height: 12),
-          Container(
-            height: 120,
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              color: NovaTheme.surfaceColor,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: NovaTheme.dividerColor),
-            ),
-            child: const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.shopping_bag_outlined, size: 32, color: NovaTheme.textHint),
-                  SizedBox(height: 8),
-                  Text(
-                    'More products coming soon',
-                    style: TextStyle(fontSize: 13, color: NovaTheme.textHint),
+          SizedBox(
+            height: 200,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: _relatedProducts.length,
+              itemBuilder: (context, index) {
+                final product = _relatedProducts[index];
+                return GestureDetector(
+                  onTap: () => Navigator.pushReplacementNamed(
+                    context,
+                    '/product-detail',
+                    arguments: product,
                   ),
-                ],
-              ),
+                  child: Container(
+                    width: 140,
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    decoration: BoxDecoration(
+                      color: NovaTheme.surfaceColor,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: NovaTheme.dividerColor),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                            child: CachedNetworkImage(
+                              imageUrl: product.images.isNotEmpty ? product.images.first.url : '',
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              errorWidget: (context, url, error) => Container(
+                                color: NovaTheme.grey100,
+                                child: const Icon(Icons.image_outlined, color: NovaTheme.textHint),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                product.title,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                'EGP ${product.basePrice.toStringAsFixed(2)}',
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w700,
+                                  color: NovaTheme.primaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -1243,7 +1337,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 ),
               ),
               Text(
-                'EGP \${(_displayPrice * _quantity).toStringAsFixed(2)}',
+                'EGP ${(_displayPrice * _quantity).toStringAsFixed(2)}',
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w800,

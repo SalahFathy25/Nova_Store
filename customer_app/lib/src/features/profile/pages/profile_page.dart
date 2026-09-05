@@ -8,6 +8,8 @@ import '../../auth/bloc/auth_bloc.dart';
 import '../../auth/bloc/auth_event.dart';
 import '../../notifications/bloc/notification_bloc.dart';
 import '../../notifications/bloc/notification_state.dart';
+import '../../wishlist/bloc/wishlist_bloc.dart';
+import '../../wishlist/bloc/wishlist_state.dart';
 import '../../../core/di/injection.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/utils/responsive_layout.dart';
@@ -141,11 +143,17 @@ class _ProfileView extends StatelessWidget {
             onTap: () {},
           ),
           _buildDivider(),
-          _buildMenuItem(
-            context: context,
-            icon: Icons.favorite_outline,
-            title: 'Wishlist',
-            onTap: () => Navigator.pushNamed(context, AppRouter.wishlist),
+          BlocBuilder<WishlistBloc, WishlistState>(
+            builder: (context, wishlistState) {
+              final wishlistCount = wishlistState is WishlistLoaded ? wishlistState.items.length : 0;
+              return _buildMenuItem(
+                context: context,
+                icon: Icons.favorite_outline,
+                title: 'Wishlist',
+                badge: wishlistCount > 0 ? '$wishlistCount' : null,
+                onTap: () => Navigator.pushNamed(context, AppRouter.wishlist),
+              );
+            },
           ),
           _buildDivider(),
           _buildMenuItem(
